@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FileText, Download, CheckCircle } from 'lucide-react';
+import { useNoIndex } from '../hooks/useNoIndex';
 
 export default function DocumentsPage() {
+  useNoIndex();
   const documents = [
     {
       title: 'Договор на оказание транспортно-экспедиционных услуг',

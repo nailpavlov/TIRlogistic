@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Truck, Box, Snowflake, Archive, ArrowRight } from 'lucide-react';
+import { useNoIndex } from '../hooks/useNoIndex';
 
 export default function TransportPage() {
+  useNoIndex();
   const transports = [
     {
       icon: Truck,

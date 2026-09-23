@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FileText, Calculator, Settings, CheckCircle2, ArrowRight, Clock, Shield, Users } from 'lucide-react';
+import { useNoIndex } from '../hooks/useNoIndex';
 
 export default function HowWeWorkPage() {
+  useNoIndex();
   const steps = [
     {
       icon: FileText,

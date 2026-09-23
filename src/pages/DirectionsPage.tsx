@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { MapPin, ArrowRight } from 'lucide-react';
+import { useNoIndex } from '../hooks/useNoIndex';
 
 export default function DirectionsPage() {
+  useNoIndex();
   const directions = [
     { city: 'Шанхай', region: 'Восточный Китай', features: 'Крупнейший порт, промышленный центр' },
     { city: 'Гуанчжоу', region: 'Южный Китай', features: 'Торговый хаб, электроника, текстиль' },

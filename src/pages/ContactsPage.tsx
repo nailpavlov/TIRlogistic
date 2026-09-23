@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Phone, MessageCircle, Mail, Globe, Send, CheckCircle, MapPin, Clock } from 'lucide-react';
+import { useNoIndex } from '../hooks/useNoIndex';
 
 const quoteSchema = z.object({
   name: z.string().min(2, 'Введите имя'),
@@ -23,6 +24,7 @@ const quoteSchema = z.object({
 type QuoteFormData = z.infer<typeof quoteSchema>;
 
 export default function ContactsPage() {
+  useNoIndex();
   const [submitted, setSubmitted] = useState(false);
 
   const {

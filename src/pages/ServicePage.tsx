@@ -2,8 +2,11 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight, Truck, Phone, MessageCircle } from 'lucide-react';
 import { servicesData } from '../data/services';
+import { useNoIndex } from '../hooks/useNoIndex';
 
 export default function ServicePage() {
+  useNoIndex();
+  
   const { slug } = useParams<{ slug: string }>();
   
   if (!slug || !servicesData[slug]) {

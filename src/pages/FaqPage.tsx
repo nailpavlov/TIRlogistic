@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useNoIndex } from '../hooks/useNoIndex';
 
 const faqData = [
   {
@@ -55,6 +56,7 @@ const faqData = [
 ];
 
 export default function FaqPage() {
+  useNoIndex();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
