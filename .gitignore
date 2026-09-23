@@ -1,5 +1,23 @@
+# Зависимости
 node_modules/
-.next/
+
+# Сборка (собирается заново)
 dist/
-build/
+
+# Локальные файлы
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Логи
 *.log
+npm-debug.log*
+
+# Переменные окружения
+.env
+.env.local
+.next/
+build/
