@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TIR-перевозки Россия → Китай | Доставка по цене ниже рынка</title>
-    <meta name="description" content="TIR-перевозки Россия-Китай без переплаты за обратный рейс. Пиломатериалы, оборудование, рефрижератор, негабарит. Расчёт за 24 часа." />
-    <meta name="keywords" content="TIR перевозки, доставка в Китай, автодоставка Китай, обратные рейсы, логистика Россия Китай, пиломатериалы, оборудование" />
-    <meta property="og:title" content="TIR-перевозки Россия → Китай | TIR-LOGISTIKA" />
-    <meta property="og:description" content="Доставка по цене ниже рынка. Экономия до 30% на обратных рейсах. 14 направлений." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tirlogistica.ru" />
-    <meta property="og:site_name" content="TIR-LOGISTIKA" />
-    <meta property="og:locale" content="ru_RU" />
-    <link rel="canonical" href="https://tirlogistica.ru" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      html { scroll-behavior: smooth; }
-      body { margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-    </style>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LogisticsService",
-      "name": "TIR-LOGISTIKA",
-      "description": "TIR-перевозки Россия ↔ Китай",
-      "areaServed": ["Россия", "Китай"],
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+7-927-313-11-02",
-        "contactType": "sales",
-        "areaServed": "RU",
-        "availableLanguage": ["Russian", "Chinese"]
-      }]
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIR-перевозки Россия → Китай | Обратные рейсы</title>
+  <meta name="description" content="TIR-перевозки Россия → Китай. Обратные рейсы китайских фур. 10+ направлений, 40+ городов отправки. Выкуп в Китае, оплата поставщику. Без цепочки посредников.">
+  <meta name="keywords" content="TIR перевозки, доставка в Китай, автодоставка Китай, обратные рейсы, логистика Россия Китай, выкуп в Китае">
+  <link rel="canonical" href="https://tirlogistica.ru">
+  <meta property="og:title" content="TIR-перевозки Россия → Китай">
+  <meta property="og:description" content="Доставка по цене ниже рынка. 10+ направлений, 40+ городов отправки.">
+  <meta property="og:url" content="https://tirlogistica.ru">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LogisticsService",
+    "name": "TIR-LOGISTIKA",
+    "description": "TIR-перевозки Россия ↔ Китай",
+    "areaServed": ["Россия", "Китай"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+7-927-313-11-02",
+      "contactType": "sales",
+      "areaServed": "RU",
+      "availableLanguage": ["Russian", "Chinese"]
+    }]
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.6;
+      background: #ffffff;
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
@@ -183,6 +187,22 @@
       border: 1px solid #e2e8f0;
     }
 
+    /* ДОКУМЕНТЫ */
+    .docs-block {
+      background: #f8fafc; border-radius: 16px; padding: 40px;
+      border: 1px solid #e2e8f0; margin-top: 24px;
+    }
+    .docs-list { display: flex; flex-wrap: wrap; gap: 12px; }
+    .docs-item {
+      background: #fff; padding: 12px 20px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; color: #0a2540;
+      border: 1px solid #e2e8f0; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .docs-item:hover {
+      border-color: #f97316; color: #f97316;
+    }
+
     /* CTA */
     .cta-section {
       background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
@@ -230,10 +250,27 @@
 
     /* ФУТЕР */
     footer {
-      background: #0a2540; color: #94a3b8; padding: 40px 0;
-      text-align: center; font-size: 14px;
+      background: #0a2540; color: #94a3b8; padding: 60px 0 40px;
+      font-size: 14px;
     }
-    footer strong { color: #fff; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      color: #fff; font-size: 15px; font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .footer-col a {
+      display: block; color: #94a3b8; text-decoration: none;
+      margin-bottom: 10px; font-size: 14px;
+    }
+    .footer-col a:hover { color: #f97316; }
+    .footer-bottom {
+      border-top: 1px solid #1e3a5c; padding-top: 30px;
+      text-align: center;
+    }
+    .footer-bottom strong { color: #fff; }
 
     /* АДАПТИВ */
     @media (max-width: 968px) {
@@ -242,6 +279,7 @@
       .services-grid { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
       .contacts-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
       nav { display: none; }
     }
     @media (max-width: 640px) {
@@ -253,6 +291,7 @@
       .steps { grid-template-columns: 1fr; }
       .fact-num { font-size: 28px; }
       .cta-section h2 { font-size: 26px; }
+      .footer-grid { grid-template-columns: 1fr; }
       .btn-primary, .btn-secondary, .btn-white { width: 100%; text-align: center; }
     }
   </style>
@@ -261,18 +300,18 @@
 
 <header>
   <div class="container header-inner">
-    <div class="logo">TIR<span>Logistic</span></div>
+    <div class="logo">TIR<span>Logistica</span></div>
     <nav>
       <a href="#services">Услуги</a>
       <a href="#steps">Как работаем</a>
       <a href="#destinations">Направления</a>
+      <a href="#docs">Документы</a>
       <a href="#contacts">Контакты</a>
     </nav>
     <a href="#cta" class="btn-header">Оставить заявку</a>
   </div>
 </header>
 
-<!-- ГЕРОЙ -->
 <section class="hero">
   <div class="container hero-content">
     <div class="hero-tag">TIR-перевозки Россия → Китай</div>
@@ -285,7 +324,6 @@
   </div>
 </section>
 
-<!-- ФАКТЫ -->
 <div class="container">
   <div class="facts">
     <div class="fact-item">
@@ -307,7 +345,6 @@
   </div>
 </div>
 
-<!-- УСЛУГИ -->
 <section id="services">
   <div class="container">
     <h2 class="section-title">Что мы делаем</h2>
@@ -343,11 +380,15 @@
         <h3>Обратные рейсы</h3>
         <p>Загрузка китайских фур, возвращающихся в Китай. Без оплаты обратной дороги.</p>
       </div>
+      <div class="service-card">
+        <div class="service-icon">💰</div>
+        <h3>Выкуп в Китае и оплата поставщику</h3>
+        <p>Оплачиваем поставщику в юанях, выкупаем товар, организуем доставку в РФ. Для юридических лиц и ИП.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ШАГИ -->
 <section id="steps" style="background: #f8fafc;">
   <div class="container">
     <h2 class="section-title">Как мы работаем</h2>
@@ -377,7 +418,6 @@
   </div>
 </section>
 
-<!-- НАПРАВЛЕНИЯ -->
 <section id="destinations" class="destinations">
   <div class="container">
     <h2 class="section-title">Направления в Китай</h2>
@@ -397,7 +437,22 @@
   </div>
 </section>
 
-<!-- CTA -->
+<section id="docs">
+  <div class="container">
+    <h2 class="section-title">Документы</h2>
+    <p class="section-sub">Подтверждение допусков и лицензий на международные перевозки.</p>
+    <div class="docs-block">
+      <div class="docs-list">
+        <a href="/docs/tir-carnet.pdf" class="docs-item" target="_blank">TIR Carnet Holder № CHN/095/00099</a>
+        <a href="/docs/license.pdf" class="docs-item" target="_blank">Лицензия на перевозки № 371301290324</a>
+        <a href="/docs/trailer.pdf" class="docs-item" target="_blank">Свидетельство на полуприцеп 鲁QC2S2挂</a>
+        <a href="/docs/truck-1.pdf" class="docs-item" target="_blank">Свидетельство на тягач 鲁Q0006A</a>
+        <a href="/docs/truck-2.pdf" class="docs-item" target="_blank">Свидетельство на тягач 鲁Q973LQ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="cta" class="cta-section">
   <div class="container">
     <h2>Пришлите параметры груза</h2>
@@ -406,7 +461,6 @@
   </div>
 </section>
 
-<!-- КОНТАКТЫ -->
 <section id="contacts">
   <div class="container">
     <h2 class="section-title">Контакты</h2>
@@ -433,11 +487,43 @@
   </div>
 </section>
 
-<!-- ФУТЕР -->
 <footer>
   <div class="container">
-    <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
-    TIR-перевозки Россия → Китай | Китай → Россия
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>TIRLogistica</h4>
+        <p style="color: #94a3b8; font-size: 14px; line-height: 1.6;">TIR-перевозки Россия → Китай | Китай → Россия. Обратные рейсы, выкуп в Китае, полный цикл сопровождения.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="#services">Пиломатериалы</a>
+        <a href="#services">Оборудование</a>
+        <a href="#services">Рефрижератор</a>
+        <a href="#services">Негабарит</a>
+        <a href="#services">ТНП</a>
+        <a href="#services">Химия</a>
+        <a href="#services">Выкуп в Китае</a>
+      </div>
+      <div class="footer-col">
+        <h4>Информация</h4>
+        <a href="#services">Типы автомобилей</a>
+        <a href="#destinations">Направления</a>
+        <a href="#steps">Как работаем</a>
+        <a href="#docs">Документы</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+79273131102">+7 927 313 11 02</a>
+        <a href="mailto:altan.moscow@ya.ru">altan.moscow@ya.ru</a>
+        <a href="https://t.me/PavlovNail">Telegram: @PavlovNail</a>
+        <a href="https://t.me/Cargo_Flow">Telegram: @Cargo_Flow</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+      TIR-перевозки Россия → Китай | Китай → Россия
+    </div>
   </div>
 </footer>
 
