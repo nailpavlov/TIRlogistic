@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -35,10 +35,411 @@
         "availableLanguage": ["Russian", "Chinese"]
       }]
     }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ХЕДЕР */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
+    }
+    .header-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0;
+    }
+    .logo { font-size: 22px; font-weight: 800; color: #0a2540; letter-spacing: -0.5px; }
+    .logo span { color: #f97316; }
+    nav a {
+      margin-left: 28px; text-decoration: none; color: #444;
+      font-size: 15px; font-weight: 500; transition: color 0.2s;
+    }
+    nav a:hover { color: #f97316; }
+    .btn-header {
+      background: #f97316; color: #fff; padding: 10px 20px;
+      border-radius: 8px; font-weight: 600; font-size: 14px;
+      text-decoration: none; margin-left: 28px; transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-header:hover { background: #ea580c; }
+
+    /* ГЕРОЙ */
+    .hero {
+      background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
+      color: #fff; padding: 100px 0 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      background: radial-gradient(circle at 70% 30%, rgba(249,115,22,0.15) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+    .hero-tag {
+      display: inline-block; font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: #f97316; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 52px; font-weight: 800; line-height: 1.15;
+      margin-bottom: 24px; letter-spacing: -1px;
+    }
+    .hero h1 span { color: #f97316; }
+    .hero p {
+      font-size: 18px; color: #cbd5e1; margin-bottom: 36px;
+      line-height: 1.6; max-width: 600px;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #f97316; color: #fff; padding: 16px 32px;
+      border-radius: 10px; font-weight: 700; font-size: 16px;
+      text-decoration: none; transition: all 0.2s;
+      border: none; cursor: pointer; display: inline-block;
+    }
+    .btn-primary:hover { background: #ea580c; transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: #fff; padding: 16px 32px;
+      border-radius: 10px; font-weight: 600; font-size: 16px;
+      text-decoration: none; border: 1px solid rgba(255,255,255,0.3);
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    /* ФАКТЫ */
+    .facts {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; padding: 60px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .fact-item { text-align: center; }
+    .fact-num {
+      font-size: 36px; font-weight: 800; color: #0a2540;
+      line-height: 1; margin-bottom: 8px;
+    }
+    .fact-label { font-size: 14px; color: #666; font-weight: 500; }
+
+    /* СЕКЦИИ */
+    section { padding: 80px 0; }
+    .section-title {
+      font-size: 36px; font-weight: 800; color: #0a2540;
+      margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .section-sub {
+      font-size: 17px; color: #666; margin-bottom: 48px; max-width: 640px;
+    }
+
+    /* УСЛУГИ */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .service-card {
+      background: #f8fafc; border-radius: 16px; padding: 32px;
+      border: 1px solid #e2e8f0; transition: all 0.3s;
+    }
+    .service-card:hover {
+      border-color: #f97316; transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(249,115,22,0.1);
+    }
+    .service-icon {
+      width: 48px; height: 48px; background: #fff;
+      border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; font-size: 24px; margin-bottom: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    .service-card h3 {
+      font-size: 18px; font-weight: 700; color: #0a2540;
+      margin-bottom: 10px;
+    }
+    .service-card p { font-size: 15px; color: #64748b; line-height: 1.6; }
+
+    /* ШАГИ */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step {
+      position: relative; padding: 32px 24px;
+      background: #fff; border-radius: 16px;
+      border: 1px solid #e2e8f0;
+    }
+    .step-num {
+      width: 44px; height: 44px; background: #f97316; color: #fff;
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-weight: 800; font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .step h3 {
+      font-size: 17px; font-weight: 700; color: #0a2540; margin-bottom: 10px;
+    }
+    .step p { font-size: 14px; color: #64748b; line-height: 1.6; }
+
+    /* НАПРАВЛЕНИЯ */
+    .destinations {
+      background: #f8fafc; padding: 60px 0;
+    }
+    .dest-list {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;
+    }
+    .dest-tag {
+      background: #fff; padding: 10px 20px; border-radius: 100px;
+      font-size: 15px; font-weight: 600; color: #0a2540;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #fff; text-align: center; padding: 80px 0;
+    }
+    .cta-section h2 {
+      font-size: 38px; font-weight: 800; margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .cta-section p {
+      font-size: 18px; margin-bottom: 36px; opacity: 0.95;
+      max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .btn-white {
+      background: #fff; color: #ea580c; padding: 18px 40px;
+      border-radius: 10px; font-weight: 700; font-size: 17px;
+      text-decoration: none; display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    /* КОНТАКТЫ */
+    .contacts-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+    }
+    .contact-card {
+      background: #f8fafc; border-radius: 16px; padding: 40px;
+      border: 1px solid #e2e8f0;
+    }
+    .contact-card h3 {
+      font-size: 20px; font-weight: 700; color: #0a2540;
+      margin-bottom: 8px;
+    }
+    .contact-role {
+      font-size: 14px; color: #f97316; font-weight: 600;
+      margin-bottom: 24px; text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .contact-line {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 14px; font-size: 15px; color: #334155;
+    }
+    .contact-line a { color: #334155; text-decoration: none; }
+    .contact-line a:hover { color: #f97316; }
+
+    /* ФУТЕР */
+    footer {
+      background: #0a2540; color: #94a3b8; padding: 40px 0;
+      text-align: center; font-size: 14px;
+    }
+    footer strong { color: #fff; }
+
+    /* АДАПТИВ */
+    @media (max-width: 968px) {
+      .hero h1 { font-size: 38px; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 30px; }
+      .hero { padding: 60px 0 50px; }
+      .section-title { font-size: 26px; }
+      .facts { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .fact-num { font-size: 28px; }
+      .cta-section h2 { font-size: 26px; }
+      .btn-primary, .btn-secondary, .btn-white { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">TIR<span>Logistic</span></div>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#steps">Как работаем</a>
+      <a href="#destinations">Направления</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#cta" class="btn-header">Оставить заявку</a>
+  </div>
+</header>
+
+<!-- ГЕРОЙ -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-tag">TIR-перевозки Россия → Китай</div>
+    <h1>Доставка в Китай. <span>TIR. Обратные рейсы.</span></h1>
+    <p>Организуем международную автодоставку в Китай. Ваш груз загружается в фуру, которая едет домой. Вы не платите за обратную дорогу.</p>
+    <div class="hero-buttons">
+      <a href="#cta" class="btn-primary">Получить расчёт</a>
+      <a href="#services" class="btn-secondary">Наши услуги</a>
+    </div>
+  </div>
+</section>
+
+<!-- ФАКТЫ -->
+<div class="container">
+  <div class="facts">
+    <div class="fact-item">
+      <div class="fact-num">10+</div>
+      <div class="fact-label">направлений в Китай</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">40+</div>
+      <div class="fact-label">городов отправки в РФ</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">4</div>
+      <div class="fact-label">шага от заявки до выгрузки</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">24/7</div>
+      <div class="fact-label">на связи с вами</div>
+    </div>
+  </div>
+</div>
+
+<!-- УСЛУГИ -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">Что мы делаем</h2>
+    <p class="section-sub">Полный цикл международной автодоставки в Китай. Без цепочки посредников.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🚛</div>
+        <h3>TIR-перевозки РФ → Китай</h3>
+        <p>Тент, борт, платформа, рефрижератор, изотерм. Под характеристики вашего груза.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>Погрузка с любой стороны</h3>
+        <p>Задняя, боковая, верхняя. Под условия вашего склада и тип груза.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">➕</div>
+        <h3>Догруз</h3>
+        <p>Если груз не на полную фуру — подберём попутный груз и снизим стоимость.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📄</div>
+        <h3>Документы</h3>
+        <p>CMR, счёт-фактура, акт, ГЛОНАСС с ФГИС ЛК. Полный пакет для перевозки.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛃</div>
+        <h3>Таможенное сопровождение</h3>
+        <p>Оформление на маршруте. Сопровождаем груз через границу.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔄</div>
+        <h3>Обратные рейсы</h3>
+        <p>Загрузка китайских фур, возвращающихся в Китай. Без оплаты обратной дороги.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ШАГИ -->
+<section id="steps" style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-title">Как мы работаем</h2>
+    <p class="section-sub">4 шага от заявки до выгрузки в Китае.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Заявка</h3>
+        <p>Вы присылаете параметры груза, адреса и сроки.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Расчёт</h3>
+        <p>Даём цену после получения данных по грузу.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Организация</h3>
+        <p>Подаём машину, согласуем погрузку, документы и маршрут.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Доставка</h3>
+        <p>Сопровождаем груз до выгрузки в КНР.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- НАПРАВЛЕНИЯ -->
+<section id="destinations" class="destinations">
+  <div class="container">
+    <h2 class="section-title">Направления в Китай</h2>
+    <p class="section-sub">Работаем с ключевыми погранпереходами и городами Китая.</p>
+    <div class="dest-list">
+      <span class="dest-tag">Маньчжурия</span>
+      <span class="dest-tag">Алашанькоу</span>
+      <span class="dest-tag">Урумчи</span>
+      <span class="dest-tag">Хэйхэ</span>
+      <span class="dest-tag">Шанхай</span>
+      <span class="dest-tag">Чанчунь</span>
+      <span class="dest-tag">Чэнду</span>
+      <span class="dest-tag">Нинбо</span>
+      <span class="dest-tag">Тяньцзинь</span>
+      <span class="dest-tag">Харбин</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta-section">
+  <div class="container">
+    <h2>Пришлите параметры груза</h2>
+    <p>Дадим цену после получения данных. Без обязательств и без предоплаты за расчёт.</p>
+    <a href="https://t.me/PavlovNail" class="btn-white">Написать в Telegram</a>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contacts">
+  <div class="container">
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-sub">Свяжитесь с нами удобным способом.</p>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <h3>Наиль Павлов</h3>
+        <div class="contact-role">Руководитель отдела продаж в РФ</div>
+        <div class="contact-line">📱 <a href="tel:+79273131102">+7 927 313 11 02</a></div>
+        <div class="contact-line">💬 <a href="https://t.me/PavlovNail">@PavlovNail</a></div>
+        <div class="contact-line">📧 <a href="mailto:altan.moscow@ya.ru">altan.moscow@ya.ru</a></div>
+        <div class="contact-line">🟢 WeChat: Pavlov_NS</div>
+      </div>
+      <div class="contact-card">
+        <h3>Никита</h3>
+        <div class="contact-role">Руководитель отдела продаж в Китае</div>
+        <div class="contact-line">📱 <a href="tel:+8613164293138">+86 131 6429 3138</a></div>
+        <div class="contact-line">📱 <a href="tel:+79269181308">+7 926 918 13 08</a></div>
+        <div class="contact-line">💬 <a href="https://t.me/Cargo_Flow">@Cargo_Flow</a></div>
+        <div class="contact-line">📧 <a href="mailto:JSF0110@yandex.com">JSF0110@yandex.com</a></div>
+        <div class="contact-line">🟢 WeChat: mvp5435</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ФУТЕР -->
+<footer>
+  <div class="container">
+    <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+    TIR-перевозки Россия → Китай | Китай → Россия
+  </div>
+</footer>
+
+</body>
 </html>
