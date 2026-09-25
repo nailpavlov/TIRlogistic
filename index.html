@@ -181,6 +181,64 @@
       border: 1px solid #e2e8f0;
     }
 
+    /* Баннер курсов валют */
+    .currency-section {
+      padding: 60px 0;
+      background: #f8fafc;
+    }
+    .currency-widget {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .currency-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 40px;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      min-width: 200px;
+      transition: all 0.3s;
+    }
+    .currency-card:hover {
+      border-color: #f97316;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(249,115,22,0.1);
+    }
+    .currency-code {
+      font-size: 14px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .currency-value {
+      font-size: 36px;
+      font-weight: 800;
+      color: #0a2540;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .currency-name {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .currency-loading {
+      font-size: 16px;
+      color: #64748b;
+      text-align: center;
+      padding: 40px;
+    }
+    .currency-error {
+      font-size: 14px;
+      color: #ef4444;
+      text-align: center;
+      padding: 20px;
+    }
+
     .docs-block {
       background: #f8fafc; border-radius: 16px; padding: 40px;
       border: 1px solid #e2e8f0; margin-top: 24px;
@@ -282,6 +340,8 @@
       .cta-section h2 { font-size: 26px; }
       .footer-grid { grid-template-columns: 1fr; }
       .btn-primary, .btn-secondary, .btn-white { width: 100%; text-align: center; }
+      .currency-card { padding: 24px; min-width: 140px; }
+      .currency-value { font-size: 28px; }
     }
   </style>
 
@@ -347,6 +407,17 @@
     </div>
   </div>
 </div>
+
+<!-- Баннер курсов валют -->
+<section class="currency-section">
+  <div class="container">
+    <h2 class="section-title">Курсы валют ЦБ РФ</h2>
+    <p class="section-sub">Актуальные курсы на сегодня</p>
+    <div class="currency-widget" id="cbr-rates">
+      <div class="currency-loading">Загрузка курсов...</div>
+    </div>
+  </div>
+</section>
 
 <section id="services">
   <div class="container">
@@ -529,6 +600,40 @@
     </div>
   </div>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('cbr-rates');
+  const currencies = {
+    'USD': 'Доллар США',
+    'EUR': 'Евро',
+    'CNY': 'Китайский юань'
+  };
+
+  fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+    .then(response => response.json())
+    .then(data => {
+      let html = '';
+      for (const [code, name] of Object.entries(currencies)) {
+        const valute = data.Valute[code];
+        if (!valute) continue;
+        const rate = (valute.Value / valute.Nominal).toFixed(2);
+        html += `
+          <div class="currency-card">
+            <div class="currency-code">${code} / RUB</div>
+            <div class="currency-value">${rate} ₽</div>
+            <div class="currency-name">${name}</div>
+          </div>
+        `;
+      }
+      container.innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Ошибка загрузки курсов:', error);
+      container.innerHTML = '<div class="currency-error">Не удалось загрузить курсы валют</div>';
+    });
+});
+</script>
 
 </body>
 </html>
