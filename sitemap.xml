@@ -3,5 +3,11 @@
   <url>
     <loc>https://tirlogistica.ru/</loc>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://tirlogistica.ru/transport.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
   </url>
 </urlset>
