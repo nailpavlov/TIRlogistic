@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Типы автомобилей для перевозок в Китай | TIRLogistica</title>
+  <meta name="description" content="Типы грузовых автомобилей для международных перевозок в Китай: евротент, Jumbo, Mega, автопоезд, рефрижератор, изотерм, контейнеровоз, платформа, трал, лесовоз, автовоз. Характеристики, грузоподъёмность, виды погрузки.">
+  <meta name="keywords" content="типы фур, еврофура характеристики, рефрижератор для перевозки в Китай, трал для негабарита, лесовоз для пиломатериалов, контейнеровоз 40 футов, автопоезд грузоподъёмность, изотермический полуприцеп, открытая платформа">
+  <link rel="canonical" href="https://tirlogistica.ru/transport.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.6;
+      background: #ffffff;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
+    }
+    .header-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0;
+    }
+    .logo { font-size: 22px; font-weight: 800; color: #0a2540; letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: #f97316; }
+    nav a {
+      margin-left: 28px; text-decoration: none; color: #444;
+      font-size: 15px; font-weight: 500; transition: color 0.2s;
+    }
+    nav a:hover { color: #f97316; }
+    .btn-header {
+      background: #f97316; color: #fff; padding: 10px 20px;
+      border-radius: 8px; font-weight: 600; font-size: 14px;
+      text-decoration: none; margin-left: 28px; transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-header:hover { background: #ea580c; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
+      color: #fff; padding: 80px 0 60px;
+    }
+    .page-hero h1 {
+      font-size: 42px; font-weight: 800; line-height: 1.2;
+      margin-bottom: 16px; letter-spacing: -1px;
+    }
+    .page-hero p {
+      font-size: 18px; color: #cbd5e1; max-width: 720px;
+    }
+
+    section { padding: 60px 0; }
+    .section-title {
+      font-size: 32px; font-weight: 800; color: #0a2540;
+      margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .section-sub {
+      font-size: 17px; color: #666; margin-bottom: 40px; max-width: 640px;
+    }
+
+    .transport-card {
+      background: #f8fafc; border-radius: 16px; padding: 32px;
+      border: 1px solid #e2e8f0; margin-bottom: 24px;
+      transition: all 0.3s;
+    }
+    .transport-card:hover {
+      border-color: #f97316;
+      box-shadow: 0 12px 32px rgba(249,115,22,0.08);
+    }
+    .transport-card h3 {
+      font-size: 22px; font-weight: 700; color: #0a2540;
+      margin-bottom: 12px;
+    }
+    .transport-card p {
+      font-size: 15px; color: #334155; margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .transport-specs {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-bottom: 20px;
+    }
+    .spec-item {
+      background: #fff; padding: 16px; border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+    .spec-label {
+      font-size: 12px; color: #64748b; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .spec-value {
+      font-size: 16px; font-weight: 700; color: #0a2540;
+    }
+    .transport-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .tag {
+      background: #fff; padding: 6px 14px; border-radius: 100px;
+      font-size: 13px; font-weight: 600; color: #0a2540;
+      border: 1px solid #e2e8f0;
+    }
+    .tag.loading { background: #fff7ed; color: #ea580c; border-color: #fed7aa; }
+
+    table {
+      width: 100%; border-collapse: collapse;
+      background: #fff; border-radius: 12px;
+      overflow: hidden; border: 1px solid #e2e8f0;
+      margin-top: 24px;
+    }
+    th, td {
+      padding: 14px 16px; text-align: left;
+      font-size: 14px; border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background: #0a2540; color: #fff;
+      font-weight: 600; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    tr:hover { background: #f8fafc; }
+
+    .cta-section {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #fff; text-align: center; padding: 60px 0;
+    }
+    .cta-section h2 {
+      font-size: 32px; font-weight: 800; margin-bottom: 16px;
+    }
+    .cta-section p {
+      font-size: 17px; margin-bottom: 32px; opacity: 0.95;
+    }
+    .btn-white {
+      background: #fff; color: #ea580c; padding: 16px 36px;
+      border-radius: 10px; font-weight: 700; font-size: 16px;
+      text-decoration: none; display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    footer {
+      background: #0a2540; color: #94a3b8; padding: 40px 0;
+      text-align: center; font-size: 14px;
+    }
+    footer strong { color: #fff; }
+
+    @media (max-width: 768px) {
+      .page-hero h1 { font-size: 28px; }
+      .section-title { font-size: 24px; }
+      .transport-specs { grid-template-columns: 1fr 1fr; }
+      nav { display: none; }
+      table { font-size: 12px; }
+      th, td { padding: 10px 8px; }
+    }
+    @media (max-width: 480px) {
+      .transport-specs { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">TIR<span>Logistica</span></a>
+    <nav>
+      <a href="/#services">Услуги</a>
+      <a href="/#steps">Как работаем</a>
+      <a href="/#destinations">Направления</a>
+      <a href="/transport.html">Типы авто</a>
+      <a href="/#docs">Документы</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
+    <a href="/#cta" class="btn-header">Оставить заявку</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Типы автомобилей для перевозок в Китай</h1>
+    <p>Подбираем транспорт под ваш груз: от стандартных еврофур до тралов и лесовозов. Характеристики, грузоподъёмность, виды погрузки.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Типы фур и полуприцепов</h2>
+    <p class="section-sub">Работаем с техникой грузоподъёмностью от 20 тонн. Под каждую задачу — свой тип кузова.</p>
+
+    <div class="transport-card">
+      <h3>1. Евротент (еврофура)</h3>
+      <p>Самый распространённый тип полуприцепа для международных перевозок. Тентованная конструкция позволяет загружать груз сзади, сбоку или сверху — тент снимается полностью или отодвигается. Универсален для большинства типов грузов.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">2,45–2,7 м</div></div>
+        <div class="spec-item"><div class="spec-label">Объём</div><div class="spec-value">82–92 м³</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">20–22 т</div></div>
+        <div class="spec-item"><div class="spec-label">Паллеты</div><div class="spec-value">33 европаллеты</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Задняя</span>
+        <span class="tag loading">Боковая</span>
+        <span class="tag loading">Верхняя</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>2. Jumbo (Юмбо)</h3>
+      <p>Тентованный полуприцеп увеличенной вместимости. За счёт Г-образного пола и колёс уменьшенного диаметра объём достигает 96–100 м³. Позволяет перевозить больше груза без увеличения длины.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">3,0 м</div></div>
+        <div class="spec-item"><div class="spec-label">Объём</div><div class="spec-value">96–100 м³</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">20–22 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">3 + 3</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Задняя</span>
+        <span class="tag loading">Боковая</span>
+        <span class="tag loading">Верхняя</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>3. Mega (Мега)</h3>
+      <p>Тентованный полуприцеп с увеличенной высотой кузова. Позволяет перевозить грузы высотой до 3,1 метра без переплаты за спецтранспорт.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">3,0–3,1 м</div></div>
+        <div class="spec-item"><div class="spec-label">Объём</div><div class="spec-value">100–105 м³</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">20–22 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">3 + 3</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Задняя</span>
+        <span class="tag loading">Боковая</span>
+        <span class="tag loading">Верхняя</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>4. Автопоезд (сцепка)</h3>
+      <p>Сцепка из грузового автомобиля с кузовом и прицепа. Суммарный объём достигает 110–120 м³. Подходит для перевозки больших партий объёмных грузов, но не используется для длинномеров свыше 8 метров.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">15–16 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">2,9–3,05 м</div></div>
+        <div class="spec-item"><div class="spec-label">Объём</div><div class="spec-value">110–120 м³</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">16–20 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">2 + 2</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Задняя</span>
+        <span class="tag loading">Боковая</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>5. Изотермический полуприцеп (термос)</h3>
+      <p>Поддерживает температуру загрузки в течение 10–20 часов при внешней температуре от −10°C до +20°C. Некоторые модели имеют функцию подогрева.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Объём</div><div class="spec-value">82 м³</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">20–25 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">3 + 3</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Задняя</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>6. Рефрижератор</h3>
+      <p>Полуприцеп с автономной холодильной установкой. Поддерживает температуру от −25°C до +25°C независимо от внешних условий. Используется для перевозки скоропортящихся продуктов и грузов с особым температурным режимом.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Объём</div><div class="spec-value">82 м³</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">20–25 т</div></div>
+        <div class="spec-item"><div class="spec-label">Температура</div><div class="spec-value">−25…+25°C</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Задняя</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>7. Контейнеровоз</h3>
+      <p>Полуприцеп для перевозки морских контейнеров. Работает с 20- и 40-футовыми контейнерами, включая High Cube. Погрузка верхняя (краном) или задняя.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">12,0–13,6 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">2,4–2,9 м</div></div>
+        <div class="spec-item"><div class="spec-label">Объём</div><div class="spec-value">34–76 м³</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">20–28 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">3 + 3</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Верхняя</span>
+        <span class="tag loading">Задняя</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>8. Открытая платформа</h3>
+      <p>Полуприцеп без бортов и тента. Используется для перевозки длинномерных, негабаритных и тяжёлых грузов. Погрузка верхняя (краном) или боковая.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6–16,5 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,45–3,0 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">0,5–1,5 м</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">до 40 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">3 + 3</div></div>
+        <div class="spec-item"><div class="spec-label">Погрузка</div><div class="spec-value">Верх, бок</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Верхняя</span>
+        <span class="tag loading">Боковая</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>9. Трал (низкорамный)</h3>
+      <p>Низкорамный полуприцеп для перевозки сверхтяжёлых и негабаритных грузов. Грузоподъёмность от 25 до 110 тонн в зависимости от количества осей. Требует разрешения на перевозку и сопровождения.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">10–16 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,5–3,2 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота платформы</div><div class="spec-value">0,4–0,9 м</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">25–110 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">4–8 + 3</div></div>
+        <div class="spec-item"><div class="spec-label">Погрузка</div><div class="spec-value">Верх, зад</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Верхняя</span>
+        <span class="tag loading">Задняя</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>10. Лесовоз</h3>
+      <p>Специализированный автопоезд для перевозки круглого леса и пиломатериалов. Оборудован кониками для крепления брёвен. Длина перевозимого груза до 24 метров.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,0–16,5 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,5–2,55 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">4,0 м</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">30–40 т</div></div>
+        <div class="spec-item"><div class="spec-label">Длина груза</div><div class="spec-value">до 24 м</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">3 + 3</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Верхняя</span>
+        <span class="tag loading">Боковая</span>
+      </div>
+    </div>
+
+    <div class="transport-card">
+      <h3>11. Автовоз</h3>
+      <p>Специализированный полуприцеп для перевозки автомобилей. Двухуровневая платформа позволяет разместить от 6 до 10 машин.</p>
+      <div class="transport-specs">
+        <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6–16,5 м</div></div>
+        <div class="spec-item"><div class="spec-label">Ширина</div><div class="spec-value">2,55 м</div></div>
+        <div class="spec-item"><div class="spec-label">Высота</div><div class="spec-value">2,5–4,0 м</div></div>
+        <div class="spec-item"><div class="spec-label">Грузоподъёмность</div><div class="spec-value">10–25 т</div></div>
+        <div class="spec-item"><div class="spec-label">Оси</div><div class="spec-value">2 + 2</div></div>
+        <div class="spec-item"><div class="spec-label">Мест</div><div class="spec-value">6–10 авто</div></div>
+      </div>
+      <div class="transport-tags">
+        <span class="tag loading">Верхняя</span>
+        <span class="tag loading">Задняя</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-title">Типы контейнеров</h2>
+    <p class="section-sub">Работаем со всеми типами морских контейнеров. Подбираем тип под ваш груз.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Тип</th>
+          <th>Длина</th>
+          <th>Ширина</th>
+          <th>Высота</th>
+          <th>Объём</th>
+          <th>Загрузка</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>20' стандарт</td><td>6096 мм</td><td>2370 мм</td><td>2591 мм</td><td>34 м³</td><td>21 920 кг</td></tr>
+        <tr><td>40' стандарт</td><td>12 192 мм</td><td>2438 мм</td><td>2895 мм</td><td>67,7 м³</td><td>26 580 кг</td></tr>
+        <tr><td>40' High Cube</td><td>12 192 мм</td><td>2438 мм</td><td>2895 мм</td><td>76,4 м³</td><td>26 330 кг</td></tr>
+        <tr><td>20' Open Top</td><td>6096 мм</td><td>2438 мм</td><td>2591 мм</td><td>32 м³</td><td>21 560 кг</td></tr>
+        <tr><td>40' Open Top</td><td>12 192 мм</td><td>2438 мм</td><td>2591 мм</td><td>66,7 м³</td><td>31 570 кг</td></tr>
+        <tr><td>20' Flatrack</td><td>6096 мм</td><td>2438 мм</td><td>2591 мм</td><td>27,9 м³</td><td>27 530 кг</td></tr>
+        <tr><td>40' Flatrack</td><td>12 192 мм</td><td>2438 мм</td><td>2591 мм</td><td>28,0 м³</td><td>23 950 кг</td></tr>
+        <tr><td>20' Реф</td><td>6096 мм</td><td>2370 мм</td><td>2591 мм</td><td>28,0 м³</td><td>23 950 кг</td></tr>
+        <tr><td>40' Реф</td><td>12 192 мм</td><td>2438 мм</td><td>2591 мм</td><td>60,2 м³</td><td>26 110 кг</td></tr>
+        <tr><td>Танк-контейнер</td><td>6068 мм</td><td>2438 мм</td><td>2591 мм</td><td>24 000 л</td><td>31 000 кг</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Не нашли нужный тип?</h2>
+    <p>Пришлите параметры груза — подберём подходящий транспорт и рассчитаем стоимость.</p>
+    <a href="/#cta" class="btn-white">Получить расчёт</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+    TIR-перевозки Россия → Китай | Китай → Россия
+  </div>
+</footer>
+
+</body>
+</html>
