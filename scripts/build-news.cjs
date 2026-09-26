@@ -107,6 +107,7 @@ function pageTemplate(meta, htmlContent) {
       <a href="/#destinations">Направления</a>
       <a href="/transport.html">Типы авто</a>
       <a href="/dokumenty.html">Документы</a>
+      <a href="/news.html">Новости</a>
       <a href="/#contacts">Контакты</a>
     </nav>
     <a href="/#cta" class="btn-header">Оставить заявку</a>
