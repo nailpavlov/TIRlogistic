@@ -67,6 +67,53 @@
     }
     .btn-header:hover { background: #ea580c; }
 
+    /* Бургер-меню */
+    .burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #0a2540;
+      transition: all 0.3s;
+    }
+    .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 65px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      padding: 20px 24px;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 99;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      padding: 14px 0;
+      color: #0a2540;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #f97316; }
+
     .hero {
       background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
       color: #fff; padding: 100px 0 80px;
@@ -273,6 +320,8 @@
       .contacts-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       nav { display: none; }
+      .btn-header { display: none; }
+      .burger { display: flex; }
     }
     @media (max-width: 640px) {
       .hero h1 { font-size: 30px; }
@@ -319,8 +368,45 @@
       <a href="#contacts">Контакты</a>
     </nav>
     <a href="#cta" class="btn-header">Оставить заявку</a>
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
+
+<!-- Мобильное меню -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Услуги</a>
+  <a href="#steps">Как работаем</a>
+  <a href="#destinations">Направления</a>
+  <a href="/transport.html">Типы авто</a>
+  <a href="/dokumenty.html">Документы</a>
+  <a href="/news.html">Новости</a>
+  <a href="#contacts">Контакты</a>
+  <a href="#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  
+  burger.addEventListener('click', function() {
+    burger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+  
+  // Закрыть меню при клике на ссылку
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      burger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    });
+  });
+});
+</script>
 
 <section class="hero">
   <div class="container hero-content">
