@@ -25,4 +25,9 @@
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://tirlogistica.ru/news/2026-09-26-tamozhnya-izmeneniya.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
