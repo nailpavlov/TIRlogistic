@@ -7,44 +7,113 @@
   <meta name="description" content="Согласие на обработку персональных данных TIRLogistica.">
   <link rel="canonical" href="https://tirlogistica.ru/soglasie.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body { font-family: 'Inter', system-ui, sans-serif; color: #1a1a1a; line-height: 1.7; background: #fff; }
     .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); border-bottom: 1px solid #eee; }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 22px; font-weight: 800; color: #0a2540; text-decoration: none; }
+    .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .logo { font-size: 22px; font-weight: 800; color: #0a2540; letter-spacing: -0.5px; text-decoration: none; }
     .logo span { color: #f97316; }
-    nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; }
+    nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: #f97316; }
+    .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; transition: background 0.2s; display: inline-block; }
+    .btn-header:hover { background: #ea580c; }
+
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0a2540; transition: all 0.3s; }
+    .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a { padding: 14px 0; color: #0a2540; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #f97316; }
+
     .page-hero { background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%); color: #fff; padding: 60px 0 40px; }
     .page-hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+
     article { padding: 60px 0; }
     article h2 { font-size: 22px; font-weight: 700; color: #0a2540; margin: 32px 0 16px; }
     article p { margin-bottom: 16px; font-size: 16px; color: #334155; }
     article ul { margin: 16px 0 16px 24px; }
     article li { margin-bottom: 8px; font-size: 16px; color: #334155; }
     article a { color: #f97316; text-decoration: none; }
+    article a:hover { text-decoration: underline; }
+
     footer { background: #0a2540; color: #94a3b8; padding: 40px 0; text-align: center; font-size: 14px; }
     footer strong { color: #fff; }
     footer a { color: #94a3b8; text-decoration: none; }
     footer a:hover { color: #f97316; }
-    @media (max-width: 768px) { .page-hero h1 { font-size: 26px; } nav { display: none; } }
+
+    @media (max-width: 968px) {
+      nav { display: none; }
+      .btn-header { display: none; }
+      .burger { display: flex; }
+    }
+    @media (max-width: 768px) {
+      .page-hero h1 { font-size: 26px; }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
+  <div class="container-wide header-inner">
     <a href="/" class="logo">TIR<span>Logistica</span></a>
     <nav>
-      <a href="/">Главная</a>
+      <a href="/#services">Услуги</a>
+      <a href="/#steps">Как работаем</a>
+      <a href="/#destinations">Направления</a>
       <a href="/transport.html">Типы авто</a>
       <a href="/dokumenty.html">Документы</a>
       <a href="/news.html">Новости</a>
+      <a href="/#contacts">Контакты</a>
     </nav>
+    <a href="/#cta" class="btn-header">Оставить заявку</a>
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#services">Услуги</a>
+  <a href="/#steps">Как работаем</a>
+  <a href="/#destinations">Направления</a>
+  <a href="/transport.html">Типы авто</a>
+  <a href="/dokumenty.html">Документы</a>
+  <a href="/news.html">Новости</a>
+  <a href="/#contacts">Контакты</a>
+  <a href="/#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (!burger || !mobileMenu) return;
+  burger.addEventListener('click', function() {
+    burger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      burger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    });
+  });
+});
+</script>
 
 <section class="page-hero">
   <div class="container">
