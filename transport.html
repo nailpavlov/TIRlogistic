@@ -47,49 +47,14 @@
     }
     .btn-header:hover { background: #ea580c; }
 
-    .burger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .burger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #0a2540;
-      transition: all 0.3s;
-    }
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0a2540; transition: all 0.3s; }
     .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger.active span:nth-child(2) { opacity: 0; }
     .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 65px;
-      left: 0;
-      right: 0;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-      padding: 20px 24px;
-      flex-direction: column;
-      gap: 4px;
-      z-index: 99;
-    }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
     .mobile-menu.active { display: flex; }
-    .mobile-menu a {
-      padding: 14px 0;
-      color: #0a2540;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 500;
-      border-bottom: 1px solid #f1f5f9;
-    }
+    .mobile-menu a { padding: 14px 0; color: #0a2540; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: #f97316; }
 
@@ -130,6 +95,14 @@
     .transport-card p {
       font-size: 15px; color: #334155; margin-bottom: 20px;
       line-height: 1.7;
+    }
+    .transport-img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: block;
+      border: 1px solid #e2e8f0;
     }
     .transport-specs {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -198,7 +171,7 @@
     }
     footer strong { color: #fff; }
 
-    @media (max-width: 968px) {
+    @media (max-width: 768px) {
       .page-hero h1 { font-size: 28px; }
       .section-title { font-size: 24px; }
       .transport-specs { grid-template-columns: 1fr 1fr; }
@@ -236,7 +209,6 @@
   </div>
 </header>
 
-<!-- Мобильное меню -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/#services">Услуги</a>
   <a href="/#steps">Как работаем</a>
@@ -252,12 +224,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
-  
+  if (!burger || !mobileMenu) return;
   burger.addEventListener('click', function() {
     burger.classList.toggle('active');
     mobileMenu.classList.toggle('active');
   });
-  
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', function() {
       burger.classList.remove('active');
@@ -281,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="transport-card">
       <h3>1. Евротент (еврофура)</h3>
+      <img src="/images/eurotent.jpg" alt="Шторный полуприцеп еврофура для перевозок в Китай" loading="lazy" class="transport-img">
       <p>Самый распространённый тип полуприцепа для международных перевозок. Тентованная конструкция позволяет загружать груз сзади, сбоку или сверху — тент снимается полностью или отодвигается. Универсален для большинства типов грузов.</p>
       <div class="transport-specs">
         <div class="spec-item"><div class="spec-label">Длина</div><div class="spec-value">13,6 м</div></div>
