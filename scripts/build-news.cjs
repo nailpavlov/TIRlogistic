@@ -98,6 +98,9 @@ const burgerCSS = `
     .mobile-menu a:hover { color: #f97316; }
 `;
 
+// --- ЛОГОТИП (картинка) ---
+const logoImg = `<a href="/" class="logo"><img src="/images/logo.svg" alt="TIRLogistica" style="height: 44px; width: auto; display: block;"></a>`;
+
 // --- ШАБЛОН СТРАНИЦЫ НОВОСТИ ---
 function pageTemplate(meta, htmlContent) {
   return `<!DOCTYPE html>
@@ -118,9 +121,8 @@ function pageTemplate(meta, htmlContent) {
     body { font-family: 'Inter', system-ui, sans-serif; color: #1a1a1a; line-height: 1.7; background: #fff; }
     .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
     header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 22px; font-weight: 800; color: #0a2540; text-decoration: none; }
-    .logo span { color: #f97316; }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { text-decoration: none; }
     nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; }
     nav a:hover { color: #f97316; }
     .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; }
@@ -152,7 +154,7 @@ function pageTemplate(meta, htmlContent) {
 
 <header>
   <div class="header-inner">
-    <a href="/" class="logo">TIR<span>Logistica</span></a>
+    ${logoImg}
     <nav>
       <a href="/#services">Услуги</a>
       <a href="/#steps">Как работаем</a>
@@ -281,9 +283,8 @@ async function buildNews() {
     body { font-family: 'Inter', system-ui, sans-serif; color: #1a1a1a; line-height: 1.6; background: #fff; }
     .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
     header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 22px; font-weight: 800; color: #0a2540; text-decoration: none; }
-    .logo span { color: #f97316; }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { text-decoration: none; }
     nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; }
     nav a:hover { color: #f97316; }
     .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; }
@@ -315,7 +316,7 @@ async function buildNews() {
 
 <header>
   <div class="header-inner">
-    <a href="/" class="logo">TIR<span>Logistica</span></a>
+    ${logoImg}
     <nav>
       <a href="/#services">Услуги</a>
       <a href="/#steps">Как работаем</a>
