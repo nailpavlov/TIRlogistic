@@ -52,9 +52,7 @@
       top: 0;
       z-index: 101;
     }
-    .super-header.hidden {
-      transform: translateY(-100%);
-    }
+    .super-header.hidden { transform: translateY(-100%); }
     .super-header-inner {
       display: flex;
       justify-content: flex-end;
@@ -72,14 +70,8 @@
       align-items: center;
       gap: 6px;
     }
-    .super-rates .rate-code {
-      font-weight: 700;
-      color: #0a2540;
-    }
-    .super-rates .rate-value {
-      color: #f97316;
-      font-weight: 700;
-    }
+    .super-rates .rate-code { font-weight: 700; color: #0a2540; }
+    .super-rates .rate-value { color: #f97316; font-weight: 700; }
     .super-loading { color: #94a3b8; font-size: 12px; }
     .super-error { color: #ef4444; font-size: 12px; }
 
@@ -253,7 +245,7 @@
       background: #fff; color: #ea580c; padding: 18px 40px;
       border-radius: 10px; font-weight: 700; font-size: 17px;
       text-decoration: none; display: inline-block;
-      transition: all 0.2s;
+      transition: all 0.2s; border: none; cursor: pointer;
     }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
 
@@ -290,7 +282,6 @@
     .form-group {
       display: flex;
       flex-direction: column;
-      margin-bottom: 16px;
     }
     .form-group label {
       font-size: 14px;
@@ -323,8 +314,6 @@
     .contact-form .btn-white {
       width: 100%;
       margin-top: 8px;
-      border: none;
-      cursor: pointer;
     }
 
     /* ===== КОНТАКТЫ ===== */
@@ -469,7 +458,7 @@
 <header>
   <div class="container header-inner">
     <a href="/" class="logo" aria-label="TIRLogistica — главная">
-      <img src="/images/logo.svg" alt="TIRLogistica" style="height: 44px; width: auto;">
+      <img src="/images/logo.svg" alt="TIRLogistica">
     </a>
     <nav>
       <a href="#services">Услуги</a>
@@ -630,7 +619,7 @@
     <h2>Пришлите параметры груза</h2>
     <p>Дадим цену после получения данных. Без обязательств и без предоплаты за расчёт.</p>
 
-    <!-- Быстрый контакт через Telegram (с чекбоксом согласия) -->
+    <!-- Быстрый контакт через Telegram -->
     <div class="form-consent">
       <input type="checkbox" id="ctaConsent" required>
       <label for="ctaConsent">Я согласен на обработку персональных данных и ознакомлен с <a href="/privacy.html">Политикой конфиденциальности</a></label>
@@ -660,4 +649,177 @@
           <label for="from">Откуда (город, РФ) *</label>
           <input type="text" id="from" name="from" placeholder="Москва" required>
         </div>
-        <div class="form
+        <div class="form-group">
+          <label for="to">Куда (город, КНР) *</label>
+          <input type="text" id="to" name="to" placeholder="Маньчжурия" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email отправителя</label>
+          <input type="email" id="email" name="email" placeholder="you@company.ru">
+        </div>
+        <div class="form-group"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="cargo">Параметры груза *</label>
+        <textarea id="cargo" name="cargo" rows="4" placeholder="Например: пиломатериалы, 20 т, 40 м³, 33 паллеты" required></textarea>
+      </div>
+
+      <div class="form-consent">
+        <input type="checkbox" id="formConsent" required>
+        <label for="formConsent">Я согласен на обработку персональных данных и ознакомлен с <a href="/privacy.html">Политикой конфиденциальности</a></label>
+      </div>
+
+      <button type="submit" class="btn-white">Получить расчёт</button>
+    </form>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container">
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-sub">Свяжитесь с нами удобным способом.</p>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <h3>Наиль Павлов</h3>
+        <div class="contact-role">Руководитель отдела продаж в РФ</div>
+        <div class="contact-line">📱 <a href="tel:+79273131102">+7 927 313 11 02</a></div>
+        <div class="contact-line">💬 <a href="https://t.me/PavlovNail">@PavlovNail</a></div>
+        <div class="contact-line">📧 <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a></div>
+        <div class="contact-line">🟢 WeChat: Pavlov_NS</div>
+      </div>
+      <div class="contact-card">
+        <h3>Никита</h3>
+        <div class="contact-role">Руководитель отдела продаж в Китае</div>
+        <div class="contact-line">📱 <a href="tel:+8613164293138">+86 131 6429 3138</a></div>
+        <div class="contact-line">📱 <a href="tel:+79269181308">+7 926 918 13 08</a></div>
+        <div class="contact-line">💬 <a href="https://t.me/Cargo_Flow">@Cargo_Flow</a></div>
+        <div class="contact-line">📧 <a href="mailto:JSF0110@yandex.com">JSF0110@yandex.com</a></div>
+        <div class="contact-line">🟢 WeChat: mvp5435</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>TIRLogistica</h4>
+        <p style="color: #94a3b8; font-size: 14px; line-height: 1.6;">TIR-перевозки Россия → Китай | Китай → Россия. Обратные рейсы, выкуп в Китае, полный цикл сопровождения.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="/transport.html">Типы авто</a>
+        <a href="/dokumenty.html">Документы</a>
+        <a href="/news.html">Новости</a>
+        <a href="#services">Выкуп в Китае</a>
+      </div>
+      <div class="footer-col">
+        <h4>Информация</h4>
+        <a href="#destinations">Направления</a>
+        <a href="#steps">Как работаем</a>
+        <a href="/privacy.html">Политика конфиденциальности</a>
+        <a href="/soglasie.html">Согласие на обработку данных</a>
+        <a href="/cookies.html">Политика cookie</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+79273131102">+7 927 313 11 02</a>
+        <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a>
+        <a href="https://t.me/PavlovNail">Telegram: @PavlovNail</a>
+        <a href="https://t.me/Cargo_Flow">Telegram: @Cargo_Flow</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+      TIR-перевозки Россия → Китай | Китай → Россия
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE-БАННЕР -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Мы используем файлы cookie для анализа посещаемости и улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с <a href="/cookies.html">Политикой cookie</a> и <a href="/privacy.html">Политикой конфиденциальности</a>.</p>
+    <button onclick="acceptCookies()">Принять</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ===== Курсы валют в super-header =====
+  const container = document.getElementById('superRates');
+  if (container) {
+    const currencies = { USD: 'Доллар', EUR: 'Евро', CNY: 'Юань' };
+    fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+      .then(response => response.json())
+      .then(data => {
+        let html = '';
+        for (const [code, name] of Object.entries(currencies)) {
+          const valute = data.Valute[code];
+          if (!valute) continue;
+          const rate = (valute.Value / valute.Nominal).toFixed(2);
+          html += `<span class="rate-item" title="${name}"><span class="rate-code">${code}</span><span class="rate-value">${rate} ₽</span></span>`;
+        }
+        container.innerHTML = html;
+      })
+      .catch(() => {
+        container.innerHTML = '<span class="super-error">Курсы временно недоступны</span>';
+      });
+  }
+
+  // ===== Скрытие super-header при скролле =====
+  const superHeader = document.getElementById('superHeader');
+  if (superHeader) {
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 100) superHeader.classList.add('hidden');
+      else superHeader.classList.remove('hidden');
+    });
+  }
+
+  // ===== Бургер-меню =====
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', function () {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+  }
+
+  // ===== Cookie-баннер =====
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
+    setTimeout(() => cookieBanner.classList.add('active'), 1000);
+  }
+});
+
+function acceptCookies() {
+  localStorage.setItem('cookiesAccepted', 'true');
+  const banner = document.getElementById('cookieBanner');
+  if (banner) banner.classList.remove('active');
+}
+
+function checkCtaConsent() {
+  const checkbox = document.getElementById('ctaConsent');
+  if (!checkbox || !checkbox.checked) {
+    alert('Пожалуйста, отметьте согласие на обработку персональных данных');
+    return false;
+  }
+  return true;
+}
+</script>
+
+</body>
+</html>
