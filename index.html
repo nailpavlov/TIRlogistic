@@ -251,7 +251,7 @@
 
     .form-consent {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       gap: 10px;
       margin: 20px 0;
@@ -265,6 +265,7 @@
       height: 18px;
       cursor: pointer;
       flex-shrink: 0;
+      margin-top: 2px;
     }
     .form-consent a { color: #fff; text-decoration: underline; }
 
@@ -311,6 +312,12 @@
       resize: vertical;
       min-height: 100px;
     }
+    .form-hint {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      margin-top: 6px;
+      display: block;
+    }
     .contact-form .btn-white {
       width: 100%;
       margin-top: 8px;
@@ -336,6 +343,114 @@
     }
     .contact-line a { color: #334155; text-decoration: none; }
     .contact-line a:hover { color: #f97316; }
+
+    /* WeChat QR */
+    .wechat-qr-block {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .wechat-qr-block h4 {
+      font-size: 13px;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .wechat-qr-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0a2540;
+    }
+    .wechat-qr-btn:hover {
+      border-color: #07c160;
+      box-shadow: 0 4px 12px rgba(7,193,96,0.15);
+    }
+    .wechat-qr-btn img {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+    .wechat-qr-btn .qr-icon {
+      font-size: 20px;
+    }
+
+    /* Модальное окно QR */
+    .qr-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,37,64,0.85);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .qr-modal.active { display: flex; }
+    .qr-modal-inner {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      animation: qrFadeIn 0.2s ease;
+    }
+    @keyframes qrFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .qr-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #f1f5f9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      color: #64748b;
+      line-height: 1;
+    }
+    .qr-modal-close:hover { background: #e2e8f0; color: #0a2540; }
+    .qr-modal h3 {
+      font-size: 20px;
+      color: #0a2540;
+      margin-bottom: 6px;
+    }
+    .qr-modal .qr-role {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    .qr-modal img.qr-image {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 16px;
+    }
+    .qr-modal .qr-hint {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
 
     /* ===== ФУТЕР ===== */
     footer {
@@ -427,6 +542,7 @@
       .form-row { grid-template-columns: 1fr; }
       .super-header-inner { justify-content: center; }
       .super-rates { gap: 12px; font-size: 11px; }
+      .form-consent { justify-content: flex-start; text-align: left; }
     }
   </style>
 
@@ -635,10 +751,13 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="email">Email отправителя *</label>
-          <input type="email" id="email" name="email" placeholder="you@company.ru" required>
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" placeholder="Иван Петров" required>
         </div>
-        <div class="form-group"></div>
+        <div class="form-group">
+          <label for="phone">Телефон / WhatsApp *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 999 000-00-00" required>
+        </div>
       </div>
 
       <div class="form-row">
@@ -654,8 +773,9 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label for="email">Email отправителя</label>
-          <input type="email" id="email" name="email" placeholder="you@company.ru">
+          <label for="email">Email отправителя *</label>
+          <input type="email" id="email" name="email" placeholder="you@company.ru" required>
+          <small class="form-hint">На этот email придёт копия заявки</small>
         </div>
         <div class="form-group"></div>
       </div>
@@ -686,8 +806,17 @@
         <div class="contact-line">📱 <a href="tel:+79273131102">+7 927 313 11 02</a></div>
         <div class="contact-line">💬 <a href="https://t.me/PavlovNail">@PavlovNail</a></div>
         <div class="contact-line">📧 <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a></div>
-        <div class="contact-line">🟢 WeChat: Pavlov_NS</div>
+        <div class="contact-line">🟢 <a href="#" onclick="copyWeChat('Pavlov_NS', event)">WeChat: Pavlov_NS (копировать)</a></div>
+
+        <div class="wechat-qr-block">
+          <h4>WeChat QR-код</h4>
+          <button class="wechat-qr-btn" onclick="openQr('nail')">
+            <img src="/images/wechat-nail.png" alt="WeChat QR Наиля">
+            <span>Показать QR-код WeChat</span>
+          </button>
+        </div>
       </div>
+
       <div class="contact-card">
         <h3>Никита</h3>
         <div class="contact-role">Руководитель отдела продаж в Китае</div>
@@ -695,7 +824,15 @@
         <div class="contact-line">📱 <a href="tel:+79269181308">+7 926 918 13 08</a></div>
         <div class="contact-line">💬 <a href="https://t.me/Cargo_Flow">@Cargo_Flow</a></div>
         <div class="contact-line">📧 <a href="mailto:JSF0110@yandex.com">JSF0110@yandex.com</a></div>
-        <div class="contact-line">🟢 WeChat: mvp5435</div>
+        <div class="contact-line">🟢 <a href="#" onclick="copyWeChat('mvp5435', event)">WeChat: mvp5435 (копировать)</a></div>
+
+        <div class="wechat-qr-block">
+          <h4>WeChat QR-код</h4>
+          <button class="wechat-qr-btn" onclick="openQr('nikita')">
+            <img src="/images/wechat-nikita.png" alt="WeChat QR Никиты">
+            <span>Показать QR-код WeChat</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -737,6 +874,17 @@
     </div>
   </div>
 </footer>
+
+<!-- МОДАЛЬНОЕ ОКНО QR -->
+<div class="qr-modal" id="qrModal" onclick="closeQr(event)">
+  <div class="qr-modal-inner" onclick="event.stopPropagation()">
+    <button class="qr-modal-close" onclick="closeQr()" aria-label="Закрыть">×</button>
+    <h3 id="qrTitle">WeChat</h3>
+    <div class="qr-role" id="qrRole"></div>
+    <img id="qrImage" class="qr-image" src="" alt="WeChat QR">
+    <p class="qr-hint">Откройте WeChat → «Сканировать» → наведите камеру на QR-код</p>
+  </div>
+</div>
 
 <!-- COOKIE-БАННЕР -->
 <div class="cookie-banner" id="cookieBanner">
@@ -800,14 +948,21 @@ document.addEventListener('DOMContentLoaded', function () {
   if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
     setTimeout(() => cookieBanner.classList.add('active'), 1000);
   }
+
+  // ===== Закрытие QR по Escape =====
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeQr();
+  });
 });
 
+// ===== Cookie =====
 function acceptCookies() {
   localStorage.setItem('cookiesAccepted', 'true');
   const banner = document.getElementById('cookieBanner');
   if (banner) banner.classList.remove('active');
 }
 
+// ===== Чекбокс CTA =====
 function checkCtaConsent() {
   const checkbox = document.getElementById('ctaConsent');
   if (!checkbox || !checkbox.checked) {
@@ -815,6 +970,57 @@ function checkCtaConsent() {
     return false;
   }
   return true;
+}
+
+// ===== WeChat: копирование ID =====
+function copyWeChat(id, event) {
+  event.preventDefault();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(id).then(() => {
+      alert('WeChat ID скопирован: ' + id + '\nВставьте его в поиске WeChat');
+    }).catch(() => {
+      const input = document.createElement('input');
+      input.value = id;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      alert('WeChat ID скопирован: ' + id);
+    });
+  } else {
+    alert('WeChat ID: ' + id + '\nСкопируйте вручную');
+  }
+}
+
+// ===== WeChat: QR-модалка =====
+const qrData = {
+  nail: {
+    title: 'Наиль Павлов',
+    role: 'Руководитель отдела продаж в РФ',
+    image: '/images/wechat-nail.png'
+  },
+  nikita: {
+    title: 'Никита',
+    role: 'Руководитель отдела продаж в Китае',
+    image: '/images/wechat-nikita.png'
+  }
+};
+
+function openQr(who) {
+  const data = qrData[who];
+  if (!data) return;
+  document.getElementById('qrTitle').textContent = data.title;
+  document.getElementById('qrRole').textContent = data.role;
+  document.getElementById('qrImage').src = data.image;
+  document.getElementById('qrModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQr(event) {
+  if (event && event.target && !event.target.classList.contains('qr-modal')) return;
+  const modal = document.getElementById('qrModal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
 }
 </script>
 
