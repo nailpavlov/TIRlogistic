@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Изотерм (термос) — полуприцеп для температурных грузов в Китай | TIRLogistica</title>
+  <meta name="description" content="Изотермический полуприцеп (термос) для международных перевозок в Китай. Поддерживает температуру загрузки 10–20 часов при внешней от −10 до +20°C. Характеристики и для каких грузов подходит.">
+  <meta name="keywords" content="изотерм, термос, изотермический полуприцеп, перевозки в Китай, температурный режим, грузоперевозки Россия Китай">
+  <link rel="canonical" href="https://tirlogistica.ru/transport/izoterm.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Изотерм (термос)",
+    "description": "Изотермический полуприцеп для перевозок в Китай. Поддерживает температуру загрузки 10–20 часов.",
+    "brand": {"@type": "Brand", "name": "TIRLogistica"},
+    "category": "Грузовые автомобили"
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #1a1a1a; line-height: 1.6; background: #ffffff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .super-header { background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-size: 13px; transition: transform 0.3s; position: sticky; top: 0; z-index: 101; }
+    .super-header.hidden { transform: translateY(-100%); }
+    .super-header-inner { display: flex; justify-content: flex-end; align-items: center; padding: 8px 0; }
+    .super-rates { display: flex; gap: 20px; color: #64748b; font-weight: 500; }
+    .super-rates .rate-item { display: flex; align-items: center; gap: 6px; }
+    .super-rates .rate-code { font-weight: 700; color: #0a2540; }
+    .super-rates .rate-value { color: #f97316; font-weight: 700; }
+    .super-loading { color: #94a3b8; font-size: 12px; }
+    .super-error { color: #ef4444; font-size: 12px; }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo img { height: 44px; width: auto; display: block; }
+    nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: #f97316; }
+    nav a.active { color: #f97316; font-weight: 600; }
+    .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; transition: background 0.2s; display: inline-block; }
+    .btn-header:hover { background: #ea580c; }
+
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0a2540; transition: all 0.3s; }
+    .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu { display: none; position: fixed; top: 100px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a { padding: 14px 0; color: #0a2540; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #f97316; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 0; color: #64748b; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
+    .back-link:hover { color: #f97316; }
+    .back-link svg { transition: transform 0.2s; }
+    .back-link:hover svg { transform: translateX(-4px); }
+    .back-link-wrap { padding: 30px 0 40px; }
+
+    .breadcrumbs { padding: 8px 0 16px; font-size: 14px; color: #94a3b8; }
+    .breadcrumbs a { color: #64748b; text-decoration: none; }
+    .breadcrumbs a:hover { color: #f97316; }
+    .breadcrumbs .sep { margin: 0 8px; }
+    .breadcrumbs .current { color: #0a2540; font-weight: 600; }
+
+    .page-hero { background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%); color: #fff; padding: 60px 0 50px; }
+    .page-hero h1 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; letter-spacing: -1px; }
+    .page-hero p { font-size: 18px; color: #cbd5e1; max-width: 720px; }
+
+    section { padding: 60px 0; }
+    .section-title { font-size: 28px; font-weight: 800; color: #0a2540; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .section-sub { font-size: 17px; color: #666; margin-bottom: 32px; max-width: 640px; }
+
+    .transport-main-img { width: 100%; max-width: 900px; height: auto; border-radius: 16px; border: 1px solid #e2e8f0; display: block; margin: 0 auto; }
+
+    .specs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .spec-item { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: all 0.2s; }
+    .spec-item:hover { border-color: #f97316; background: #fff7ed; }
+    .spec-icon { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .spec-icon svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .spec-label { font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .spec-value { font-size: 18px; font-weight: 700; color: #0a2540; }
+
+    .description-text { font-size: 16px; color: #334155; line-height: 1.8; margin-bottom: 16px; }
+
+    .cargo-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; list-style: none; margin-top: 24px; }
+    .cargo-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #334155; }
+    .cargo-list svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; }
+
+    .loading-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .loading-tag { display: inline-flex; align-items: center; gap: 8px; background: #fff7ed; color: #ea580c; padding: 10px 18px; border-radius: 100px; font-size: 14px; font-weight: 600; border: 1px solid #fed7aa; }
+    .loading-tag svg { width: 18px; height: 18px; }
+
+    .similar-section { background: #f8fafc; }
+    .similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .similar-card { background: #fff; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; text-decoration: none; color: inherit; transition: all 0.3s; display: flex; flex-direction: column; }
+    .similar-card:hover { border-color: #f97316; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(249,115,22,0.1); }
+    .similar-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .similar-card-body { padding: 20px; }
+    .similar-card h3 { font-size: 18px; font-weight: 700; color: #0a2540; margin-bottom: 8px; }
+    .similar-card p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 12px; }
+    .similar-card-link { display: inline-flex; align-items: center; gap: 6px; color: #f97316; font-weight: 600; font-size: 14px; }
+
+    .cta-section { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff; text-align: center; padding: 60px 0; }
+    .cta-section h2 { font-size: 32px; font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { font-size: 17px; margin-bottom: 32px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .btn-white { background: #fff; color: #ea580c; padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    footer { background: #0a2540; color: #94a3b8; padding: 60px 0 40px; font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-col h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-col a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; font-size: 14px; }
+    .footer-col a:hover { color: #f97316; }
+    .footer-bottom { border-top: 1px solid #1e3a5c; padding-top: 30px; text-align: center; }
+    .footer-bottom strong { color: #fff; }
+
+    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #0a2540; color: #fff; padding: 20px 24px; display: none; z-index: 9999; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+    .cookie-banner.active { display: block; }
+    .cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .cookie-banner p { font-size: 14px; color: #cbd5e1; margin: 0; flex: 1; min-width: 280px; }
+    .cookie-banner a { color: #f97316; text-decoration: underline; }
+    .cookie-banner button { background: #f97316; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+    .cookie-banner button:hover { background: #ea580c; }
+
+    @media (max-width: 968px) {
+      .page-hero h1 { font-size: 32px; }
+      .specs-grid { grid-template-columns: 1fr 1fr; }
+      .similar-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      nav { display: none; }
+      .btn-header { display: none; }
+      .burger { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .page-hero { padding: 40px 0 32px; }
+      .page-hero h1 { font-size: 26px; }
+      .section-title { font-size: 22px; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .cargo-list { grid-template-columns: 1fr; }
+      .similar-grid { grid-template-columns: 1fr; gap: 16px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .super-header-inner { justify-content: center; }
+      .super-rates { gap: 12px; font-size: 11px; }
+      .btn-white { width: 100%; text-align: center; }
+    }
+  </style>
+
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113023450', 'ym');
+      ym(113023450, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/113023450" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</head>
+<body>
+
+<div class="super-header" id="superHeader">
+  <div class="container super-header-inner">
+    <div class="super-rates" id="superRates">
+      <span class="super-loading">Загрузка курсов...</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="TIRLogistica — главная">
+      <img src="/images/logo.svg" alt="TIRLogistica">
+    </a>
+    <nav>
+      <a href="/#services">Услуги</a>
+      <a href="/#steps">Как работаем</a>
+      <a href="/#destinations">Направления</a>
+      <a href="/transport.html" class="active">Типы авто</a>
+      <a href="/dokumenty.html">Документы</a>
+      <a href="/news.html">Новости</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
+    <a href="/#cta" class="btn-header">Оставить заявку</a>
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#services">Услуги</a>
+  <a href="/#steps">Как работаем</a>
+  <a href="/#destinations">Направления</a>
+  <a href="/transport.html">Типы авто</a>
+  <a href="/dokumenty.html">Документы</a>
+  <a href="/news.html">Новости</a>
+  <a href="/#contacts">Контакты</a>
+  <a href="/#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Изотерм (термос)</h1>
+    <p>Изотермический полуприцеп для грузов, требующих поддержания температуры. Без холодильной установки.</p>
+  </div>
+</section>
+
+<div class="container">
+  <a href="/transport.html" class="back-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    Назад к типам авто
+  </a>
+
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <a href="/">Главная</a>
+    <span class="sep">→</span>
+    <a href="/transport.html">Типы авто</a>
+    <span class="sep">→</span>
+    <span class="current">Изотерм</span>
+  </nav>
+</div>
+
+<section>
+  <div class="container">
+    <img src="/images/transport/05_Izotermicheskiy.jpg" alt="Изотермический полуприцеп — термос для перевозок в Китай" class="transport-main-img">
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="container">
+    <h2 class="section-title">Характеристики</h2>
+    <div class="specs-grid">
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12H3"/><path d="M3 12V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 12v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6"/><path d="M9 6v12"/><path d="M15 6v12"/></svg>
+          <span class="spec-label">Длина</span>
+        </div>
+        <div class="spec-value">13,6 м</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          <span class="spec-label">Ширина</span>
+        </div>
+        <div class="spec-value">2,45 м</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
+          <span class="spec-label">Высота</span>
+        </div>
+        <div class="spec-value">2,45 м</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+          <span class="spec-label">Объём</span>
+        </div>
+        <div class="spec-value">82 м³</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h12l-1.5 14.5a1 1 0 0 1-1 .9H8.5a1 1 0 0 1-1-.9Z"/><path d="M4 6h16"/></svg>
+          <span class="spec-label">Грузоподъёмность</span>
+        </div>
+        <div class="spec-value">20–25 т</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+          <span class="spec-label">Температура</span>
+        </div>
+        <div class="spec-value">−10…+20°C</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="spec-label">Оси</span>
+        </div>
+        <div class="spec-value">3 + 3</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span class="spec-label">Автономность</span>
+        </div>
+        <div class="spec-value">10–20 часов</div>
+      </div>
+
+      <div class="spec-item">
+        <div class="spec-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+          <span class="spec-label">Погрузка</span>
+        </div>
+        <div class="spec-value">Задняя</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background: #f8fafc; padding-top: 0;">
+  <div class="container">
+    <h2 class="section-title">Описание</h2>
+    <p class="description-text">Изотермический полуприцеп (термос) — это кузов с усиленной теплоизоляцией без собственной холодильной установки. Он не охлаждает груз, а лишь поддерживает ту температуру, с которой груз был загружен.</p>
+    <p class="description-text">Термос сохраняет температуру 10–20 часов в зависимости от внешних условий и качества изоляции. Некоторые модели оснащены функцией подогрева. Это выгоднее рефрижератора — если груз не требует строгого контроля температуры.</p>
+
+    <h3 class="section-title" style="margin-top: 40px; font-size: 22px;">Для каких грузов подходит</h3>
+    <ul class="cargo-list">
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Продукты с коротким сроком доставки</li>
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Шоколад, кондитерские изделия</li>
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Косметика и парфюмерия</li>
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Фармацевтика без строгого режима</li>
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Лакокрасочные материалы</li>
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Химия бытовая</li>
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Свечи, воск</li>
+      <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Грузы, требующие защиты от мороза</li>
+    </ul>
+
+    <h3 class="section-title" style="margin-top: 40px; font-size: 22px;">Виды погрузки</h3>
+    <div class="loading-tags">
+      <span class="loading-tag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>Задняя</span>
+    </div>
+  </div>
+</section>
+
+<section class="similar-section">
+  <div class="container">
+    <h2 class="section-title">Похожие типы</h2>
+    <p class="section-sub">Если изотерм не подходит — посмотрите другие варианты.</p>
+
+    <div class="similar-grid">
+      <a href="/transport/refrizherator.html" class="similar-card">
+        <img src="/images/transport/06_Refrigerator.jpg" alt="Рефрижератор" loading="lazy">
+        <div class="similar-card-body">
+          <h3>Рефрижератор</h3>
+          <p>С холодильной установкой. Температура от −25 до +25°C.</p>
+          <span class="similar-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="/transport/eurotent.html" class="similar-card">
+        <img src="/images/transport/01_Eurotent.jpg" alt="Евротент" loading="lazy">
+        <div class="similar-card-body">
+          <h3>Евротент</h3>
+          <p>Стандартный шторный полуприцеп 82–92 м³.</p>
+          <span class="similar-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="/transport/konteynerovoz.html" class="similar-card">
+        <img src="/images/transport/07_Konteynerovoz.jpg" alt="Контейнеровоз" loading="lazy">
+        <div class="similar-card-body">
+          <h3>Контейнеровоз</h3>
+          <p>Для 20- и 40-футовых контейнеров, включая High Cube.</p>
+          <span class="similar-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="back-link-wrap">
+    <a href="/transport.html" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      Назад к типам авто
+    </a>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Нужен расчёт для изотерма?</h2>
+    <p>Пришлите параметры груза и маршрут — рассчитаем стоимость в течение 15 минут.</p>
+    <a href="/#cta" class="btn-white">Получить расчёт</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>TIRLogistica</h4>
+        <p style="color: #94a3b8; font-size: 14px; line-height: 1.6;">TIR-перевозки Россия → Китай | Китай → Россия. Обратные рейсы, выкуп в Китае, полный цикл сопровождения.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="/transport.html">Типы авто</a>
+        <a href="/dokumenty.html">Документы</a>
+        <a href="/news.html">Новости</a>
+        <a href="/#services">Выкуп в Китае</a>
+      </div>
+      <div class="footer-col">
+        <h4>Информация</h4>
+        <a href="/#destinations">Направления</a>
+        <a href="/#steps">Как работаем</a>
+        <a href="/privacy.html">Политика конфиденциальности</a>
+        <a href="/soglasie.html">Согласие на обработку данных</a>
+        <a href="/cookies.html">Политика cookie</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+79273131102">+7 927 313 11 02</a>
+        <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a>
+        <a href="https://t.me/PavlovNail">Telegram: @PavlovNail</a>
+        <a href="https://t.me/Cargo_Flow">Telegram: @Cargo_Flow</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+      TIR-перевозки Россия → Китай | Китай → Россия
+    </div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Мы используем файлы cookie для анализа посещаемости и улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с <a href="/cookies.html">Политикой cookie</a> и <a href="/privacy.html">Политикой конфиденциальности</a>.</p>
+    <button onclick="acceptCookies()">Принять</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const container = document.getElementById('superRates');
+  if (container) {
+    const currencies = { USD: 'Доллар', EUR: 'Евро', CNY: 'Юань' };
+    fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+      .then(response => response.json())
+      .then(data => {
+        let html = '';
+        for (const [code, name] of Object.entries(currencies)) {
+          const valute = data.Valute[code];
+          if (!valute) continue;
+          const rate = (valute.Value / valute.Nominal).toFixed(2);
+          html += `<span class="rate-item" title="${name}"><span class="rate-code">${code}</span><span class="rate-value">${rate} ₽</span></span>`;
+        }
+        container.innerHTML = html;
+      })
+      .catch(() => {
+        container.innerHTML = '<span class="super-error">Курсы временно недоступны</span>';
+      });
+  }
+
+  const superHeader = document.getElementById('superHeader');
+  if (superHeader) {
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 100) superHeader.classList.add('hidden');
+      else superHeader.classList.remove('hidden');
+    });
+  }
+
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', function () {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+  }
+
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
+    setTimeout(() => cookieBanner.classList.add('active'), 1000);
+  }
+});
+
+function acceptCookies() {
+  localStorage.setItem('cookiesAccepted', 'true');
+  const banner = document.getElementById('cookieBanner');
+  if (banner) banner.classList.remove('active');
+}
+</script>
+
+</body>
+</html>
