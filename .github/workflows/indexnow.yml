@@ -1,0 +1,28 @@
+name: Submit to IndexNow
+
+on:
+  push:
+    branches: [ tir-shipments-russia-china-3170c ]
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create IndexNow key file
+        run: echo "${{ secrets.INDEXNOW_KEY }}" > ${{ secrets.INDEXNOW_KEY }}.txt
+
+      - name: Submit sitemap to IndexNow
+        uses: jakob-bagterp/index-now-submit-sitemap-urls-action@v1
+        with:
+          host: tirlogistica.ru
+          api_key: ${{ secrets.INDEXNOW_KEY }}
+          api_key_location: https://tirlogistica.ru/${{ secrets.INDEXNOW_KEY }}.txt
+          sitemap_locations: https://tirlogistica.ru/sitemap.xml
+          endpoint: yandex
