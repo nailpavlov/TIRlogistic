@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>申请已提交 | TIRLogistica</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113023450', 'ym');
+      ym(113023450, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/113023450" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans SC', 'Inter', system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.7;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== ШАПКА ===== */
+    header {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #eee;
+    }
+    .header-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0;
+    }
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo img { height: 44px; width: auto; display: block; }
+    .btn-back {
+      background: #f97316; color: #fff; padding: 10px 20px;
+      border-radius: 8px; font-weight: 600; font-size: 14px;
+      text-decoration: none; transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-back:hover { background: #ea580c; }
+
+    /* ===== ОСНОВНОЙ БЛОК ===== */
+    main {
+      flex: 1;
+      background: linear-gradient(135deg, #0A1F44 0%, #15315C 100%);
+      color: #fff;
+      padding: 80px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    main::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      background: radial-gradient(circle at 70% 30%, rgba(249,115,22,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .thanks-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .thanks-icon {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 32px;
+      background: #f97316;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      box-shadow: 0 20px 60px rgba(249,115,22,0.4);
+      animation: thanksPop 0.5s ease;
+    }
+    @keyframes thanksPop {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .thanks-content h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+    .thanks-content h1 span { color: #f97316; }
+    .thanks-content p {
+      font-size: 18px;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .thanks-content p strong { color: #fff; font-weight: 600; }
+    .thanks-tip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 32px 0;
+      font-size: 15px;
+      color: #cbd5e1;
+      text-align: left;
+      line-height: 1.7;
+    }
+    .thanks-tip strong { color: #fff; }
+    .thanks-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .btn-primary {
+      background: #f97316; color: #fff; padding: 16px 32px;
+      border-radius: 10px; font-weight: 700; font-size: 16px;
+      text-decoration: none; transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #ea580c; transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: #fff; padding: 16px 32px;
+      border-radius: 10px; font-weight: 600; font-size: 16px;
+      text-decoration: none; border: 1px solid rgba(255,255,255,0.3);
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    /* ===== КОНТАКТЫ ===== */
+    .quick-contacts {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .quick-contacts h3 {
+      color: #94a3b8;
+      font-weight: 500;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 13px;
+    }
+    .contact-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .contact-btn:hover {
+      background: rgba(249,115,22,0.2);
+      border-color: #f97316;
+    }
+
+    /* ===== ФУТЕР ===== */
+    footer {
+      background: #0A1F44;
+      color: #94a3b8;
+      padding: 24px 0;
+      text-align: center;
+      font-size: 13px;
+      border-top: 1px solid #152F52;
+    }
+    footer a { color: #f97316; text-decoration: none; }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 640px) {
+      .thanks-content h1 { font-size: 28px; }
+      main { padding: 60px 0; }
+      .thanks-icon { width: 72px; height: 72px; font-size: 40px; margin-bottom: 24px; }
+      .thanks-content p { font-size: 16px; }
+      .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+      .contact-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/cn/" class="logo">
+      <img src="/images/logo.svg" alt="TIRLogistica">
+    </a>
+    <a href="/cn/" class="btn-back">← 返回首页</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="thanks-content">
+      <div class="thanks-icon">✓</div>
+
+      <h1>申请<span>已提交！</span></h1>
+
+      <p>感谢您，我们已收到您的信息。</p>
+      <p id="thanksTimeMessage" style="min-height: 1.7em;"><strong>我们会在工作时间内尽快与您联系。</strong></p>
+
+      <div class="thanks-tip">
+        <strong>💡 等待期间：</strong>如果想加快报价速度，请在 Telegram 或 WhatsApp 上联系我们，发送货物参数和线路。我们会给您回电或回复。
+      </div>
+
+      <div class="thanks-buttons">
+        <a href="/cn/" class="btn-primary">返回首页</a>
+        <a href="/cn/transport.html" class="btn-secondary">车型类型</a>
+      </div>
+
+      <div class="quick-contacts">
+        <h3>直接联系</h3>
+        <div class="contact-buttons">
+          <a href="https://t.me/PavlovNail" class="contact-btn">
+            💬 Telegram · Nail
+          </a>
+          <a href="tel:+79273131102" class="contact-btn">
+            📱 +7 927 313 11 02
+          </a>
+          <a href="https://t.me/Cargo_Flow" class="contact-btn">
+            💬 Telegram · Nikita
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 <strong style="color:#fff;">TIRLogistica</strong> · TIR 运输 俄罗斯 ↔ 中国 ·
+    <a href="/cn/">tirlogistica.ru</a>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ===== Определяем зону пользователя по часовому поясу =====
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  const isChina = tz.startsWith('Asia/Shanghai') ||
+                  tz.startsWith('Asia/Urumqi') ||
+                  tz.startsWith('Asia/Harbin') ||
+                  tz.startsWith('Asia/Chongqing');
+
+  const tzLabel = isChina ? '北京时间' : '莫斯科时间';
+
+  // ===== Локальное время пользователя =====
+  const now = new Date();
+  const day = now.getDay();      // 0 = вс, 1 = пн, ..., 6 = сб
+  const hour = now.getHours();
+  const minutes = now.getMinutes();
+  const timeInMinutes = hour * 60 + minutes;
+
+  const workStart = 9 * 60;      // 9:00
+  const workEnd = 19 * 60;       // 19:00
+
+  const isWorkDay = day >= 1 && day <= 5;
+  const isWorkTime = timeInMinutes >= workStart && timeInMinutes < workEnd;
+  const isWorkingHours = isWorkDay && isWorkTime;
+
+  const messageEl = document.getElementById('thanksTimeMessage');
+
+  if (isWorkingHours) {
+    messageEl.innerHTML = '<strong>我们正在工作时间内——会尽快与您联系。</strong>';
+  } else {
+    messageEl.innerHTML = '<strong>我们已收到申请。</strong>现在是非工作时间——我们将在下一个工作日开始时回复（周一至周五，9:00–19:00 ' + tzLabel + '）。';
+  }
+});
+</script>
+
+</body>
+</html>
