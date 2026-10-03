@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIR 运输 俄罗斯 → 中国 | 回程配载</title>
+  <meta name="description" content="TIR 运输 俄罗斯 → 中国。中国货车回程配载。10+ 条线路，40+ 个发运城市。中国采购、向供应商付款。无中间商层层加价。">
+  <meta name="keywords" content="TIR 运输, 运往中国, 汽运中国, 回程配载, 物流 俄罗斯 中国, 中国采购">
+  <link rel="canonical" href="https://tirlogistica.ru/cn/">
+  <link rel="alternate" hreflang="ru" href="https://tirlogistica.ru/">
+  <link rel="alternate" hreflang="zh" href="https://tirlogistica.ru/cn/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content="TIR 运输 俄罗斯 → 中国">
+  <meta property="og:description" content="低于市场价的运输服务。10+ 条线路，40+ 个发运城市。">
+  <meta property="og:url" content="https://tirlogistica.ru/cn/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LogisticsService",
+    "name": "TIRLogistica",
+    "description": "TIR 运输 俄罗斯 ↔ 中国",
+    "areaServed": ["Россия", "Китай"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+7-927-313-11-02",
+      "contactType": "sales",
+      "areaServed": "RU",
+      "availableLanguage": ["Russian", "Chinese"]
+    }]
+  }
+  </script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans SC', 'Inter', system-ui, -apple-system, sans-serif; color: #1a1a1a; line-height: 1.7; background: #ffffff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    .super-header { background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-size: 13px; transition: transform 0.3s; position: sticky; top: 0; z-index: 101; }
+    .super-header.hidden { transform: translateY(-100%); }
+    .super-header-inner { display: flex; justify-content: flex-end; align-items: center; padding: 8px 0; }
+    .super-rates { display: flex; gap: 20px; color: #64748b; font-weight: 500; }
+    .super-rates .rate-item { display: flex; align-items: center; gap: 6px; }
+    .super-rates .rate-code { font-weight: 700; color: #0A1F44; }
+    .super-rates .rate-value { color: #f97316; font-weight: 700; }
+    .super-loading { color: #94a3b8; font-size: 12px; }
+    .super-error { color: #ef4444; font-size: 12px; }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo img { height: 44px; width: auto; display: block; }
+    nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: #f97316; }
+    .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; transition: background 0.2s; display: inline-block; }
+    .btn-header:hover { background: #ea580c; }
+
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0A1F44; transition: all 0.3s; }
+    .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu { display: none; position: fixed; top: 100px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a { padding: 14px 0; color: #0A1F44; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: #f97316; }
+
+    .lang-switcher { display: inline-flex; align-items: center; gap: 0; margin-left: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+    .lang-switcher a { padding: 6px 10px; border-radius: 6px; text-decoration: none; color: #94a3b8; transition: all 0.2s; }
+    .lang-switcher a:hover { color: #f97316; }
+    .lang-switcher a.active { color: #f97316; background: #fff7ed; }
+    .lang-switcher .sep { color: #cbd5e1; font-weight: 400; padding: 0 2px; }
+    .mobile-menu .lang-switcher { margin: 16px 0 0 0; padding-top: 16px; border-top: 1px solid #f1f5f9; width: 100%; justify-content: center; }
+    .mobile-menu .lang-switcher a { flex: 1; text-align: center; padding: 12px; font-size: 15px; border-bottom: none; }
+
+    .hero { background: linear-gradient(135deg, #0A1F44 0%, #15315C 100%); color: #fff; padding: 100px 0 80px; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: radial-gradient(circle at 70% 30%, rgba(249,115,22,0.15) 0%, transparent 60%); }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+    .hero-tag { display: inline-block; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #f97316; margin-bottom: 24px; }
+    .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.15; margin-bottom: 24px; letter-spacing: -1px; }
+    .hero h1 span { color: #f97316; }
+    .hero p { font-size: 18px; color: #cbd5e1; margin-bottom: 36px; line-height: 1.7; max-width: 600px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { background: #f97316; color: #fff; padding: 16px 32px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; display: inline-block; }
+    .btn-primary:hover { background: #ea580c; transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: #fff; padding: 16px 32px; border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: all 0.2s; display: inline-block; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 60px 0; border-bottom: 1px solid #eee; }
+    .fact-item { text-align: center; }
+    .fact-num { font-size: 36px; font-weight: 800; color: #0A1F44; line-height: 1; margin-bottom: 8px; }
+    .fact-label { font-size: 14px; color: #666; font-weight: 500; }
+
+    section { padding: 80px 0; }
+    .section-title { font-size: 36px; font-weight: 800; color: #0A1F44; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .section-sub { font-size: 17px; color: #666; margin-bottom: 48px; max-width: 640px; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: #f8fafc; border-radius: 16px; padding: 32px; border: 1px solid #e2e8f0; transition: all 0.3s; }
+    .service-card:hover { border-color: #f97316; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(249,115,22,0.1); }
+    .service-icon { width: 48px; height: 48px; background: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; border: 1px solid #e2e8f0; }
+    .service-card h3 { font-size: 18px; font-weight: 700; color: #0A1F44; margin-bottom: 10px; }
+    .service-card p { font-size: 15px; color: #64748b; line-height: 1.7; }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step { position: relative; padding: 32px 24px; background: #fff; border-radius: 16px; border: 1px solid #e2e8f0; }
+    .step-num { width: 44px; height: 44px; background: #f97316; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; margin-bottom: 20px; }
+    .step h3 { font-size: 17px; font-weight: 700; color: #0A1F44; margin-bottom: 10px; }
+    .step p { font-size: 14px; color: #64748b; line-height: 1.7; }
+
+    .destinations { background: #f8fafc; padding: 60px 0; }
+    .dest-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .dest-tag { background: #fff; padding: 10px 20px; border-radius: 100px; font-size: 15px; font-weight: 600; color: #0A1F44; border: 1px solid #e2e8f0; }
+
+    .cta-section { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff; text-align: center; padding: 80px 0; }
+    .cta-section h2 { font-size: 38px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .cta-section p { font-size: 18px; margin-bottom: 36px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .btn-white { background: #fff; color: #ea580c; padding: 18px 40px; border-radius: 10px; font-weight: 700; font-size: 17px; text-decoration: none; display: inline-block; transition: all 0.2s; border: none; cursor: pointer; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+
+    .form-consent { display: flex; align-items: flex-start; justify-content: center; gap: 10px; margin: 20px 0; font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.6; }
+    .form-consent input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+    .form-consent label { flex: 1; cursor: pointer; }
+
+    .contact-form { max-width: 700px; margin: 32px auto 0; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+    .form-group input, .form-group textarea { padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); font-family: 'Noto Sans SC', 'Inter', sans-serif; font-size: 15px; color: #0A1F44; transition: all 0.2s; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #fff; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.2); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-hint { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 6px; display: block; }
+    .contact-form .btn-white { width: 100%; margin-top: 8px; }
+
+    .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .contact-card { background: #f8fafc; border-radius: 16px; padding: 40px; border: 1px solid #e2e8f0; }
+    .contact-card h3 { font-size: 20px; font-weight: 700; color: #0A1F44; margin-bottom: 8px; }
+    .contact-role { font-size: 14px; color: #f97316; font-weight: 600; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
+    .contact-line { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-size: 15px; color: #334155; }
+    .contact-line a { color: #334155; text-decoration: none; }
+    .contact-line a:hover { color: #f97316; }
+
+    .wechat-qr-block { margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+    .wechat-qr-block h4 { font-size: 13px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .wechat-qr-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 10px 16px; cursor: pointer; transition: all 0.2s; font-family: inherit; font-size: 14px; font-weight: 600; color: #0A1F44; }
+    .wechat-qr-btn:hover { border-color: #07c160; box-shadow: 0 4px 12px rgba(7,193,96,0.15); }
+    .wechat-qr-btn .qr-icon { font-size: 20px; }
+
+    .qr-modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,31,68,0.85); z-index: 10000; align-items: center; justify-content: center; padding: 20px; }
+    .qr-modal.active { display: flex; }
+    .qr-modal-inner { background: #fff; border-radius: 20px; padding: 32px; max-width: 400px; width: 100%; text-align: center; position: relative; animation: qrFadeIn 0.2s ease; }
+    @keyframes qrFadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .qr-modal-close { position: absolute; top: 12px; right: 12px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; cursor: pointer; color: #64748b; line-height: 1; }
+    .qr-modal-close:hover { background: #e2e8f0; color: #0A1F44; }
+    .qr-modal h3 { font-size: 20px; color: #0A1F44; margin-bottom: 6px; }
+    .qr-modal .qr-role { font-size: 13px; color: #64748b; margin-bottom: 20px; }
+    .qr-modal img.qr-image { width: 100%; max-width: 260px; height: auto; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 16px; }
+    .qr-modal .qr-hint { font-size: 13px; color: #64748b; line-height: 1.6; }
+
+    footer { background: #0A1F44; color: #94a3b8; padding: 60px 0 40px; font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-col h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .footer-col a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; font-size: 14px; }
+    .footer-col a:hover { color: #f97316; }
+    .footer-bottom { border-top: 1px solid #152F52; padding-top: 30px; text-align: center; }
+    .footer-bottom strong { color: #fff; }
+
+    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #0A1F44; color: #fff; padding: 20px 24px; display: none; z-index: 9999; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+    .cookie-banner.active { display: block; }
+    .cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .cookie-banner p { font-size: 14px; color: #cbd5e1; margin: 0; flex: 1; min-width: 280px; }
+    .cookie-banner button { background: #f97316; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+    .cookie-banner button:hover { background: #ea580c; }
+
+    @media (max-width: 968px) {
+      .hero h1 { font-size: 38px; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      nav { display: none; }
+      .btn-header { display: none; }
+      .burger { display: flex; }
+      .lang-switcher { margin-left: 0; margin-right: 12px; }
+    }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 30px; }
+      .hero { padding: 60px 0 50px; }
+      .section-title { font-size: 26px; }
+      .facts { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .fact-num { font-size: 28px; }
+      .cta-section h2 { font-size: 26px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .btn-primary, .btn-secondary, .btn-white { width: 100%; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .super-header-inner { justify-content: center; }
+      .super-rates { gap: 12px; font-size: 11px; }
+      .form-consent { justify-content: flex-start; text-align: left; }
+      .form-consent label { flex: 1; }
+    }
+  </style>
+
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113023450', 'ym');
+      ym(113023450, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/113023450" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</head>
+<body>
+
+<div class="super-header" id="superHeader">
+  <div class="container super-header-inner">
+    <div class="super-rates" id="superRates">
+      <span class="super-loading">汇率加载中...</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="container header-inner">
+    <a href="/cn/" class="logo" aria-label="TIRLogistica — 首页">
+      <img src="/images/logo.svg" alt="TIRLogistica">
+    </a>
+    <nav>
+      <a href="/cn/#services">服务</a>
+      <a href="/cn/#steps">合作流程</a>
+      <a href="/cn/#destinations">运输线路</a>
+      <a href="/cn/transport.html">车型类型</a>
+      <a href="/cn/dokumenty.html">单证文件</a>
+      <a href="/cn/news.html">新闻动态</a>
+      <a href="/cn/#contacts">联系方式</a>
+    </nav>
+    <a href="/cn/#cta" class="btn-header">提交申请</a>
+    <div class="lang-switcher">
+      <a href="/cn/" class="active">CN</a>
+      <span class="sep">|</span>
+      <a href="/">RU</a>
+    </div>
+    <button class="burger" id="burger" aria-label="打开菜单">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/cn/#services">服务</a>
+  <a href="/cn/#steps">合作流程</a>
+  <a href="/cn/#destinations">运输线路</a>
+  <a href="/cn/transport.html">车型类型</a>
+  <a href="/cn/dokumenty.html">单证文件</a>
+  <a href="/cn/news.html">新闻动态</a>
+  <a href="/cn/#contacts">联系方式</a>
+  <a href="/cn/#cta" style="color: #f97316; font-weight: 700;">提交申请</a>
+  <div class="lang-switcher">
+    <a href="/cn/" class="active">CN</a>
+    <span class="sep">|</span>
+    <a href="/">RU</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-tag">TIR 运输 俄罗斯 → 中国</div>
+    <h1>运往中国。<span>TIR。回程配载。</span></h1>
+    <p>我们组织通往中国的国际汽运。您的货物装上返程回家的货车——您无需支付空返费用。</p>
+    <div class="hero-buttons">
+      <a href="#cta" class="btn-primary">获取报价</a>
+      <a href="#services" class="btn-secondary">我们的服务</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="facts">
+    <div class="fact-item">
+      <div class="fact-num">10+</div>
+      <div class="fact-label">通往中国的线路</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">40+</div>
+      <div class="fact-label">俄罗斯发运城市</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">4</div>
+      <div class="fact-label">从下单到卸货的步骤</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-num">24/7</div>
+      <div class="fact-label">随时与您保持联系</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">我们做什么</h2>
+    <p class="section-sub">通往中国的国际汽运全流程服务。无中间商层层加价。</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+            <path d="M15 18H9"/>
+            <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+            <circle cx="17" cy="18" r="2"/>
+            <circle cx="7" cy="18" r="2"/>
+          </svg>
+        </div>
+        <h3>TIR 运输 俄罗斯 → 中国</h3>
+        <p>篷布、栏板、平板、冷藏、保温。按您的货物特性配置。</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m7.5 4.27 9 5.15"/>
+            <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+            <path d="m3.3 7 8.7 5 8.7-5"/>
+            <path d="M12 22V12"/>
+          </svg>
+        </div>
+        <h3>多方位装载</h3>
+        <p>后部、侧面、顶部。匹配您的仓库条件与货类。</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+            <path d="M12 5v14"/>
+          </svg>
+        </div>
+        <h3>拼车配载</h3>
+        <p>若货量不足整车——我们匹配顺路货并降低费用。</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
+            <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+            <path d="M10 9H8"/>
+            <path d="M16 13H8"/>
+            <path d="M16 17H8"/>
+          </svg>
+        </div>
+        <h3>单证文件</h3>
+        <p>CMR、发票、交接单、ГЛОНАСС 与 ФГИС ЛК。运输所需完整文件包。</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>海关陪同</h3>
+        <p>途中办证。全程护送货物过境。</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+            <path d="M21 3v5h-5"/>
+            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+            <path d="M8 16H3v5"/>
+          </svg>
+        </div>
+        <h3>回程配载</h3>
+        <p>装载返回中国的中国货车。无需支付空返费用。</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/>
+            <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>
+          </svg>
+        </div>
+        <h3>中国采购并向供应商付款</h3>
+        <p>以人民币向供应商付款、采购货物并安排运回俄罗斯。面向法人与个体工商户。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="steps" style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-title">我们如何合作</h2>
+    <p class="section-sub">从下单到中国卸货，共 4 步。</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>提交申请</h3>
+        <p>您发送货物参数、地址与期限。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>核算报价</h3>
+        <p>收到货物信息后给出价格。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>组织运输</h3>
+        <p>安排车辆，确认装货、单证与线路。</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>交付</h3>
+        <p>护送货物直至中国卸货。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="destinations" class="destinations">
+  <div class="container">
+    <h2 class="section-title">通往中国的线路</h2>
+    <p class="section-sub">我们对接主要口岸与中国城市。</p>
+    <div class="dest-list">
+      <span class="dest-tag">满洲里</span>
+      <span class="dest-tag">阿拉山口</span>
+      <span class="dest-tag">乌鲁木齐</span>
+      <span class="dest-tag">黑河</span>
+      <span class="dest-tag">上海</span>
+      <span class="dest-tag">长春</span>
+      <span class="dest-tag">成都</span>
+      <span class="dest-tag">宁波</span>
+      <span class="dest-tag">天津</span>
+      <span class="dest-tag">哈尔滨</span>
+    </div>
+  </div>
+</section>
+
+<section id="cta" class="cta-section">
+  <div class="container">
+    <h2>请发送货物参数</h2>
+    <p>收到信息后即报价。无义务，报价不预收费用。</p>
+
+    <div class="form-consent">
+      <input type="checkbox" id="ctaConsent" required>
+      <label for="ctaConsent">我同意处理个人数据，并已阅读《隐私政策》</label>
+    </div>
+    <a href="https://t.me/PavlovNail" class="btn-white" onclick="return checkCtaConsent()">在 Telegram 留言</a>
+
+    <form action="https://formsubmit.co/info@tirlogistica.ru" method="POST" class="contact-form">
+      <input type="hidden" name="_subject" value="Новая заявка с CN-сайта TIRLogistica">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://tirlogistica.ru/cn/thanks.html">
+      <input type="hidden" name="_template" value="table">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">您的姓名 *</label>
+          <input type="text" id="name" name="name" placeholder="张伟" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">电话 / WhatsApp *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 999 000-00-00" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="from">发站（城市，俄罗斯） *</label>
+          <input type="text" id="from" name="from" placeholder="莫斯科" required>
+        </div>
+        <div class="form-group">
+          <label for="to">到站（城市，中国） *</label>
+          <input type="text" id="to" name="to" placeholder="满洲里" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">发件人邮箱 *</label>
+          <input type="email" id="email" name="email" placeholder="you@company.ru" required>
+          <small class="form-hint">申请副本将发送至此邮箱</small>
+        </div>
+        <div class="form-group"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="cargo">货物参数 *</label>
+        <textarea id="cargo" name="cargo" rows="4" placeholder="例如：锯材，20 т，40 м³，33 托盘" required></textarea>
+      </div>
+
+      <div class="form-consent">
+        <input type="checkbox" id="formConsent" required>
+        <label for="formConsent">我同意处理个人数据，并已阅读《隐私政策》</label>
+      </div>
+
+      <button type="submit" class="btn-white">获取报价</button>
+    </form>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container">
+    <h2 class="section-title">联系方式</h2>
+    <p class="section-sub">请选择便捷方式与我们联系。</p>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <h3>Nail Pavlov</h3>
+        <div class="contact-role">俄罗斯销售部负责人</div>
+        <div class="contact-line">📱 <a href="tel:+79273131102">+7 927 313 11 02</a></div>
+        <div class="contact-line">💬 <a href="https://t.me/PavlovNail">@PavlovNail</a></div>
+        <div class="contact-line">📧 <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a></div>
+        <div class="contact-line">🟢 <a href="#" onclick="copyWeChat('Pavlov_NS', event)">WeChat: Pavlov_NS（复制）</a></div>
+
+        <div class="wechat-qr-block">
+          <h4>WeChat 二维码</h4>
+          <button class="wechat-qr-btn" onclick="openQr('nail')">
+            <span class="qr-icon">📱</span>
+            <span>显示 WeChat 二维码</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3>Nikita</h3>
+        <div class="contact-role">中国销售部负责人</div>
+        <div class="contact-line">📱 <a href="tel:+8613164293138">+86 131 6429 3138</a></div>
+        <div class="contact-line">📱 <a href="tel:+79269181308">+7 926 918 13 08</a></div>
+        <div class="contact-line">💬 <a href="https://t.me/Cargo_Flow">@Cargo_Flow</a></div>
+        <div class="contact-line">📧 <a href="mailto:JSF0110@yandex.com">JSF0110@yandex.com</a></div>
+        <div class="contact-line">🟢 <a href="#" onclick="copyWeChat('mvp5435', event)">WeChat: mvp5435（复制）</a></div>
+
+        <div class="wechat-qr-block">
+          <h4>WeChat 二维码</h4>
+          <button class="wechat-qr-btn" onclick="openQr('nikita')">
+            <span class="qr-icon">📱</span>
+            <span>显示 WeChat 二维码</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>TIRLogistica</h4>
+        <p style="color: #94a3b8; font-size: 14px; line-height: 1.7;">TIR 运输 俄罗斯 → 中国 | 中国 → 俄罗斯。回程配载、中国采购、全程陪同服务。</p>
+      </div>
+      <div class="footer-col">
+        <h4>服务</h4>
+        <a href="/cn/transport.html">车型类型</a>
+        <a href="/cn/dokumenty.html">单证文件</a>
+        <a href="/cn/news.html">新闻动态</a>
+        <a href="/cn/#services">中国采购</a>
+      </div>
+      <div class="footer-col">
+        <h4>联系方式</h4>
+        <a href="tel:+79273131102">+7 927 313 11 02</a>
+        <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a>
+        <a href="https://t.me/PavlovNail">Telegram: @PavlovNail</a>
+        <a href="https://t.me/Cargo_Flow">Telegram: @Cargo_Flow</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+      TIR 运输 俄罗斯 → 中国 | 中国 → 俄罗斯
+    </div>
+  </div>
+</footer>
+
+<div class="qr-modal" id="qrModal" onclick="closeQr(event)">
+  <div class="qr-modal-inner" onclick="event.stopPropagation()">
+    <button class="qr-modal-close" onclick="closeQr()" aria-label="关闭">×</button>
+    <h3 id="qrTitle">WeChat</h3>
+    <div class="qr-role" id="qrRole"></div>
+    <img id="qrImage" class="qr-image" src="" alt="WeChat QR">
+    <p class="qr-hint">打开 WeChat →「扫一扫」→ 将摄像头对准二维码</p>
+  </div>
+</div>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>我们使用 cookie 文件分析访问数据并改善网站体验。继续使用本网站，即表示您同意使用 cookie。</p>
+    <button onclick="acceptCookies()">接受</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const container = document.getElementById('superRates');
+  if (container) {
+    const currencies = { USD: '美元', EUR: '欧元', CNY: '人民币' };
+    fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+      .then(response => response.json())
+      .then(data => {
+        let html = '';
+        for (const [code, name] of Object.entries(currencies)) {
+          const valute = data.Valute[code];
+          if (!valute) continue;
+          const rate = (valute.Value / valute.Nominal).toFixed(2);
+          html += `<span class="rate-item" title="${name}"><span class="rate-code">${code}</span><span class="rate-value">${rate} ₽</span></span>`;
+        }
+        container.innerHTML = html;
+      })
+      .catch(() => {
+        container.innerHTML = '<span class="super-error">汇率暂时不可用</span>';
+      });
+  }
+
+  const superHeader = document.getElementById('superHeader');
+  if (superHeader) {
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 100) superHeader.classList.add('hidden');
+      else superHeader.classList.remove('hidden');
+    });
+  }
+
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', function () {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+  }
+
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
+    setTimeout(() => cookieBanner.classList.add('active'), 1000);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeQr();
+  });
+});
+
+function acceptCookies() {
+  localStorage.setItem('cookiesAccepted', 'true');
+  const banner = document.getElementById('cookieBanner');
+  if (banner) banner.classList.remove('active');
+}
+
+function checkCtaConsent() {
+  const checkbox = document.getElementById('ctaConsent');
+  if (!checkbox || !checkbox.checked) {
+    alert('请勾选同意处理个人数据');
+    return false;
+  }
+  return true;
+}
+
+function copyWeChat(id, event) {
+  event.preventDefault();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(id).then(() => {
+      alert('WeChat ID 已复制：' + id + '\n请在 WeChat 搜索中粘贴');
+    }).catch(() => {
+      const input = document.createElement('input');
+      input.value = id;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      alert('WeChat ID 已复制：' + id);
+    });
+  } else {
+    alert('WeChat ID：' + id + '\n请手动复制');
+  }
+}
+
+const qrData = {
+  nail: {
+    title: 'Nail Pavlov',
+    role: '俄罗斯销售部负责人',
+    image: '/images/wechat-nail.png'
+  },
+  nikita: {
+    title: 'Nikita',
+    role: '中国销售部负责人',
+    image: '/images/wechat-nikita.png'
+  }
+};
+
+function openQr(who) {
+  const data = qrData[who];
+  if (!data) return;
+  document.getElementById('qrTitle').textContent = data.title;
+  document.getElementById('qrRole').textContent = data.role;
+  document.getElementById('qrImage').src = data.image;
+  document.getElementById('qrModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQr(event) {
+  if (event && event.target && !event.target.classList.contains('qr-modal')) return;
+  const modal = document.getElementById('qrModal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
