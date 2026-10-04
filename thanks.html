@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Заявка отправлена | TIRlogistica</title>
+  <title>Заявка отправлена | TIRLogistica</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,17 +49,24 @@
     .logo { text-decoration: none; display: flex; align-items: center; }
     .logo img { height: 44px; width: auto; display: block; }
     .btn-back {
-      background: #f97316; color: #fff; padding: 10px 20px;
+      background: #f05a00; color: #fff; padding: 10px 20px;
       border-radius: 8px; font-weight: 600; font-size: 14px;
       text-decoration: none; transition: background 0.2s;
       display: inline-block;
     }
-    .btn-back:hover { background: #ea580c; }
+    .btn-back:hover { background: #d94f00; }
+
+    /* ===== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ ===== */
+    .lang-switcher { display: inline-flex; align-items: center; gap: 0; margin-left: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+    .lang-switcher a { padding: 6px 10px; border-radius: 6px; text-decoration: none; color: #94a3b8; transition: all 0.2s; }
+    .lang-switcher a:hover { color: #f05a00; }
+    .lang-switcher a.active { color: #f05a00; background: #fff7ed; }
+    .lang-switcher .sep { color: #cbd5e1; font-weight: 400; padding: 0 2px; }
 
     /* ===== ОСНОВНОЙ БЛОК ===== */
     main {
       flex: 1;
-      background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
+      background: linear-gradient(135deg, #0A1F44 0%, #15315C 100%);
       color: #fff;
       padding: 80px 0;
       display: flex;
@@ -72,7 +79,7 @@
       content: '';
       position: absolute; top: 0; right: 0;
       width: 50%; height: 100%;
-      background: radial-gradient(circle at 70% 30%, rgba(249,115,22,0.15) 0%, transparent 60%);
+      background: radial-gradient(circle at 70% 30%, rgba(240,90,0,0.15) 0%, transparent 60%);
       pointer-events: none;
     }
     .thanks-content {
@@ -86,13 +93,13 @@
       width: 96px;
       height: 96px;
       margin: 0 auto 32px;
-      background: #f97316;
+      background: #f05a00;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 52px;
-      box-shadow: 0 20px 60px rgba(249,115,22,0.4);
+      box-shadow: 0 20px 60px rgba(240,90,0,0.4);
       animation: thanksPop 0.5s ease;
     }
     @keyframes thanksPop {
@@ -107,7 +114,7 @@
       letter-spacing: -0.5px;
       margin-bottom: 20px;
     }
-    .thanks-content h1 span { color: #f97316; }
+    .thanks-content h1 span { color: #f05a00; }
     .thanks-content p {
       font-size: 18px;
       color: #cbd5e1;
@@ -134,12 +141,12 @@
       margin-top: 32px;
     }
     .btn-primary {
-      background: #f97316; color: #fff; padding: 16px 32px;
+      background: #f05a00; color: #fff; padding: 16px 32px;
       border-radius: 10px; font-weight: 700; font-size: 16px;
       text-decoration: none; transition: all 0.2s;
       display: inline-block;
     }
-    .btn-primary:hover { background: #ea580c; transform: translateY(-2px); }
+    .btn-primary:hover { background: #d94f00; transform: translateY(-2px); }
     .btn-secondary {
       background: transparent; color: #fff; padding: 16px 32px;
       border-radius: 10px; font-weight: 600; font-size: 16px;
@@ -183,20 +190,20 @@
       transition: all 0.2s;
     }
     .contact-btn:hover {
-      background: rgba(249,115,22,0.2);
-      border-color: #f97316;
+      background: rgba(240,90,0,0.2);
+      border-color: #f05a00;
     }
 
     /* ===== ФУТЕР ===== */
     footer {
-      background: #0a2540;
+      background: #0A1F44;
       color: #94a3b8;
       padding: 24px 0;
       text-align: center;
       font-size: 13px;
-      border-top: 1px solid #1e3a5c;
+      border-top: 1px solid #152F52;
     }
-    footer a { color: #f97316; text-decoration: none; }
+    footer a { color: #f05a00; text-decoration: none; }
 
     /* ===== АДАПТИВ ===== */
     @media (max-width: 640px) {
@@ -206,6 +213,7 @@
       .thanks-content p { font-size: 16px; }
       .btn-primary, .btn-secondary { width: 100%; text-align: center; }
       .contact-btn { width: 100%; justify-content: center; }
+      .lang-switcher { margin-left: 0; margin-right: 12px; }
     }
   </style>
 </head>
@@ -216,7 +224,14 @@
     <a href="/" class="logo">
       <img src="/images/logo.svg" alt="TIRLogistica">
     </a>
-    <a href="/" class="btn-back">← На главную</a>
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switcher">
+        <a href="/cn/thanks.html">CN</a>
+        <span class="sep">|</span>
+        <a href="/thanks.html" class="active">RU</a>
+      </div>
+      <a href="/" class="btn-back">← На главную</a>
+    </div>
   </div>
 </header>
 
