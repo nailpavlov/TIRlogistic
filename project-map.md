@@ -184,7 +184,7 @@
 
 **Китай:**
 - Никита, +86 131 6429 3138
-- Telegram: @Cargo_Flow
+- Telegram: @TIR_LOGISTIKA
 - Email: JSF0110@yandex.com
 - WeChat: mvp5435
 
