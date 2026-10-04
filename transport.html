@@ -44,8 +44,8 @@
     .super-header-inner { display: flex; justify-content: flex-end; align-items: center; padding: 8px 0; }
     .super-rates { display: flex; gap: 20px; color: #64748b; font-weight: 500; }
     .super-rates .rate-item { display: flex; align-items: center; gap: 6px; }
-    .super-rates .rate-code { font-weight: 700; color: #0a2540; }
-    .super-rates .rate-value { color: #f97316; font-weight: 700; }
+    .super-rates .rate-code { font-weight: 700; color: #0A1F44; }
+    .super-rates .rate-value { color: #f05a00; font-weight: 700; }
     .super-loading { color: #94a3b8; font-size: 12px; }
     .super-error { color: #ef4444; font-size: 12px; }
 
@@ -54,69 +54,78 @@
     .logo { text-decoration: none; display: flex; align-items: center; }
     .logo img { height: 44px; width: auto; display: block; }
     nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; transition: color 0.2s; }
-    nav a:hover { color: #f97316; }
-    nav a.active { color: #f97316; font-weight: 600; }
-    .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; transition: background 0.2s; display: inline-block; }
-    .btn-header:hover { background: #ea580c; }
+    nav a:hover { color: #f05a00; }
+    nav a.active { color: #f05a00; font-weight: 600; }
+    .btn-header { background: #f05a00; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; transition: background 0.2s; display: inline-block; }
+    .btn-header:hover { background: #d94f00; }
 
     .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
-    .burger span { display: block; width: 24px; height: 2px; background: #0a2540; transition: all 0.3s; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0A1F44; transition: all 0.3s; }
     .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger.active span:nth-child(2) { opacity: 0; }
     .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .mobile-menu { display: none; position: fixed; top: 100px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
     .mobile-menu.active { display: flex; }
-    .mobile-menu a { padding: 14px 0; color: #0a2540; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
+    .mobile-menu a { padding: 14px 0; color: #0A1F44; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: #f97316; }
+    .mobile-menu a:hover { color: #f05a00; }
 
     .breadcrumbs { padding: 16px 0; font-size: 14px; color: #94a3b8; }
     .breadcrumbs a { color: #64748b; text-decoration: none; }
-    .breadcrumbs a:hover { color: #f97316; }
+    .breadcrumbs a:hover { color: #f05a00; }
     .breadcrumbs .sep { margin: 0 8px; }
-    .breadcrumbs .current { color: #0a2540; font-weight: 600; }
+    .breadcrumbs .current { color: #0A1F44; font-weight: 600; }
 
-    .page-hero { background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%); color: #fff; padding: 60px 0 50px; }
+    .page-hero { background: linear-gradient(135deg, #0A1F44 0%, #15315C 100%); color: #fff; padding: 60px 0 50px; }
     .page-hero h1 { font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; letter-spacing: -1px; }
     .page-hero p { font-size: 18px; color: #cbd5e1; max-width: 720px; }
 
     section { padding: 60px 0; }
-    .section-title { font-size: 32px; font-weight: 800; color: #0a2540; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .section-title { font-size: 32px; font-weight: 800; color: #0A1F44; margin-bottom: 16px; letter-spacing: -0.5px; }
     .section-sub { font-size: 17px; color: #666; margin-bottom: 40px; max-width: 640px; }
 
     .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .catalog-card { background: #fff; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
-    .catalog-card:hover { border-color: #f97316; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(249,115,22,0.1); }
+    .catalog-card:hover { border-color: #f05a00; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(240,90,0,0.1); }
     .catalog-card-img { width: 100%; height: 200px; object-fit: cover; display: block; background: #f1f5f9; }
     .catalog-card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-    .catalog-card h3 { font-size: 20px; font-weight: 700; color: #0a2540; margin-bottom: 10px; }
+    .catalog-card h3 { font-size: 20px; font-weight: 700; color: #0A1F44; margin-bottom: 10px; }
     .catalog-card p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 20px; flex: 1; }
-    .catalog-card-link { display: inline-flex; align-items: center; gap: 6px; color: #f97316; font-weight: 600; font-size: 14px; transition: gap 0.2s; }
+    .catalog-card-link { display: inline-flex; align-items: center; gap: 6px; color: #f05a00; font-weight: 600; font-size: 14px; transition: gap 0.2s; }
     .catalog-card:hover .catalog-card-link { gap: 12px; }
     .catalog-card-link svg { transition: transform 0.2s; }
     .catalog-card:hover .catalog-card-link svg { transform: translateX(4px); }
 
-    .cta-section { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff; text-align: center; padding: 60px 0; }
+    .cta-section { background: linear-gradient(135deg, #f05a00 0%, #d94f00 100%); color: #fff; text-align: center; padding: 60px 0; }
     .cta-section h2 { font-size: 32px; font-weight: 800; margin-bottom: 16px; }
     .cta-section p { font-size: 17px; margin-bottom: 32px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .btn-white { background: #fff; color: #ea580c; padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn-white { background: #fff; color: #d94f00; padding: 16px 36px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; display: inline-block; transition: all 0.2s; }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
 
-    footer { background: #0a2540; color: #94a3b8; padding: 60px 0 40px; font-size: 14px; }
+    footer { background: #0A1F44; color: #94a3b8; padding: 60px 0 40px; font-size: 14px; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
     .footer-col h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 16px; }
     .footer-col a { display: block; color: #94a3b8; text-decoration: none; margin-bottom: 10px; font-size: 14px; }
-    .footer-col a:hover { color: #f97316; }
-    .footer-bottom { border-top: 1px solid #1e3a5c; padding-top: 30px; text-align: center; }
+    .footer-col a:hover { color: #f05a00; }
+    .footer-bottom { border-top: 1px solid #152F52; padding-top: 30px; text-align: center; }
     .footer-bottom strong { color: #fff; }
 
-    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #0a2540; color: #fff; padding: 20px 24px; display: none; z-index: 9999; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+    .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #0A1F44; color: #fff; padding: 20px 24px; display: none; z-index: 9999; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
     .cookie-banner.active { display: block; }
     .cookie-banner-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
     .cookie-banner p { font-size: 14px; color: #cbd5e1; margin: 0; flex: 1; min-width: 280px; }
-    .cookie-banner a { color: #f97316; text-decoration: underline; }
-    .cookie-banner button { background: #f97316; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
-    .cookie-banner button:hover { background: #ea580c; }
+    .cookie-banner a { color: #f05a00; text-decoration: underline; }
+    .cookie-banner button { background: #f05a00; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+    .cookie-banner button:hover { background: #d94f00; }
+
+    /* ===== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ ===== */
+    .lang-switcher { display: inline-flex; align-items: center; gap: 0; margin-left: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+    .lang-switcher a { padding: 6px 10px; border-radius: 6px; text-decoration: none; color: #94a3b8; transition: all 0.2s; }
+    .lang-switcher a:hover { color: #f05a00; }
+    .lang-switcher a.active { color: #f05a00; background: #fff7ed; }
+    .lang-switcher .sep { color: #cbd5e1; font-weight: 400; padding: 0 2px; }
+    .mobile-menu .lang-switcher { margin: 16px 0 0 0; padding-top: 16px; border-top: 1px solid #f1f5f9; width: 100%; justify-content: center; }
+    .mobile-menu .lang-switcher a { flex: 1; text-align: center; padding: 12px; font-size: 15px; }
 
     @media (max-width: 968px) {
       .page-hero h1 { font-size: 32px; }
@@ -125,6 +134,7 @@
       nav { display: none; }
       .btn-header { display: none; }
       .burger { display: flex; }
+      .lang-switcher { margin-left: 0; margin-right: 12px; }
     }
     @media (max-width: 640px) {
       .page-hero { padding: 40px 0 32px; }
@@ -175,6 +185,11 @@
       <a href="/#contacts">Контакты</a>
     </nav>
     <a href="/#cta" class="btn-header">Оставить заявку</a>
+    <div class="lang-switcher">
+      <a href="/cn/transport.html">CN</a>
+      <span class="sep">|</span>
+      <a href="/transport.html" class="active">RU</a>
+    </div>
     <button class="burger" id="burger" aria-label="Открыть меню">
       <span></span>
       <span></span>
@@ -191,7 +206,12 @@
   <a href="/dokumenty.html">Документы</a>
   <a href="/news.html">Новости</a>
   <a href="/#contacts">Контакты</a>
-  <a href="/#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+  <a href="/#cta" style="color: #f05a00; font-weight: 700;">Оставить заявку</a>
+  <div class="lang-switcher">
+    <a href="/cn/transport.html">CN</a>
+    <span class="sep">|</span>
+    <a href="/transport.html" class="active">RU</a>
+  </div>
 </div>
 
 <section class="page-hero">
@@ -221,7 +241,7 @@
         <div class="catalog-card-body">
           <h3>Евротент</h3>
           <p>Универсальный полуприцеп. Тент сдвигается или снимается — груз можно загрузить сзади, сбоку или сверху.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -230,7 +250,7 @@
         <div class="catalog-card-body">
           <h3>Jumbo (Юмбо)</h3>
           <p>Тентованный полуприцеп увеличенной вместимости. Объём до 96–100 м³ за счёт Г-образного пола.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -239,7 +259,7 @@
         <div class="catalog-card-body">
           <h3>Mega (Мега)</h3>
           <p>Тентованный полуприцеп с увеличенной высотой кузова. Вместимость до 100–105 м³, высота до 3,1 м.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -248,7 +268,7 @@
         <div class="catalog-card-body">
           <h3>Автопоезд</h3>
           <p>Сцепка из грузового автомобиля и прицепа. Суммарный объём 110–120 м³ для больших партий грузов.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -257,7 +277,7 @@
         <div class="catalog-card-body">
           <h3>Изотерм (термос)</h3>
           <p>Поддерживает температуру загрузки 10–20 часов. Подходит для грузов, требующих стабильного режима.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -266,7 +286,7 @@
         <div class="catalog-card-body">
           <h3>Рефрижератор</h3>
           <p>Полуприцеп с автономной холодильной установкой. Температура от −25°C до +25°C. Для скоропорта и особых грузов.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -275,7 +295,7 @@
         <div class="catalog-card-body">
           <h3>Контейнеровоз</h3>
           <p>Для морских контейнеров 20 и 40 футов, включая High Cube. Погрузка верхняя (краном) или задняя.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -284,7 +304,7 @@
         <div class="catalog-card-body">
           <h3>Открытая платформа</h3>
           <p>Без бортов и тента. Для длинномерных, негабаритных и тяжёлых грузов до 40 тонн.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -293,7 +313,7 @@
         <div class="catalog-card-body">
           <h3>Трал (низкорамный)</h3>
           <p>Для сверхтяжёлых и негабаритных грузов. Грузоподъёмность 25–110 тонн. Требует разрешения и сопровождения.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -302,7 +322,7 @@
         <div class="catalog-card-body">
           <h3>Лесовоз</h3>
           <p>Специализированный автопоезд для круглого леса и пиломатериалов. Длина груза до 24 метров.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
@@ -311,7 +331,7 @@
         <div class="catalog-card-body">
           <h3>Автовоз</h3>
           <p>Двухуровневая платформа для перевозки автомобилей. Размещает от 6 до 10 машин.</p>
-          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+          <span class="catalog-card-link">Подробнее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
       </a>
 
