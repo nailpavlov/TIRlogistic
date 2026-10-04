@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Согласие на обработку персональных данных | TIRLogistica</title>
-  <meta name="description" content="Согласие на обработку персональных данных TIRLogistica.">
+  <meta name="description" content="Согласие на обработку персональных данных сайта TIRLogistica. Условия и порядок обработки в соответствии с 152-ФЗ.">
   <link rel="canonical" href="https://tirlogistica.ru/soglasie.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,63 +13,90 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; color: #1a1a1a; line-height: 1.7; background: #fff; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #1a1a1a; line-height: 1.7; background: #ffffff; }
     .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-    .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
     header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; }
-    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
-    .logo { font-size: 22px; font-weight: 800; color: #0a2540; letter-spacing: -0.5px; text-decoration: none; }
-    .logo span { color: #f97316; }
-    nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; transition: color 0.2s; }
-    nav a:hover { color: #f97316; }
-    .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; transition: background 0.2s; display: inline-block; }
-    .btn-header:hover { background: #ea580c; }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { text-decoration: none; }
+    .logo img { height: 44px; width: auto; display: block; }
+    nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; }
+    nav a:hover { color: #f05a00; }
+    .btn-header { background: #f05a00; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; }
+    .btn-header:hover { background: #d94f00; }
+
+    .page-hero { background: linear-gradient(135deg, #0A1F44 0%, #15315C 100%); color: #fff; padding: 60px 0 40px; }
+    .page-hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 12px; }
+    .page-hero p { font-size: 16px; color: #cbd5e1; }
+
+    article { padding: 50px 0; }
+    article h2 { font-size: 22px; font-weight: 700; color: #0A1F44; margin: 32px 0 12px; }
+    article h2:first-child { margin-top: 0; }
+    article p { font-size: 16px; color: #334155; margin-bottom: 14px; }
+    article ul, article ol { margin: 12px 0 16px 24px; }
+    article li { font-size: 16px; color: #334155; margin-bottom: 6px; }
+    article a { color: #f05a00; text-decoration: none; }
+    article a:hover { text-decoration: underline; }
+
+    .highlight-box {
+      background: #f8fafc;
+      border-left: 4px solid #f05a00;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 24px 0;
+      font-size: 15px;
+      color: #334155;
+    }
+    .highlight-box strong { color: #0A1F44; }
+
+    footer { background: #0A1F44; color: #94a3b8; padding: 40px 0; text-align: center; font-size: 14px; margin-top: 40px; }
+    footer strong { color: #fff; }
+    footer a { color: #f05a00; text-decoration: none; }
+
+    .lang-switcher { display: inline-flex; align-items: center; gap: 0; margin-left: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+    .lang-switcher a { padding: 6px 10px; border-radius: 6px; text-decoration: none; color: #94a3b8; transition: all 0.2s; }
+    .lang-switcher a:hover { color: #f05a00; }
+    .lang-switcher a.active { color: #f05a00; background: #fff7ed; }
+    .lang-switcher .sep { color: #cbd5e1; font-weight: 400; padding: 0 2px; }
 
     .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
-    .burger span { display: block; width: 24px; height: 2px; background: #0a2540; transition: all 0.3s; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0A1F44; transition: all 0.3s; }
     .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger.active span:nth-child(2) { opacity: 0; }
     .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
     .mobile-menu.active { display: flex; }
-    .mobile-menu a { padding: 14px 0; color: #0a2540; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
+    .mobile-menu a { padding: 14px 0; color: #0A1F44; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: #f97316; }
-
-    .page-hero { background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%); color: #fff; padding: 60px 0 40px; }
-    .page-hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
-
-    article { padding: 60px 0; }
-    article h2 { font-size: 22px; font-weight: 700; color: #0a2540; margin: 32px 0 16px; }
-    article p { margin-bottom: 16px; font-size: 16px; color: #334155; }
-    article ul { margin: 16px 0 16px 24px; }
-    article li { margin-bottom: 8px; font-size: 16px; color: #334155; }
-    article a { color: #f97316; text-decoration: none; }
-    article a:hover { text-decoration: underline; }
-
-    footer { background: #0a2540; color: #94a3b8; padding: 40px 0; text-align: center; font-size: 14px; }
-    footer strong { color: #fff; }
-    footer a { color: #94a3b8; text-decoration: none; }
-    footer a:hover { color: #f97316; }
+    .mobile-menu a:hover { color: #f05a00; }
+    .mobile-menu .lang-switcher { margin: 16px 0 0 0; padding-top: 16px; border-top: 1px solid #f1f5f9; width: 100%; justify-content: center; }
+    .mobile-menu .lang-switcher a { flex: 1; text-align: center; padding: 12px; font-size: 15px; border-bottom: none; }
 
     @media (max-width: 968px) {
+      .page-hero h1 { font-size: 28px; }
       nav { display: none; }
       .btn-header { display: none; }
       .burger { display: flex; }
-    }
-    @media (max-width: 768px) {
-      .page-hero h1 { font-size: 26px; }
+      .lang-switcher { margin-left: 0; margin-right: 12px; }
     }
   </style>
+
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113023450', 'ym');
+      ym(113023450, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/113023450" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </head>
 <body>
 
 <header>
-  <div class="container-wide header-inner">
-    <a href="/" class="logo" aria-label="TIRLogistica — главная">
-  <img src="/images/logo.svg" alt="TIRLogistica" style="height: 48px; width: auto;">
-</a>
+  <div class="header-inner">
+    <a href="/" class="logo"><img src="/images/logo.svg" alt="TIRLogistica" style="height: 44px; width: auto; display: block;"></a>
     <nav>
       <a href="/#services">Услуги</a>
       <a href="/#steps">Как работаем</a>
@@ -80,6 +107,11 @@
       <a href="/#contacts">Контакты</a>
     </nav>
     <a href="/#cta" class="btn-header">Оставить заявку</a>
+    <div class="lang-switcher">
+      <a href="/cn/soglasie.html">CN</a>
+      <span class="sep">|</span>
+      <a href="/soglasie.html" class="active">RU</a>
+    </div>
     <button class="burger" id="burger" aria-label="Открыть меню">
       <span></span>
       <span></span>
@@ -96,7 +128,12 @@
   <a href="/dokumenty.html">Документы</a>
   <a href="/news.html">Новости</a>
   <a href="/#contacts">Контакты</a>
-  <a href="/#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+  <a href="/#cta" style="color: #f05a00; font-weight: 700;">Оставить заявку</a>
+  <div class="lang-switcher">
+    <a href="/cn/soglasie.html">CN</a>
+    <span class="sep">|</span>
+    <a href="/soglasie.html" class="active">RU</a>
+  </div>
 </div>
 
 <script>
@@ -120,42 +157,86 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="page-hero">
   <div class="container">
     <h1>Согласие на обработку персональных данных</h1>
+    <p>Условия и порядок обработки персональных данных в соответствии с Федеральным законом № 152-ФЗ.</p>
   </div>
 </section>
 
 <article>
   <div class="container">
 
-    <p>Настоящим я, отправляя форму на сайте <a href="https://tirlogistica.ru">tirlogistica.ru</a>, даю согласие на обработку моих персональных данных.</p>
+    <div class="highlight-box">
+      <strong>Важно:</strong> Отправляя форму на сайте <strong>tirlogistica.ru</strong>, вы даёте согласие на обработку персональных данных на условиях, изложенных ниже.
+    </div>
 
     <h2>1. Оператор персональных данных</h2>
-    <p>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD.</p>
-
-    <h2>2. Перечень данных</h2>
+    <p>Оператором персональных данных является:</p>
     <ul>
-      <li>Имя и фамилия.</li>
-      <li>Номер телефона.</li>
-      <li>Адрес электронной почты.</li>
-      <li>Название компании.</li>
-      <li>Данные о грузе.</li>
+      <li><strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong></li>
+      <li>Контактный email: <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a></li>
+      <li>Контактный телефон: <a href="tel:+79273131102">+7 927 313 11 02</a></li>
+    </ul>
+
+    <h2>2. Перечень персональных данных</h2>
+    <p>Согласие даётся на обработку следующих персональных данных:</p>
+    <ul>
+      <li>Фамилия, имя</li>
+      <li>Номер телефона, WhatsApp</li>
+      <li>Адрес электронной почты</li>
+      <li>Название компании, город отправки/назначения</li>
+      <li>Параметры груза (тип, вес, объём, сроки)</li>
     </ul>
 
     <h2>3. Цели обработки</h2>
+    <p>Персональные данные обрабатываются в следующих целях:</p>
     <ul>
-      <li>Обработка заявки на расчёт стоимости перевозки.</li>
-      <li>Связь со мной по вопросам сотрудничества.</li>
+      <li>Обработка заявки и подготовка расчёта стоимости перевозки</li>
+      <li>Связь с вами по вопросам вашей заявки (звонки, письма, сообщения в мессенджерах)</li>
+      <li>Заключение и исполнение договора на транспортные услуги</li>
+      <li>Отправка информационных сообщений (только с вашего отдельного согласия)</li>
     </ul>
 
-    <h2>4. Действия с данными</h2>
-    <p>Сбор, запись, систематизация, накопление, хранение, уточнение, использование, передача (при необходимости для исполнения договора), блокирование, удаление.</p>
+    <h2>4. Перечень действий с персональными данными</h2>
+    <p>С вашими персональными данными могут совершаться следующие действия:</p>
+    <ul>
+      <li>Сбор, запись, систематизация, накопление, хранение</li>
+      <li>Уточнение (обновление, изменение), извлечение, использование</li>
+      <li>Передача (предоставление, доступ) — только в случаях, предусмотренных законодательством РФ</li>
+      <li>Обезличивание, блокирование, удаление, уничтожение</li>
+    </ul>
 
     <h2>5. Срок действия согласия</h2>
-    <p>Согласие действует до момента его отзыва. Отозвать согласие можно, направив запрос на <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a>.</p>
+    <p>Согласие действует с момента его предоставления (отправки формы) и до момента отзыва. Вы можете отозвать согласие в любой момент, направив письменное уведомление на адрес <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a>.</p>
+    <p>После отзыва согласия оператор прекращает обработку персональных данных и уничтожает их в срок, не превышающий 30 дней с момента поступления отзыва, за исключением случаев, когда обработка должна быть продолжена в соответствии с законодательством РФ.</p>
 
-    <h2>6. Подтверждение</h2>
-    <p>Я подтверждаю, что ознакомлен с <a href="/privacy.html">Политикой конфиденциальности</a> и согласен с условиями обработки данных.</p>
+    <h2>6. Порядок отзыва согласия</h2>
+    <p>Для отзыва согласия необходимо направить письменное заявление на адрес электронной почты <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a> с указанием:</p>
+    <ul>
+      <li>ФИО</li>
+      <li>Контактных данных, указанных при отправке заявки</li>
+      <li>Требования о прекращении обработки персональных данных</li>
+    </ul>
 
-    <p style="margin-top: 40px; color: #64748b; font-size: 14px;">Дата последнего обновления: 27.09.2026</p>
+    <h2>7. Права субъекта персональных данных</h2>
+    <p>В соответствии с 152-ФЗ вы имеете право:</p>
+    <ul>
+      <li>Получать информацию об обработке ваших персональных данных</li>
+      <li>Требовать уточнения, блокирования или уничтожения данных, если они неполны, устарели, неточны или незаконно получены</li>
+      <li>Обжаловать действия оператора в Роскомнадзоре или в суде</li>
+      <li>Отозвать согласие на обработку персональных данных</li>
+    </ul>
+
+    <h2>8. Подтверждение согласия</h2>
+    <p>Отправляя форму на сайте <strong>tirlogistica.ru</strong> и проставляя галочку в чекбоксе «Я согласен на обработку персональных данных», вы подтверждаете, что:</p>
+    <ul>
+      <li>Ознакомлены с настоящим Согласием и <a href="/privacy.html">Политикой конфиденциальности</a></li>
+      <li>Даёте согласие на обработку персональных данных на изложенных условиях</li>
+      <li>Достигли возраста 18 лет и обладаете необходимой дееспособностью</li>
+    </ul>
+
+    <h2>9. Изменения</h2>
+    <p>Мы оставляем за собой право вносить изменения в настоящее Согласие. Актуальная версия всегда доступна на этой странице.</p>
+
+    <p style="margin-top: 32px; color: #64748b; font-size: 14px;">Дата последнего обновления: 04.10.2026</p>
 
   </div>
 </article>
@@ -164,9 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="container">
     <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
     TIR-перевозки Россия → Китай | Китай → Россия<br><br>
-    <a href="/privacy.html">Политика конфиденциальности</a> · 
-    <a href="/soglasie.html">Согласие на обработку данных</a> · 
-    <a href="/cookies.html">Политика cookie</a>
+    <a href="/privacy.html">Политика конфиденциальности</a> · <a href="/cookies.html">Политика cookie</a> · <a href="/soglasie.html">Согласие на обработку данных</a>
   </div>
 </footer>
 
