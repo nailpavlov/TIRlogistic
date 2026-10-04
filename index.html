@@ -72,8 +72,8 @@
       align-items: center;
       gap: 6px;
     }
-    .super-rates .rate-code { font-weight: 700; color: #0a2540; }
-    .super-rates .rate-value { color: #f97316; font-weight: 700; }
+    .super-rates .rate-code { font-weight: 700; color: #0A1F44; }
+    .super-rates .rate-value { color: #f05a00; font-weight: 700; }
     .super-loading { color: #94a3b8; font-size: 12px; }
     .super-error { color: #ef4444; font-size: 12px; }
 
@@ -94,61 +94,70 @@
       margin-left: 28px; text-decoration: none; color: #444;
       font-size: 15px; font-weight: 500; transition: color 0.2s;
     }
-    nav a:hover { color: #f97316; }
+    nav a:hover { color: #f05a00; }
     .btn-header {
-      background: #f97316; color: #fff; padding: 10px 20px;
+      background: #f05a00; color: #fff; padding: 10px 20px;
       border-radius: 8px; font-weight: 600; font-size: 14px;
       text-decoration: none; margin-left: 28px; transition: background 0.2s;
       display: inline-block;
     }
-    .btn-header:hover { background: #ea580c; }
+    .btn-header:hover { background: #d94f00; }
 
     /* ===== БУРГЕР ===== */
     .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
-    .burger span { display: block; width: 24px; height: 2px; background: #0a2540; transition: all 0.3s; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0A1F44; transition: all 0.3s; }
     .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger.active span:nth-child(2) { opacity: 0; }
     .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     .mobile-menu { display: none; position: fixed; top: 100px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
     .mobile-menu.active { display: flex; }
-    .mobile-menu a { padding: 14px 0; color: #0a2540; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
+    .mobile-menu a { padding: 14px 0; color: #0A1F44; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: #f97316; }
+    .mobile-menu a:hover { color: #f05a00; }
+
+    /* ===== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ ===== */
+    .lang-switcher { display: inline-flex; align-items: center; gap: 0; margin-left: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+    .lang-switcher a { padding: 6px 10px; border-radius: 6px; text-decoration: none; color: #94a3b8; transition: all 0.2s; }
+    .lang-switcher a:hover { color: #f05a00; }
+    .lang-switcher a.active { color: #f05a00; background: #fff7ed; }
+    .lang-switcher .sep { color: #cbd5e1; font-weight: 400; padding: 0 2px; }
+    .mobile-menu .lang-switcher { margin: 16px 0 0 0; padding-top: 16px; border-top: 1px solid #f1f5f9; width: 100%; justify-content: center; }
+    .mobile-menu .lang-switcher a { flex: 1; text-align: center; padding: 12px; font-size: 15px; }
 
     /* ===== HERO ===== */
     .hero {
-      background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
+      background: linear-gradient(135deg, #0A1F44 0%, #15315C 100%);
       color: #fff; padding: 100px 0 80px;
       position: relative; overflow: hidden;
     }
     .hero::after {
       content: ''; position: absolute; top: 0; right: 0;
       width: 50%; height: 100%;
-      background: radial-gradient(circle at 70% 30%, rgba(249,115,22,0.15) 0%, transparent 60%);
+      background: radial-gradient(circle at 70% 30%, rgba(240,90,0,0.15) 0%, transparent 60%);
     }
     .hero-content { position: relative; z-index: 2; max-width: 720px; }
     .hero-tag {
       display: inline-block; font-size: 13px; font-weight: 600;
       text-transform: uppercase; letter-spacing: 2px;
-      color: #f97316; margin-bottom: 24px;
+      color: #f05a00; margin-bottom: 24px;
     }
     .hero h1 {
       font-size: 52px; font-weight: 800; line-height: 1.15;
       margin-bottom: 24px; letter-spacing: -1px;
     }
-    .hero h1 span { color: #f97316; }
+    .hero h1 span { color: #f05a00; }
     .hero p {
       font-size: 18px; color: #cbd5e1; margin-bottom: 36px;
       line-height: 1.6; max-width: 600px;
     }
     .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
     .btn-primary {
-      background: #f97316; color: #fff; padding: 16px 32px;
+      background: #f05a00; color: #fff; padding: 16px 32px;
       border-radius: 10px; font-weight: 700; font-size: 16px;
       text-decoration: none; transition: all 0.2s;
       border: none; cursor: pointer; display: inline-block;
     }
-    .btn-primary:hover { background: #ea580c; transform: translateY(-2px); }
+    .btn-primary:hover { background: #d94f00; transform: translateY(-2px); }
     .btn-secondary {
       background: transparent; color: #fff; padding: 16px 32px;
       border-radius: 10px; font-weight: 600; font-size: 16px;
@@ -165,14 +174,14 @@
     }
     .fact-item { text-align: center; }
     .fact-num {
-      font-size: 36px; font-weight: 800; color: #0a2540;
+      font-size: 36px; font-weight: 800; color: #0A1F44;
       line-height: 1; margin-bottom: 8px;
     }
     .fact-label { font-size: 14px; color: #666; font-weight: 500; }
 
     section { padding: 80px 0; }
     .section-title {
-      font-size: 36px; font-weight: 800; color: #0a2540;
+      font-size: 36px; font-weight: 800; color: #0A1F44;
       margin-bottom: 16px; letter-spacing: -0.5px;
     }
     .section-sub {
@@ -188,8 +197,8 @@
       border: 1px solid #e2e8f0; transition: all 0.3s;
     }
     .service-card:hover {
-      border-color: #f97316; transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(249,115,22,0.1);
+      border-color: #f05a00; transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(240,90,0,0.1);
     }
     .service-icon {
       width: 48px; height: 48px; background: #fff;
@@ -198,7 +207,7 @@
       border: 1px solid #e2e8f0;
     }
     .service-card h3 {
-      font-size: 18px; font-weight: 700; color: #0a2540;
+      font-size: 18px; font-weight: 700; color: #0A1F44;
       margin-bottom: 10px;
     }
     .service-card p { font-size: 15px; color: #64748b; line-height: 1.6; }
@@ -211,13 +220,13 @@
       border: 1px solid #e2e8f0;
     }
     .step-num {
-      width: 44px; height: 44px; background: #f97316; color: #fff;
+      width: 44px; height: 44px; background: #f05a00; color: #fff;
       border-radius: 50%; display: flex; align-items: center;
       justify-content: center; font-weight: 800; font-size: 18px;
       margin-bottom: 20px;
     }
     .step h3 {
-      font-size: 17px; font-weight: 700; color: #0a2540; margin-bottom: 10px;
+      font-size: 17px; font-weight: 700; color: #0A1F44; margin-bottom: 10px;
     }
     .step p { font-size: 14px; color: #64748b; line-height: 1.6; }
 
@@ -226,13 +235,13 @@
     .dest-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
     .dest-tag {
       background: #fff; padding: 10px 20px; border-radius: 100px;
-      font-size: 15px; font-weight: 600; color: #0a2540;
+      font-size: 15px; font-weight: 600; color: #0A1F44;
       border: 1px solid #e2e8f0;
     }
 
     /* ===== CTA + ФОРМА ===== */
     .cta-section {
-      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      background: linear-gradient(135deg, #f05a00 0%, #d94f00 100%);
       color: #fff; text-align: center; padding: 80px 0;
     }
     .cta-section h2 {
@@ -244,20 +253,21 @@
       max-width: 600px; margin-left: auto; margin-right: auto;
     }
     .btn-white {
-      background: #fff; color: #ea580c; padding: 18px 40px;
+      background: #fff; color: #d94f00; padding: 18px 40px;
       border-radius: 10px; font-weight: 700; font-size: 17px;
       text-decoration: none; display: inline-block;
       transition: all 0.2s; border: none; cursor: pointer;
     }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
 
-    /* ===== ЧЕКБОКС СОГЛАСИЯ (в одну строку) ===== */
+    /* ===== ЧЕКБОКС СОГЛАСИЯ ===== */
     .form-consent {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       gap: 10px;
-      margin: 20px 0;
+      margin: 20px auto;
+      max-width: 640px;
       font-size: 13px;
       color: rgba(255,255,255,0.9);
       line-height: 1.5;
@@ -267,10 +277,9 @@
       height: 18px;
       cursor: pointer;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin: 0;
     }
     .form-consent label {
-      flex: 1;
       cursor: pointer;
     }
     .form-consent a { color: #fff; text-decoration: underline; }
@@ -304,7 +313,7 @@
       background: rgba(255,255,255,0.95);
       font-family: 'Inter', sans-serif;
       font-size: 15px;
-      color: #0a2540;
+      color: #0A1F44;
       transition: all 0.2s;
     }
     .form-group input:focus,
@@ -336,11 +345,11 @@
       border: 1px solid #e2e8f0;
     }
     .contact-card h3 {
-      font-size: 20px; font-weight: 700; color: #0a2540;
+      font-size: 20px; font-weight: 700; color: #0A1F44;
       margin-bottom: 8px;
     }
     .contact-role {
-      font-size: 14px; color: #f97316; font-weight: 600;
+      font-size: 14px; color: #f05a00; font-weight: 600;
       margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;
     }
     .contact-line {
@@ -348,7 +357,7 @@
       margin-bottom: 14px; font-size: 15px; color: #334155;
     }
     .contact-line a { color: #334155; text-decoration: none; }
-    .contact-line a:hover { color: #f97316; }
+    .contact-line a:hover { color: #f05a00; }
 
     /* WeChat QR */
     .wechat-qr-block {
@@ -377,7 +386,7 @@
       font-family: inherit;
       font-size: 14px;
       font-weight: 600;
-      color: #0a2540;
+      color: #0A1F44;
     }
     .wechat-qr-btn:hover {
       border-color: #07c160;
@@ -392,7 +401,7 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(10,37,64,0.85);
+      background: rgba(10,31,68,0.85);
       z-index: 10000;
       align-items: center;
       justify-content: center;
@@ -427,10 +436,10 @@
       color: #64748b;
       line-height: 1;
     }
-    .qr-modal-close:hover { background: #e2e8f0; color: #0a2540; }
+    .qr-modal-close:hover { background: #e2e8f0; color: #0A1F44; }
     .qr-modal h3 {
       font-size: 20px;
-      color: #0a2540;
+      color: #0A1F44;
       margin-bottom: 6px;
     }
     .qr-modal .qr-role {
@@ -454,7 +463,7 @@
 
     /* ===== ФУТЕР ===== */
     footer {
-      background: #0a2540; color: #94a3b8; padding: 60px 0 40px;
+      background: #0A1F44; color: #94a3b8; padding: 60px 0 40px;
       font-size: 14px;
     }
     .footer-grid {
@@ -468,9 +477,9 @@
       display: block; color: #94a3b8; text-decoration: none;
       margin-bottom: 10px; font-size: 14px;
     }
-    .footer-col a:hover { color: #f97316; }
+    .footer-col a:hover { color: #f05a00; }
     .footer-bottom {
-      border-top: 1px solid #1e3a5c; padding-top: 30px; text-align: center;
+      border-top: 1px solid #152F52; padding-top: 30px; text-align: center;
     }
     .footer-bottom strong { color: #fff; }
 
@@ -478,7 +487,7 @@
     .cookie-banner {
       position: fixed;
       bottom: 0; left: 0; right: 0;
-      background: #0a2540;
+      background: #0A1F44;
       color: #fff;
       padding: 20px 24px;
       display: none;
@@ -502,9 +511,9 @@
       flex: 1;
       min-width: 280px;
     }
-    .cookie-banner a { color: #f97316; text-decoration: underline; }
+    .cookie-banner a { color: #f05a00; text-decoration: underline; }
     .cookie-banner button {
-      background: #f97316;
+      background: #f05a00;
       color: #fff;
       border: none;
       padding: 12px 28px;
@@ -514,7 +523,7 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .cookie-banner button:hover { background: #ea580c; }
+    .cookie-banner button:hover { background: #d94f00; }
 
     /* ===== АДАПТИВ ===== */
     @media (max-width: 968px) {
@@ -527,6 +536,7 @@
       nav { display: none; }
       .btn-header { display: none; }
       .burger { display: flex; }
+      .lang-switcher { margin-left: 0; margin-right: 12px; }
     }
     @media (max-width: 640px) {
       .hero h1 { font-size: 30px; }
@@ -543,7 +553,6 @@
       .super-header-inner { justify-content: center; }
       .super-rates { gap: 12px; font-size: 11px; }
       .form-consent { justify-content: flex-start; text-align: left; }
-      .form-consent label { flex: 1; }
     }
   </style>
 
@@ -587,6 +596,11 @@
       <a href="#contacts">Контакты</a>
     </nav>
     <a href="#cta" class="btn-header">Оставить заявку</a>
+    <div class="lang-switcher">
+      <a href="/cn/">CN</a>
+      <span class="sep">|</span>
+      <a href="/" class="active">RU</a>
+    </div>
     <button class="burger" id="burger" aria-label="Открыть меню">
       <span></span>
       <span></span>
@@ -603,7 +617,12 @@
   <a href="/dokumenty.html">Документы</a>
   <a href="/news.html">Новости</a>
   <a href="#contacts">Контакты</a>
-  <a href="#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+  <a href="#cta" style="color: #f05a00; font-weight: 700;">Оставить заявку</a>
+  <div class="lang-switcher">
+    <a href="/cn/">CN</a>
+    <span class="sep">|</span>
+    <a href="/" class="active">RU</a>
+  </div>
 </div>
 
 <section class="hero">
@@ -646,7 +665,7 @@
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
             <path d="M15 18H9"/>
             <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
@@ -660,7 +679,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m7.5 4.27 9 5.15"/>
             <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
             <path d="m3.3 7 8.7 5 8.7-5"/>
@@ -673,7 +692,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"/>
             <path d="M12 5v14"/>
           </svg>
@@ -684,7 +703,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/>
             <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
             <path d="M10 9H8"/>
@@ -698,7 +717,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
             <path d="m9 12 2 2 4-4"/>
           </svg>
@@ -709,7 +728,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
             <path d="M21 3v5h-5"/>
             <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
@@ -722,7 +741,7 @@
 
       <div class="service-card">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f05a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/>
             <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>
           </svg>
@@ -733,6 +752,7 @@
     </div>
   </div>
 </section>
+
 <section id="steps" style="background: #f8fafc;">
   <div class="container">
     <h2 class="section-title">Как мы работаем</h2>
@@ -786,14 +806,12 @@
     <h2>Пришлите параметры груза</h2>
     <p>Дадим цену после получения данных. Без обязательств и без предоплаты за расчёт.</p>
 
-    <!-- Быстрый контакт через Telegram -->
     <div class="form-consent">
       <input type="checkbox" id="ctaConsent" required>
       <label for="ctaConsent">Я согласен на обработку персональных данных и ознакомлен с <a href="/privacy.html">Политикой конфиденциальности</a></label>
     </div>
     <a href="https://t.me/PavlovNail" class="btn-white" onclick="return checkCtaConsent()">Написать в Telegram</a>
 
-    <!-- Полная форма заявки -->
     <form action="https://formsubmit.co/info@tirlogistica.ru" method="POST" class="contact-form">
       <input type="hidden" name="_subject" value="Новая заявка с сайта TIRLogistica">
       <input type="hidden" name="_captcha" value="false">
@@ -1051,7 +1069,7 @@ const qrData = {
     image: '/images/wechat-nail.png'
   },
   nikita: {
-    title: 'Никита',
+    title: 'Никита Воронцов',
     role: 'Руководитель отдела продаж в Китае',
     image: '/images/wechat-nikita.png'
   }
