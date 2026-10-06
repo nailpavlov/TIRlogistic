@@ -18,77 +18,66 @@
     .header-inner { max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
     .logo { text-decoration: none; }
     nav a { margin-left: 28px; text-decoration: none; color: #444; font-size: 15px; font-weight: 500; }
-    nav a:hover { color: #f97316; }
-    .btn-header { background: #f97316; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; }
-    .page-hero { background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%); color: #fff; padding: 60px 0 40px; }
+    nav a:hover { color: #f05a00; }
+    nav a.active { color: #f05a00; font-weight: 600; }
+    .btn-header { background: #f05a00; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; margin-left: 28px; }
+    .btn-header:hover { background: #d94f00; }
+    .page-hero { background: linear-gradient(135deg, #0A1F44 0%, #15315C 100%); color: #fff; padding: 60px 0 40px; }
     .page-hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 12px; }
     .page-hero p { font-size: 17px; color: #cbd5e1; }
     .news-grid { padding: 60px 0; }
     .news-card { background: #f8fafc; border-radius: 16px; padding: 32px; border: 1px solid #e2e8f0; margin-bottom: 20px; transition: all 0.3s; }
-    .news-card:hover { border-color: #f97316; box-shadow: 0 12px 32px rgba(249,115,22,0.08); }
+    .news-card:hover { border-color: #f05a00; box-shadow: 0 12px 32px rgba(240,90,0,0.08); }
     .news-card time { display: block; color: #64748b; font-size: 14px; margin-bottom: 12px; }
-    .news-card h2 { font-size: 22px; font-weight: 700; color: #0a2540; margin-bottom: 12px; }
-    .news-card h2 a { color: #0a2540; text-decoration: none; }
-    .news-card h2 a:hover { color: #f97316; }
+    .news-card h2 { font-size: 22px; font-weight: 700; color: #0A1F44; margin-bottom: 12px; }
+    .news-card h2 a { color: #0A1F44; text-decoration: none; }
+    .news-card h2 a:hover { color: #f05a00; }
     .news-card p { color: #64748b; font-size: 15px; margin-bottom: 16px; }
-    .news-card .read-more { color: #f97316; font-weight: 600; text-decoration: none; font-size: 15px; }
+    .news-card .read-more { color: #f05a00; font-weight: 600; text-decoration: none; font-size: 15px; }
     .news-card .read-more:hover { text-decoration: underline; }
-    footer { background: #0a2540; color: #94a3b8; padding: 40px 0; text-align: center; font-size: 14px; }
+    footer { background: #0A1F44; color: #94a3b8; padding: 40px 0; text-align: center; font-size: 14px; }
     footer strong { color: #fff; }
-    
+
+    /* ===== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ ===== */
+    .lang-switcher { display: inline-flex; align-items: center; gap: 0; margin-left: 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; }
+    .lang-switcher a { padding: 6px 10px; border-radius: 6px; text-decoration: none; color: #94a3b8; transition: all 0.2s; }
+    .lang-switcher a:hover { color: #f05a00; }
+    .lang-switcher a.active { color: #f05a00; background: #fff7ed; }
+    .lang-switcher .sep { color: #cbd5e1; font-weight: 400; padding: 0 2px; }
+    .mobile-menu .lang-switcher { margin: 16px 0 0 0; padding-top: 16px; border-top: 1px solid #f1f5f9; width: 100%; justify-content: center; }
+    .mobile-menu .lang-switcher a { flex: 1; text-align: center; padding: 12px; font-size: 15px; border-bottom: none; }
+
     /* Бургер-меню */
-    .burger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .burger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #0a2540;
-      transition: all 0.3s;
-    }
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .burger span { display: block; width: 24px; height: 2px; background: #0A1F44; transition: all 0.3s; }
     .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     .burger.active span:nth-child(2) { opacity: 0; }
     .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 65px;
-      left: 0;
-      right: 0;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-      padding: 20px 24px;
-      flex-direction: column;
-      gap: 4px;
-      z-index: 99;
-    }
+    .mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eee; box-shadow: 0 12px 32px rgba(0,0,0,0.1); padding: 20px 24px; flex-direction: column; gap: 4px; z-index: 99; }
     .mobile-menu.active { display: flex; }
-    .mobile-menu a {
-      padding: 14px 0;
-      color: #0a2540;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 500;
-      border-bottom: 1px solid #f1f5f9;
-    }
+    .mobile-menu a { padding: 14px 0; color: #0A1F44; text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid #f1f5f9; }
     .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu a:hover { color: #f97316; }
+    .mobile-menu a:hover { color: #f05a00; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 968px) {
       .page-hero h1 { font-size: 28px; }
       nav { display: none; }
       .btn-header { display: none; }
       .burger { display: flex; }
+      .lang-switcher { margin-left: 0; margin-right: 12px; }
     }
   </style>
+
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113023450', 'ym');
+      ym(113023450, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/113023450" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </head>
 <body>
 
@@ -101,10 +90,15 @@
       <a href="/#destinations">Направления</a>
       <a href="/transport.html">Типы авто</a>
       <a href="/dokumenty.html">Документы</a>
-      <a href="/news.html">Новости</a>
+      <a href="/news.html" class="active">Новости</a>
       <a href="/#contacts">Контакты</a>
     </nav>
     <a href="/#cta" class="btn-header">Оставить заявку</a>
+    <div class="lang-switcher">
+      <a href="/cn/news.html">CN</a>
+      <span class="sep">|</span>
+      <a href="/news.html" class="active">RU</a>
+    </div>
     <button class="burger" id="burger" aria-label="Открыть меню">
       <span></span>
       <span></span>
@@ -121,7 +115,12 @@
   <a href="/dokumenty.html">Документы</a>
   <a href="/news.html">Новости</a>
   <a href="/#contacts">Контакты</a>
-  <a href="/#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+  <a href="/#cta" style="color: #f05a00; font-weight: 700;">Оставить заявку</a>
+  <div class="lang-switcher">
+    <a href="/cn/news.html">CN</a>
+    <span class="sep">|</span>
+    <a href="/news.html" class="active">RU</a>
+  </div>
 </div>
 
 <script>
@@ -151,28 +150,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <section class="news-grid">
   <div class="container">
-    
+
       <div class="news-card">
         <time>2026-10-06</time>
         <h2><a href="/news/2026-10-06-logforum26.html">В Москве пройдёт LOGFORUM’26 — форум по модернизации складской логистики</a></h2>
         <p>С 19 по 23 октября в Москве пройдёт LOGFORUM’26 — форум по модернизации складской логистики. Программа, темы, спикеры, регистрация.</p>
         <a href="/news/2026-10-06-logforum26.html" class="read-more">Читать далее →</a>
       </div>
-    
+
       <div class="news-card">
         <time>2026-09-26</time>
         <h2><a href="/news/2026-09-26-zapusk.html">Запуск сайта TIRLogistica — теперь доставка в Китай стала проще</a></h2>
         <p>Мы запустили новый сайт для организации TIR-перевозок Россия-Китай. Узнайте о наших услугах и обратных рейсах.</p>
         <a href="/news/2026-09-26-zapusk.html" class="read-more">Читать далее →</a>
       </div>
-    
+
       <div class="news-card">
         <time>2026-09-26</time>
         <h2><a href="/news/2026-09-26-tamozhnya-izmeneniya.html">Изменения в таможенных правилах с 1 октября 2026</a></h2>
         <p>С 1 октября вступили в силу новые правила таможенного оформления грузов из Китая. Рассказываем, что изменилось.</p>
         <a href="/news/2026-09-26-tamozhnya-izmeneniya.html" class="read-more">Читать далее →</a>
       </div>
-    
+
   </div>
 </section>
 
