@@ -21,73 +21,8 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://tirlogistica.ru/privacy.html</loc>
-    <priority>0.3</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/cookies.html</loc>
-    <priority>0.3</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/soglasie.html</loc>
-    <priority>0.3</priority>
-    <changefreq>yearly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/eurotent.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/jumbo.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/mega.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/avtopoezd.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/izoterm.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/refrizherator.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/konteynerovoz.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/platforma.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/tral.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/lesovoz.html</loc>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://tirlogistica.ru/transport/avtovoz.html</loc>
-    <priority>0.8</priority>
+    <loc>https://tirlogistica.ru/news/2026-10-06-logforum26.html</loc>
+    <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
