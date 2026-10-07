@@ -1,0 +1,47 @@
+# TIRlogistica.ru
+
+> Фрахт китайских ТС под обратную загрузку РФ → КНР. White label для логистов: «Клиент — ваш, машина — наша». Работаем с логистами, экспедиторами и грузовладельцами на направлении Россия — Китай.
+
+Организация TIR-перевозок Россия ↔ Китай. Предоставляем фрахт китайских грузовых ТС, возвращающихся из РФ в КНР порожними. Направления: РФ → КНР (обратная загрузка) и КНР → РФ (прямое). География — 40+ городов РФ, погранпереходы Маньчжурия, Алашанькоу, Хэйхэ.
+
+## Основные страницы
+
+- [Главная](https://tirlogistica.ru/): Описание услуги, формула «Клиент — ваш, машина — наша», два направления работы.
+- [Типы авто](https://tirlogistica.ru/transport.html): Каталог доступного транспорта — евротент, jumbo, mega, автопоезд, изотерм, рефрижератор, контейнеровоз, открытая платформа, трал, лесовоз, автовоз.
+- [Документы](https://tirlogistica.ru/dokumenty.html): TIR, CMR, таможенное оформление, документооборот.
+- [Новости](https://tirlogistica.ru/news.html): Обновления по направлению Россия — Китай, логистика, таможня.
+- [Политика конфиденциальности](https://tirlogistica.ru/privacy.html): Обработка персональных данных.
+- [Политика cookie](https://tirlogistica.ru/cookies.html): Использование файлов cookie.
+- [Согласие на обработку данных](https://tirlogistica.ru/soglasie.html): Условия согласия.
+
+## Типы транспорта
+
+- [Евротент](https://tirlogistica.ru/transport/eurotent.html): Тентованный полуприцеп для генеральных грузов.
+- [Jumbo](https://tirlogistica.ru/transport/jumbo.html): Увеличенный объём, для лёгких объёмных грузов.
+- [Mega](https://tirlogistica.ru/transport/mega.html): Максимальный объём, для крупногабаритных лёгких грузов.
+- [Автопоезд](https://tirlogistica.ru/transport/avtopoezd.html): Для длинномерных и тяжёлых грузов.
+- [Изотерм](https://tirlogistica.ru/transport/izoterm.html): Температурный режим без активного охлаждения.
+- [Рефрижератор](https://tirlogistica.ru/transport/refrizherator.html): Активное охлаждение, для скоропорта.
+- [Контейнеровоз](https://tirlogistica.ru/transport/konteynerovoz.html): Перевозка контейнеров 20/40 футов.
+- [Открытая платформа](https://tirlogistica.ru/transport/platforma.html): Для негабарита и техники.
+- [Трал](https://tirlogistica.ru/transport/tral.html): Тяжёлая техника, негабарит.
+- [Лесовоз](https://tirlogistica.ru/transport/lesovoz.html): Круглый лес, пиломатериалы.
+- [Автовоз](https://tirlogistica.ru/transport/avtovoz.html): Перевозка автомобилей.
+
+## Китайская версия
+
+- [Главная (CN)](https://tirlogistica.ru/cn/): Описание услуги на китайском языке.
+- [Типы авто (CN)](https://tirlogistica.ru/cn/transport.html): Каталог транспорта на китайском.
+- [Документы (CN)](https://tirlogistica.ru/cn/dokumenty.html): Документы и таможня на китайском.
+- [Новости (CN)](https://tirlogistica.ru/cn/news.html): Новости на китайском.
+
+## Контакты
+
+- Россия: Наиль Павлов, +7 927 313 11 02, Telegram @PavlovNail, info@tirlogistica.ru
+- Китай: Никита Воронцов, +86 131 6429 3138, Telegram @TIR_LOGISTIKA
+- Юрлицо: JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD
+
+## Optional
+
+- [Sitemap](https://tirlogistica.ru/sitemap.xml): Полный список URL.
+- [Robots](https://tirlogistica.ru/robots.txt): Правила для поисковых роботов.
