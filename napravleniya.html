@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -159,7 +159,14 @@
       .super-rates { gap: 12px; font-size: 11px; }
       .btn-white { width: 100%; text-align: center; }
     }
-  </style>
+      /* ===== STEPS ===== */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step { position: relative; padding: 32px 24px; background: #fff; border-radius: 16px; border: 1px solid #e2e8f0; }
+    .step-num { width: 44px; height: 44px; background: #f05a00; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; margin-bottom: 20px; }
+    .step h3 { font-size: 17px; font-weight: 700; color: #0A1F44; margin-bottom: 10px; }
+    .step p { font-size: 14px; color: #64748b; line-height: 1.6; }
+
+</style>
 
   <script type="text/javascript">
       (function(m,e,t,r,i,k,a){
@@ -192,6 +199,7 @@
       <a href="/#steps">Как работаем</a>
       <a href="/napravleniya.html" class="active">Направления</a>
       <a href="/transport.html">Типы авто</a>
+      <a href="/vozmozhnosti.html">Возможности</a>
       <a href="/dokumenty.html">Документы</a>
       <a href="/news.html">Новости</a>
       <a href="/#contacts">Контакты</a>
@@ -215,6 +223,7 @@
   <a href="/#steps">Как работаем</a>
   <a href="/napravleniya.html">Направления</a>
   <a href="/transport.html">Типы авто</a>
+  <a href="/vozmozhnosti.html">Возможности</a>
   <a href="/dokumenty.html">Документы</a>
   <a href="/news.html">Новости</a>
   <a href="/#contacts">Контакты</a>
@@ -241,6 +250,34 @@
   </nav>
 </div>
 
+<section style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-title">Как мы работаем</h2>
+    <p class="section-sub">4 шага от заявки до выгрузки в Китае.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Заявка</h3>
+        <p>Вы присылаете параметры груза, адреса и сроки.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Расчёт</h3>
+        <p>Даём цену после получения данных по грузу.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Организация</h3>
+        <p>Подаём машину, согласуем погрузку, документы и маршрут.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Доставка</h3>
+        <p>Сопровождаем груз до выгрузки в КНР.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section>
   <div class="container">
     <h2 class="section-title">Основные хабы доставки</h2>
