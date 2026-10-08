@@ -163,7 +163,22 @@
       .super-rates { gap: 12px; font-size: 11px; }
       .btn-white { width: 100%; text-align: center; }
     }
-  </style>
+      /* ===== FAQ ===== */
+    .faq-section { background: #f8fafc; }
+    .faq-list { max-width: 860px; margin: 0 auto; }
+    .faq-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+    .faq-item[open] { border-color: #f05a00; box-shadow: 0 4px 16px rgba(240,90,0,0.08); }
+    .faq-item summary { padding: 22px 60px 22px 28px; cursor: pointer; font-size: 17px; font-weight: 600; color: #0A1F44; list-style: none; position: relative; transition: color 0.2s; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::marker { content: ''; }
+    .faq-item summary::after { content: '+'; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-size: 28px; font-weight: 300; color: #f05a00; line-height: 1; transition: transform 0.3s; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item summary:hover { color: #f05a00; }
+    .faq-answer { padding: 0 28px 22px; color: #475569; font-size: 15px; line-height: 1.7; }
+    .faq-answer p { margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+
+</style>
 
   <script type="text/javascript">
       (function(m,e,t,r,i,k,a){
@@ -175,6 +190,17 @@
       ym(113023450, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/113023450" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Что такое автопоезд?", "acceptedAnswer": {"@type": "Answer", "text": "Сцепка грузового автомобиля и прицепа. Даёт максимальную вместимость на одну поездку."}},
+    {"@type": "Question", "name": "Какой общий объём у автопоезда?", "acceptedAnswer": {"@type": "Answer", "text": "110–120 м³ суммарно. Грузоподъёмность — до 40 тонн."}},
+    {"@type": "Question", "name": "Какие грузы везут автопоездами в Китай?", "acceptedAnswer": {"@type": "Answer", "text": "Крупные партии: пиломатериалы, оборудование, металлоконструкции, сборные грузы. Экономически выгодно, когда груза много."}}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -400,6 +426,27 @@
   </div>
 </div>
 
+
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title">Частые вопросы</h2>
+    <p class="section-sub">Коротко о том, что чаще всего спрашивают про этот тип транспорта.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Что такое автопоезд?</summary>
+        <div class="faq-answer"><p>Сцепка грузового автомобиля и прицепа. Даёт максимальную вместимость на одну поездку.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Какой общий объём у автопоезда?</summary>
+        <div class="faq-answer"><p>110–120 м³ суммарно. Грузоподъёмность — до 40 тонн.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Какие грузы везут автопоездами в Китай?</summary>
+        <div class="faq-answer"><p>Крупные партии: пиломатериалы, оборудование, металлоконструкции, сборные грузы. Экономически выгодно, когда груза много.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
 <section class="cta-section">
   <div class="container">
     <h2>Нужен расчёт для автопоезда?</h2>
