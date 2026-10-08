@@ -555,7 +555,22 @@
       .super-rates { gap: 12px; font-size: 11px; }
       .form-consent { justify-content: flex-start; text-align: left; }
     }
-  </style>
+      /* ===== FAQ ===== */
+    .faq-section { background: #f8fafc; }
+    .faq-list { max-width: 860px; margin: 0 auto; }
+    .faq-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+    .faq-item[open] { border-color: #f05a00; box-shadow: 0 4px 16px rgba(240,90,0,0.08); }
+    .faq-item summary { padding: 22px 60px 22px 28px; cursor: pointer; font-size: 17px; font-weight: 600; color: #0A1F44; list-style: none; position: relative; transition: color 0.2s; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::marker { content: ''; }
+    .faq-item summary::after { content: '+'; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-size: 28px; font-weight: 300; color: #f05a00; line-height: 1; transition: transform 0.3s; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item summary:hover { color: #f05a00; }
+    .faq-answer { padding: 0 28px 22px; color: #475569; font-size: 15px; line-height: 1.7; }
+    .faq-answer p { margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+
+</style>
 
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
