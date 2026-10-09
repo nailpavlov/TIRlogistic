@@ -22,6 +22,7 @@
 - [Экспорт в Китай](https://tirlogistica.ru/uslugi/eksport-v-kitay.html): Фрахт китайских ТС, оформление документов РФ и КНР.
 - [Экспортёрам](https://tirlogistica.ru/for-exporters.html): Для производителей и трейдеров — фрахт китайских ТС под обратную загрузку РФ → КНР.
 - [Логистам и экспедиторам](https://tirlogistica.ru/for-logists.html): White Label. Схема «Клиент — ваш, машина — наша».
+- [FAQ](https://tirlogistica.ru/faq.html): Частые вопросы — документы, оплата, сроки, границы, обратная загрузка.
 
 ## Основные страницы
 
