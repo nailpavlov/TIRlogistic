@@ -570,6 +570,12 @@
     .faq-answer p { margin-bottom: 10px; }
     .faq-answer p:last-child { margin-bottom: 0; }
 
+    /* ===== PRICE HIGHLIGHT ===== */
+    .price-highlight { background: #fff; border: 2px solid #f05a00; border-radius: 16px; padding: 32px; text-align: center; max-width: 600px; margin: 40px auto 0; box-shadow: 0 8px 24px rgba(240,90,0,0.1); }
+    .price-highlight-label { font-size: 13px; font-weight: 700; color: #f05a00; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .price-highlight-route { font-size: 20px; font-weight: 700; color: #0A1F44; margin-bottom: 8px; }
+    .price-highlight-value { font-size: 28px; font-weight: 800; color: #f05a00; }
+
 </style>
 
   <!-- Yandex.Metrika counter -->
@@ -628,6 +634,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Основные клиенты — юридические лица и индивидуальные предприниматели: логисты, экспедиторы, грузовладельцы, экспортёры. С физическими лицами работаем в исключительных случаях."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Работаете ли вы с Гонконгом?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да, работаем. Доставка в Гонконг — с перегрузом на территории Китая (Шэньчжэнь, Гуанчжоу). Сроки и стоимость рассчитываются индивидуально."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Перевозите ли грузы с температурным режимом?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Да. Рефрижераторы от −25°C до +25°C. Работаем с мясом, рыбой, скоропортом. Оформляем ветеринарные и санитарные документы."
       }
     }
   ]
@@ -866,6 +888,43 @@
 </section>
 
 
+<section style="background: #fff7ed;">
+  <div class="container">
+    <h2 class="section-title">Сколько стоит доставка в Китай?</h2>
+    <p class="section-sub">Стоимость зависит от 4 факторов.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Маршрут</h3>
+        <p>Город отправления в РФ → город в КНР</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Тип груза</h3>
+        <p>Вес, объём, категория товара</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Транспорт</h3>
+        <p>Евротент, рефрижератор, трал или платформа</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Сроки</h3>
+        <p>Дата подачи машины и срочность</p>
+      </div>
+    </div>
+    <div class="price-highlight">
+      <div class="price-highlight-label">Пример ставки</div>
+      <div class="price-highlight-route">Новосибирск → Маньчжурия</div>
+      <div class="price-highlight-value">от 23 000 ¥ / тент фура 20 т</div>
+    </div>
+    <p style="text-align: center; color: #475569; font-size: 16px; margin-top: 24px;">Точный расчёт — по параметрам груза, в течение 1 рабочего дня.</p>
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="/#cta" class="btn-primary">Получить расчёт</a>
+    </div>
+  </div>
+</section>
 <section class="faq-section">
   <div class="container">
     <h2 class="section-title">Частые вопросы</h2>
@@ -1021,7 +1080,20 @@
             <span>Показать QR-код WeChat</span>
           </button>
         </div>
-      </div>
+            <details class="faq-item">
+        <summary>Работаете ли вы с Гонконгом?</summary>
+        <div class="faq-answer">
+          <p>Да, работаем. Доставка в Гонконг — с перегрузом на территории Китая (Шэньчжэнь, Гуанчжоу). Сроки и стоимость рассчитываются индивидуально.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Перевозите ли грузы с температурным режимом?</summary>
+        <div class="faq-answer">
+          <p>Да. Рефрижераторы от −25°C до +25°C. Работаем с мясом, рыбой, скоропортом. Оформляем ветеринарные и санитарные документы.</p>
+        </div>
+      </details>
+</div>
     </div>
   </div>
 </section>
