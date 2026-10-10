@@ -33,6 +33,8 @@
 - [Политика конфиденциальности](https://tirlogistica.ru/privacy.html): Обработка персональных данных.
 - [Политика cookie](https://tirlogistica.ru/cookies.html): Использование файлов cookie.
 - [Согласие на обработку данных](https://tirlogistica.ru/soglasie.html): Условия согласия.
+- [Контакты](https://tirlogistica.ru/kontakty.html): Наиль Павлов (РФ) и Никита Воронцов (КНР). Телефоны, email, Telegram, WeChat.
+- [Правовая информация](https://tirlogistica.ru/politiki.html): Политика конфиденциальности, согласие на обработку, cookie.
 
 ## Типы транспорта
 
