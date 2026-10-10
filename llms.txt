@@ -1,4 +1,4 @@
-﻿# TIRlogistica.ru
+# TIRlogistica.ru
 
 > Фрахт китайских ТС под обратную загрузку РФ → КНР. White label для логистов: «Клиент — ваш, машина — наша». Работаем с логистами, экспедиторами и грузовладельцами на направлении Россия — Китай.
 
@@ -56,6 +56,14 @@
 - [Типы авто (CN)](https://tirlogistica.ru/cn/transport.html): Каталог транспорта на китайском.
 - [Документы (CN)](https://tirlogistica.ru/cn/dokumenty.html): Документы и таможня на китайском.
 - [Новости (CN)](https://tirlogistica.ru/cn/news.html): Новости на китайском.
+- [Услуги (CN)](https://tirlogistica.ru/cn/uslugi.html): Все услуги — экспорт, сертификация, таможня, склады.
+- [Экспорт в Китай (CN)](https://tirlogistica.ru/cn/uslugi/eksport-v-kitay.html): Фрахт китайских ТС, документы РФ и КНР.
+- [Экспортёрам (CN)](https://tirlogistica.ru/cn/for-exporters.html): Для производителей и трейдеров.
+- [Логистам (CN)](https://tirlogistica.ru/cn/for-logists.html): White Label. «Клиент — ваш, машина — наша».
+- [Направления (CN)](https://tirlogistica.ru/cn/napravleniya.html): Маршруты и хабы доставки в Китай.
+- [FAQ (CN)](https://tirlogistica.ru/cn/faq.html): Частые вопросы — документы, оплата, сроки, границы.
+- [Возможности (CN)](https://tirlogistica.ru/cn/vozmozhnosti.html): Проекты и партнёрства Россия — Китай.
+- [Контакты (CN)](https://tirlogistica.ru/cn/kontakty.html): Наиль Павлов и Никита Воронцов. Телефоны, email, WeChat.
 
 ## Контакты
 

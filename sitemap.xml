@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tirlogistica.ru/</loc>
@@ -170,4 +170,36 @@
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
-</urlset>
+  <url>
+    <loc>https://tirlogistica.ru/cn/kontakty.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>  <url>
+    <loc>https://tirlogistica.ru/cn/faq.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>  <url>
+    <loc>https://tirlogistica.ru/cn/vozmozhnosti.html</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>  <url>
+    <loc>https://tirlogistica.ru/cn/uslugi.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>  <url>
+    <loc>https://tirlogistica.ru/cn/napravleniya.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>  <url>
+    <loc>https://tirlogistica.ru/cn/for-exporters.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>  <url>
+    <loc>https://tirlogistica.ru/cn/for-logists.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>  <url>
+    <loc>https://tirlogistica.ru/cn/uslugi/eksport-v-kitay.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url></urlset>
