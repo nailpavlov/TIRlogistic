@@ -32,14 +32,14 @@ function parseMarkdown(text) {
 
 // --- ПАРСЕР ФРОНТМАТТЕРА ---
 function parseFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) return { meta: {}, body: content };
   
   const metaText = match[1];
   const body = match[2];
   const meta = {};
   
-  metaText.split('\n').forEach(line => {
+  metaText.split(/\r?\n/).forEach(line => {
     const [key, ...valueParts] = line.split(':');
     if (key && valueParts.length) {
       meta[key.trim()] = valueParts.join(':').trim();
@@ -155,16 +155,16 @@ function pageTemplate(meta, htmlContent) {
 <header>
   <div class="header-inner">
     ${logoImg}
-    <nav>
-      <a href="/#services">Услуги</a>
-      <a href="/#steps">Как работаем</a>
-      <a href="/#destinations">Направления</a>
+<nav>
+      <a href="/uslugi.html">Услуги</a>
+      <a href="/napravleniya.html">Направления</a>
       <a href="/transport.html">Типы авто</a>
+      <a href="/vozmozhnosti.html">Возможности</a>
       <a href="/dokumenty.html">Документы</a>
       <a href="/news.html">Новости</a>
-      <a href="/#contacts">Контакты</a>
+      <a href="/kontakty.html">Контакты</a>
     </nav>
-    <a href="/#cta" class="btn-header">Оставить заявку</a>
+    <a href="/kontakty.html" class="btn-header">Оставить заявку</a>
     <button class="burger" id="burger" aria-label="Открыть меню">
       <span></span>
       <span></span>
@@ -174,14 +174,14 @@ function pageTemplate(meta, htmlContent) {
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/#services">Услуги</a>
-  <a href="/#steps">Как работаем</a>
-  <a href="/#destinations">Направления</a>
+  <a href="/uslugi.html">Услуги</a>
+  <a href="/napravleniya.html">Направления</a>
   <a href="/transport.html">Типы авто</a>
+  <a href="/vozmozhnosti.html">Возможности</a>
   <a href="/dokumenty.html">Документы</a>
   <a href="/news.html">Новости</a>
-  <a href="/#contacts">Контакты</a>
-  <a href="/#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+  <a href="/kontakty.html">Контакты</a>
+  <a href="/kontakty.html" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
 </div>
 
 <script>
@@ -215,8 +215,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <footer>
   <div class="container">
-    <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
-    TIR-перевозки Россия → Китай | Китай → Россия
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>TIRLogistica</h4>
+        <p style="color: #94a3b8; font-size: 14px; line-height: 1.6;">TIR-перевозки Россия → Китай | Китай → Россия. Обратные рейсы, выкуп в Китае, полный цикл сопровождения.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="/uslugi.html">Все услуги</a>
+        <a href="/uslugi/eksport-v-kitay.html">Экспорт в Китай</a>
+        <a href="/for-exporters.html">Экспортёрам</a>
+        <a href="/for-logists.html">Логистам и экспедиторам</a>
+        <a href="/napravleniya.html">Направления</a>
+        <a href="/transport.html">Типы авто</a>
+      </div>
+      <div class="footer-col">
+        <h4>Информация</h4>
+        <a href="/faq.html">FAQ</a>
+        <a href="/vozmozhnosti.html">Возможности</a>
+        <a href="/dokumenty.html">Документы</a>
+        <a href="/news.html">Новости</a>
+        <a href="/politiki.html">Политики и документы</a>
+      </div>
+      <div class="footer-col">
+        <h4>Россия</h4>
+        <a href="/kontakty.html">Наиль Павлов</a>
+        <a href="tel:+79273131102">+7 927 313 11 02</a>
+        <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a>
+        <a href="https://t.me/PavlovNail">TG: @PavlovNail</a>
+      </div>
+      <div class="footer-col">
+        <h4>Китай</h4>
+        <a href="/kontakty.html">Никита Воронцов</a>
+        <a href="tel:+8613164293138">+86 131 6429 3138</a>
+        <a href="tel:+79269181308">+7 926 918 13 08</a>
+        <a href="mailto:JSF0110@yandex.com">JSF0110@yandex.com</a>
+        <a href="https://t.me/TIR_LOGISTIKA">TG: @TIR_LOGISTIKA</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+      TIR-перевозки Россия → Китай | Китай → Россия
+    </div>
   </div>
 </footer>
 
@@ -317,16 +357,16 @@ async function buildNews() {
 <header>
   <div class="header-inner">
     ${logoImg}
-    <nav>
-      <a href="/#services">Услуги</a>
-      <a href="/#steps">Как работаем</a>
-      <a href="/#destinations">Направления</a>
+<nav>
+      <a href="/uslugi.html">Услуги</a>
+      <a href="/napravleniya.html">Направления</a>
       <a href="/transport.html">Типы авто</a>
+      <a href="/vozmozhnosti.html">Возможности</a>
       <a href="/dokumenty.html">Документы</a>
       <a href="/news.html">Новости</a>
-      <a href="/#contacts">Контакты</a>
+      <a href="/kontakty.html">Контакты</a>
     </nav>
-    <a href="/#cta" class="btn-header">Оставить заявку</a>
+    <a href="/kontakty.html" class="btn-header">Оставить заявку</a>
     <button class="burger" id="burger" aria-label="Открыть меню">
       <span></span>
       <span></span>
@@ -336,14 +376,14 @@ async function buildNews() {
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="/#services">Услуги</a>
-  <a href="/#steps">Как работаем</a>
-  <a href="/#destinations">Направления</a>
+  <a href="/uslugi.html">Услуги</a>
+  <a href="/napravleniya.html">Направления</a>
   <a href="/transport.html">Типы авто</a>
+  <a href="/vozmozhnosti.html">Возможности</a>
   <a href="/dokumenty.html">Документы</a>
   <a href="/news.html">Новости</a>
-  <a href="/#contacts">Контакты</a>
-  <a href="/#cta" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
+  <a href="/kontakty.html">Контакты</a>
+  <a href="/kontakty.html" style="color: #f97316; font-weight: 700;">Оставить заявку</a>
 </div>
 
 <script>
@@ -386,8 +426,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <footer>
   <div class="container">
-    <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
-    TIR-перевозки Россия → Китай | Китай → Россия
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>TIRLogistica</h4>
+        <p style="color: #94a3b8; font-size: 14px; line-height: 1.6;">TIR-перевозки Россия → Китай | Китай → Россия. Обратные рейсы, выкуп в Китае, полный цикл сопровождения.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="/uslugi.html">Все услуги</a>
+        <a href="/uslugi/eksport-v-kitay.html">Экспорт в Китай</a>
+        <a href="/for-exporters.html">Экспортёрам</a>
+        <a href="/for-logists.html">Логистам и экспедиторам</a>
+        <a href="/napravleniya.html">Направления</a>
+        <a href="/transport.html">Типы авто</a>
+      </div>
+      <div class="footer-col">
+        <h4>Информация</h4>
+        <a href="/faq.html">FAQ</a>
+        <a href="/vozmozhnosti.html">Возможности</a>
+        <a href="/dokumenty.html">Документы</a>
+        <a href="/news.html">Новости</a>
+        <a href="/politiki.html">Политики и документы</a>
+      </div>
+      <div class="footer-col">
+        <h4>Россия</h4>
+        <a href="/kontakty.html">Наиль Павлов</a>
+        <a href="tel:+79273131102">+7 927 313 11 02</a>
+        <a href="mailto:info@tirlogistica.ru">info@tirlogistica.ru</a>
+        <a href="https://t.me/PavlovNail">TG: @PavlovNail</a>
+      </div>
+      <div class="footer-col">
+        <h4>Китай</h4>
+        <a href="/kontakty.html">Никита Воронцов</a>
+        <a href="tel:+8613164293138">+86 131 6429 3138</a>
+        <a href="tel:+79269181308">+7 926 918 13 08</a>
+        <a href="mailto:JSF0110@yandex.com">JSF0110@yandex.com</a>
+        <a href="https://t.me/TIR_LOGISTIKA">TG: @TIR_LOGISTIKA</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong>JINGXIANG COMMERCE SERVICE (SHANDONG) CO., LTD</strong><br>
+      TIR-перевозки Россия → Китай | Китай → Россия
+    </div>
   </div>
 </footer>
 
@@ -397,19 +477,60 @@ document.addEventListener('DOMContentLoaded', function() {
   fs.writeFileSync(NEWS_LIST_FILE, newsListHtml);
   console.log(`✅ Создана страница /news.html со списком (${newsList.length} новостей)`);
   
-  // --- ОБНОВЛЕНИЕ SITEMAP.XML ---
-  const sitemapUrls = [
-    { loc: `${SITE_URL}/`, priority: '1.0', changefreq: 'weekly' },
-    { loc: `${SITE_URL}/transport.html`, priority: '0.9', changefreq: 'monthly' },
-    { loc: `${SITE_URL}/dokumenty.html`, priority: '0.7', changefreq: 'monthly' },
-    { loc: `${SITE_URL}/news.html`, priority: '0.8', changefreq: 'daily' },
-    ...newsList.map(n => ({
-      loc: `${SITE_URL}/news/${n.slug}.html`,
-      priority: '0.6',
-      changefreq: 'monthly'
-    }))
+  // --- ОБНОВЛЕНИЕ SITEMAP.XML (автосканирование всех HTML) ---
+  const allHtml = glob.sync('**/*.html', {
+    ignore: [
+      'node_modules/**',
+      '.git/**',
+      'История создания/**',
+      'public/**',
+      'scripts/**',
+      '**/_*.html'
+    ],
+    nodir: true
+  }).filter(f => {
+    const name = path.basename(f);
+    return !name.startsWith('yandex_')
+        && !name.startsWith('_')
+        && name !== 'thanks.html'
+        && name !== '404.html';
+  });
+
+  // Приоритеты по маске (порядок важен: сначала точные, потом общие)
+  const priorityMap = [
+    { pattern: /^index\.html$/,                                    p: 1.0, f: 'weekly'  },
+    { pattern: /^(transport|napravleniya|uslugi|news)\.html$/,     p: 0.9, f: 'weekly'  },
+    { pattern: /^(kontakty|faq|dokumenty|vozmozhnosti)\.html$/,    p: 0.8, f: 'monthly' },
+    { pattern: /^(for-exporters|for-logists)\.html$/,              p: 0.8, f: 'monthly' },
+    { pattern: /^uslugi\//,                                        p: 0.8, f: 'monthly' },
+    { pattern: /^transport\//,                                     p: 0.7, f: 'monthly' },
+    { pattern: /^napravleniya\//,                                  p: 0.7, f: 'monthly' },
+    { pattern: /^news\//,                                          p: 0.6, f: 'monthly' },
+    { pattern: /^(politiki|privacy|cookies|soglasie)\.html$/,      p: 0.3, f: 'yearly'  }
   ];
-  
+
+  function getPriority(rel) {
+    let isCn = false;
+    let p = rel.replace(/\\/g, '/');
+    if (p.startsWith('cn/')) { isCn = true; p = p.substring(3); }
+    const rule = priorityMap.find(r => r.pattern.test(p)) || { p: 0.5, f: 'monthly' };
+    let val = rule.p;
+    if (isCn) val = Math.round(val * 0.8 * 10) / 10;
+    return { p: val.toFixed(1), f: rule.f };
+  }
+
+  const sitemapUrls = allHtml
+    .map(f => {
+      const rel = f.replace(/\\/g, '/');
+      let loc;
+      if (rel === 'index.html')      loc = `${SITE_URL}/`;
+      else if (rel === 'cn/index.html') loc = `${SITE_URL}/cn/`;
+      else                            loc = `${SITE_URL}/${rel}`;
+      const pr = getPriority(rel);
+      return { loc, priority: pr.p, changefreq: pr.f };
+    })
+    .sort((a, b) => a.loc.localeCompare(b.loc));
+
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${sitemapUrls.map(u => `  <url>
@@ -418,9 +539,9 @@ ${sitemapUrls.map(u => `  <url>
     <changefreq>${u.changefreq}</changefreq>
   </url>`).join('\n')}
 </urlset>`;
-  
+
   fs.writeFileSync(SITEMAP_FILE, sitemapXml);
-  console.log(`✅ Обновлён sitemap.xml (${sitemapUrls.length} URL)`);
+  console.log(`OK: sitemap.xml updated (${sitemapUrls.length} URLs)`);
   
   console.log('🎉 Готово!');
 }
