@@ -21,7 +21,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install fs-extra glob
+        run: npm install fs-extra glob --no-save
 
       - name: Build news
         run: node scripts/build-news.cjs
@@ -30,6 +30,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --local user.email 'action@github.com'
-          git add news/*.html news.html sitemap.xml
+          git add news/*.html news.html sitemap.xml package.json package-lock.json
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-build news pages"
           git push
