@@ -211,6 +211,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://tirlogistica.ru/news/2026-10-14-vozmozhnosti-dzen.html</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://tirlogistica.ru/politiki.html</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
