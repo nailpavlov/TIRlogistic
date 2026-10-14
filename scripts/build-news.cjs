@@ -159,6 +159,22 @@ function pageTemplate(meta, htmlContent) {
     .back-link:hover { background: #ea580c; }
     footer { background: #0a2540; color: #94a3b8; padding: 40px 0; text-align: center; font-size: 14px; margin-top: 80px; }
     footer strong { color: #fff; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 20px;
+      margin-bottom: 16px;
+    }
+    .footer-col h4 {
+      color: #fff; font-size: 12px; font-weight: 700; margin-bottom: 8px;
+    }
+    .footer-col a {
+      display: block; color: #94a3b8; text-decoration: none;
+      margin-bottom: 4px; font-size: 12px;
+    }
+    .footer-col a:hover { color: #f05a00; }
+    .footer-bottom {
+      border-top: 1px solid #152F52; padding-top: 30px; text-align: center;
+    }
+    .footer-bottom strong { color: #fff; }
     ${burgerCSS}
     @media (max-width: 768px) {
       article h1 { font-size: 26px; }
@@ -373,6 +389,22 @@ async function buildNews() {
     .news-card .read-more:hover { text-decoration: underline; }
     footer { background: #0a2540; color: #94a3b8; padding: 40px 0; text-align: center; font-size: 14px; }
     footer strong { color: #fff; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 20px;
+      margin-bottom: 16px;
+    }
+    .footer-col h4 {
+      color: #fff; font-size: 12px; font-weight: 700; margin-bottom: 8px;
+    }
+    .footer-col a {
+      display: block; color: #94a3b8; text-decoration: none;
+      margin-bottom: 4px; font-size: 12px;
+    }
+    .footer-col a:hover { color: #f05a00; }
+    .footer-bottom {
+      border-top: 1px solid #152F52; padding-top: 30px; text-align: center;
+    }
+    .footer-bottom strong { color: #fff; }
     ${burgerCSS}
     @media (max-width: 768px) {
       .page-hero h1 { font-size: 28px; }
