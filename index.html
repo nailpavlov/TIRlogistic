@@ -125,19 +125,8 @@
     .mobile-menu .lang-switcher a { flex: 1; text-align: center; padding: 12px; font-size: 15px; }
 
     /* ===== HERO ===== */
-    .hero {
-      position: relative; min-height: 50vh; background-color: #0A1F44;
-      display: flex; align-items: center; justify-content: center;
-      padding: 80px 20px; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
-      background-image: url('hero_truck.jpg');
-      background-size: 60%; background-repeat: no-repeat; background-position: right center;
-      opacity: 0.8; z-index: 1;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 65%);
-      mask-image: linear-gradient(to right, transparent 0%, black 65%);
-    }
+    
+    
     .hero::after {
       content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background: linear-gradient(to right, #0A1F44 25%, rgba(10,31,68,0.85) 50%, rgba(10,31,68,0.0) 100%);
@@ -528,7 +517,7 @@
     }
     @media (max-width: 640px) {
       .hero h1 { font-size: 30px; }
-      .hero { padding: 60px 0 50px; }
+      
       .section-title { font-size: 26px; }
       .facts { grid-template-columns: 1fr 1fr; gap: 32px; }
       .services-grid { grid-template-columns: 1fr; }
@@ -563,6 +552,34 @@
     .price-highlight-route { font-size: 20px; font-weight: 700; color: #0A1F44; margin-bottom: 8px; }
     .price-highlight-value { font-size: 28px; font-weight: 800; color: #f05a00; }
 
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 50vh; background-color: #0A1F44;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 20px; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      background-image: url('hero_truck.jpg');
+      background-size: 60%; background-repeat: no-repeat; background-position: right center;
+      opacity: 0.8; z-index: 1;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 65%);
+      mask-image: linear-gradient(to right, transparent 0%, black 65%);
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, #0A1F44 25%, rgba(10,31,68,0.85) 50%, rgba(10,31,68,0.0) 100%);
+      z-index: 1; pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: left; color: #fff; max-width: 800px; width: 100%; }
+    .hero-tag { color: #f05a00; font-weight: bold; letter-spacing: 1px; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; }
+    .hero h1 { font-size: 52px; margin: 0 0 20px 0; line-height: 1.2; font-weight: 700; }
+    .hero h1 span { color: #f05a00; }
+    .hero p { font-size: 18px; margin: 0 0 30px 0; color: #d0d0d0; max-width: 600px; line-height: 1.5; }
+    .hero-cta { display: flex; gap: 15px; justify-content: flex-start; }
+    .hero-cta .btn { display: inline-block; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 4px; font-size: 16px; }
+    .hero-cta .btn-primary { background-color: #f05a00; color: #fff; }
+    .hero-cta .btn-outline { background-color: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
 </style>
 
   <!-- Yandex.Metrika counter -->
@@ -644,19 +661,8 @@
 </script>
       <!-- CUSTOM-HERO-FINAL -->
   <style>
-    .hero {
-      position: relative; min-height: 50vh; background-color: #0A1F44;
-      display: flex; align-items: center; justify-content: center;
-      padding: 80px 20px; overflow: hidden;
-    }
-    .hero::before {
-      content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 100%; 
-      background-image: url('hero_truck.jpg');
-      background-size: 65%; background-repeat: no-repeat; background-position: right center; 
-      opacity: 0.6; z-index: 1;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 50%);
-      mask-image: linear-gradient(to right, transparent 0%, black 50%);
-    }
+    
+    
     .hero::after {
       content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background: linear-gradient(to right, #0A1F44 10%, rgba(10,31,68,0.7) 50%, rgba(10,31,68,0.1) 100%);
@@ -683,23 +689,39 @@
     }
     .hero-cta .btn-primary { background-color: #f05a00; color: #fff; }
     .hero-cta .btn-outline { background-color: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-  </style>
+      /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 50vh; background-color: #0A1F44;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 20px; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      background-image: url('hero_truck.jpg');
+      background-size: 60%; background-repeat: no-repeat; background-position: right center;
+      opacity: 0.8; z-index: 1;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 65%);
+      mask-image: linear-gradient(to right, transparent 0%, black 65%);
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, #0A1F44 25%, rgba(10,31,68,0.85) 50%, rgba(10,31,68,0.0) 100%);
+      z-index: 1; pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: left; color: #fff; max-width: 800px; width: 100%; }
+    .hero-tag { color: #f05a00; font-weight: bold; letter-spacing: 1px; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; }
+    .hero h1 { font-size: 52px; margin: 0 0 20px 0; line-height: 1.2; font-weight: 700; }
+    .hero h1 span { color: #f05a00; }
+    .hero p { font-size: 18px; margin: 0 0 30px 0; color: #d0d0d0; max-width: 600px; line-height: 1.5; }
+    .hero-cta { display: flex; gap: 15px; justify-content: flex-start; }
+    .hero-cta .btn { display: inline-block; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 4px; font-size: 16px; }
+    .hero-cta .btn-primary { background-color: #f05a00; color: #fff; }
+    .hero-cta .btn-outline { background-color: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+</style>
   <!-- CUSTOM-HERO-FINAL -->
   <style>
-    .hero {
-      position: relative; min-height: 50vh; background-color: #0A1F44;
-      display: flex; align-items: center; justify-content: center;
-      padding: 80px 20px; overflow: hidden;
-    }
-    .hero::before {
-      content: ""; position: absolute; top: 0; right: 0; bottom: 0; 
-      width: 80%; /* КАК В ТЕСТЕ */
-      background-image: url('hero_truck.jpg');
-      background-size: 65%; background-repeat: no-repeat; background-position: right center; 
-      opacity: 0.6; z-index: 1;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 50%);
-      mask-image: linear-gradient(to right, transparent 0%, black 50%);
-    }
+    
+    
     .hero::after {
       content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background: linear-gradient(to right, #0A1F44 10%, rgba(10,31,68,0.7) 50%, rgba(10,31,68,0.1) 100%);
@@ -726,7 +748,35 @@
     }
     .hero-cta .btn-primary { background-color: #f05a00; color: #fff; }
     .hero-cta .btn-outline { background-color: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-  </style>
+      /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 50vh; background-color: #0A1F44;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 20px; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      background-image: url('hero_truck.jpg');
+      background-size: 60%; background-repeat: no-repeat; background-position: right center;
+      opacity: 0.8; z-index: 1;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 65%);
+      mask-image: linear-gradient(to right, transparent 0%, black 65%);
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, #0A1F44 25%, rgba(10,31,68,0.85) 50%, rgba(10,31,68,0.0) 100%);
+      z-index: 1; pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; text-align: left; color: #fff; max-width: 800px; width: 100%; }
+    .hero-tag { color: #f05a00; font-weight: bold; letter-spacing: 1px; font-size: 13px; margin-bottom: 20px; text-transform: uppercase; }
+    .hero h1 { font-size: 52px; margin: 0 0 20px 0; line-height: 1.2; font-weight: 700; }
+    .hero h1 span { color: #f05a00; }
+    .hero p { font-size: 18px; margin: 0 0 30px 0; color: #d0d0d0; max-width: 600px; line-height: 1.5; }
+    .hero-cta { display: flex; gap: 15px; justify-content: flex-start; }
+    .hero-cta .btn { display: inline-block; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 4px; font-size: 16px; }
+    .hero-cta .btn-primary { background-color: #f05a00; color: #fff; }
+    .hero-cta .btn-outline { background-color: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+</style>
 </head>
 <body>
 
