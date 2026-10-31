@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка на расчёт — TIRLogistica</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .rfq-container { max-width: 800px; margin: 40px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: sans-serif; }
+        .rfq-section { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .rfq-section h2 { color: #0A1F44; font-size: 1.2rem; margin-bottom: 15px; border-left: 4px solid #f05a00; padding-left: 10px; }
+        
+        .rfq-row { display: flex; gap: 15px; margin-bottom: 15px; }
+        .rfq-row > .rfq-group { flex: 1; }
+        @media (max-width: 600px) { .rfq-row { flex-direction: column; gap: 10px; } }
+        
+        .rfq-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; color: #333; }
+        .rfq-group input[type="text"], .rfq-group input[type="email"], .rfq-group input[type="tel"], .rfq-group input[type="number"], .rfq-group textarea, .rfq-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; box-sizing: border-box; background: #fff;}
+        
+        .rfq-checkboxes { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 5px; }
+        .rfq-checkboxes label { font-weight: normal; display: flex; align-items: center; gap: 5px; cursor: pointer; font-size: 0.9rem; margin-bottom: 0; }
+        
+        .btn-submit { background: #f05a00; color: #fff; border: none; padding: 15px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; transition: background 0.3s; margin-top: 20px; }
+        .btn-submit:hover { background: #d94f00; }
+        .form-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #555; margin-top: 20px; }
+        .form-consent input { margin-top: 3px; }
+        
+        .hidden-field { display: none; margin-top: 10px; padding: 15px; background: #f9f9f9; border-left: 3px solid #f05a00; border-radius: 4px; }
+        .rfq-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .rfq-header img { height: 50px; }
+        .rfq-footer-note { font-size: 0.9rem; color: #000; margin-top: 20px; line-height: 1.4; }
+        .rfq-footer-note span { color: #f05a00; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="rfq-container">
+        <div class="rfq-header">
+            <img src="images/logo.png" alt="TIRLogistica">
+            <h1 style="color: #0A1F44; margin: 0;">Заявка на расчёт</h1>
+        </div>
+        <p style="color: #666; margin-bottom: 30px;">Заполните форму, и мы подготовим для вас индивидуальный расчёт стоимости доставки.</p>
+
+        <form action="https://formsubmit.co/info@tirlogistica.ru" method="POST">
+            <input type="hidden" name="_subject" value="Новая заявка на расчёт с сайта TIRLogistica">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://tirlogistica.ru/thanks.html">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="rfq-section">
+                <h2>1. Контактные данные</h2>
+                <div class="rfq-row">
+                    <div class="rfq-group"><label>Компания</label><input type="text" name="company" placeholder="ООО «Ромашка»"></div>
+                    <div class="rfq-group"><label>Контактное лицо *</label><input type="text" name="name" required placeholder="Иван Петров"></div>
+                </div>
+                <div class="rfq-row">
+                    <div class="rfq-group"><label>Телефон / WhatsApp *</label><input type="tel" name="phone" required placeholder="+7 999 000-00-00"></div>
+                    <div class="rfq-group"><label>Email *</label><input type="email" name="email" required placeholder="you@company.ru"></div>
+                </div>
+            </div>
+
+            <div class="rfq-section">
+                <h2>2. Маршрут и режим перевозки</h2>
+                <div class="rfq-row">
+                    <div class="rfq-group"><label>Откуда (город, страна) *</label><input type="text" name="route_from" required placeholder="Москва, РФ"></div>
+                    <div class="rfq-group"><label>Куда (город, страна) *</label><input type="text" name="route_to" required placeholder="Шанхай, КНР"></div>
+                </div>
+                <div class="rfq-row">
+                    <div class="rfq-group"><label>Порт/терминал отправления (если известно)</label><input type="text" name="port_from" placeholder="СВХ, склад"></div>
+                    <div class="rfq-group"><label>Порт/терминал назначения (если известно)</label><input type="text" name="port_to" placeholder="Терминал, склад"></div>
+                </div>
+                
+                <div class="rfq-group" style="margin-top: 15px;">
+                    <label>Режим перевозки</label>
+                    <div class="rfq-checkboxes">
+                        <label><input type="checkbox" name="transport_mode" value="Авто"> Авто</label>
+                        <label><input type="checkbox" name="transport_mode" value="ЖД"> ЖД</label>
+                        <label><input type="checkbox" name="transport_mode" value="Море"> Море</label>
+                        <label><input type="checkbox" name="transport_mode" value="Авиа"> Авиа</label>
+                        <label><input type="checkbox" name="transport_mode" value="Мультимодально"> Мультимодально</label>
+                    </div>
+                </div>
+
+                <div class="rfq-row" style="margin-top: 15px;">
+                    <div class="rfq-group">
+                        <label>Частота отправок *</label>
+                        <select name="frequency" required>
+                            <option value="Разовая">Разовая</option>
+                            <option value="Регулярная">Регулярная (___ раз/мес)</option>
+                        </select>
+                    </div>
+                    <div class="rfq-group">
+                        <label>Условия Incoterms (если известны)</label>
+                        <div class="rfq-checkboxes" style="gap: 10px;">
+                            <label><input type="checkbox" name="incoterms" value="EXW"> EXW</label>
+                            <label><input type="checkbox" name="incoterms" value="FCA"> FCA</label>
+                            <label><input type="checkbox" name="incoterms" value="FAS"> FAS</label>
+                            <label><input type="checkbox" name="incoterms" value="FOB"> FOB</label>
+                            <label><input type="checkbox" name="incoterms" value="CFR"> CFR</label>
+                            <label><input type="checkbox" name="incoterms" value="CIF"> CIF</label>
+                            <label><input type="checkbox" name="incoterms" value="CPT"> CPT</label>
+                            <label><input type="checkbox" name="incoterms" value="CIP"> CIP</label>
+                            <label><input type="checkbox" name="incoterms" value="DAP"> DAP</label>
+                            <label><input type="checkbox" name="incoterms" value="DPU"> DPU</label>
+                            <label><input type="checkbox" name="incoterms" value="DDP"> DDP</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rfq-section">
+                <h2>3. Информация о грузе</h2>
+                <div class="rfq-group"><label>Описание груза (наименование, материал, назначение) *</label><textarea name="cargo_desc" rows="2" required placeholder="Например: пиломатериалы, оборудование..."></textarea></div>
+                
+                <div class="rfq-row" style="margin-top: 15px;">
+                    <div class="rfq-group"><label>Код ТН ВЭД (если известен)</label><input type="text" name="tnved" placeholder="4407 10"></div>
+                    <div class="rfq-group"><label>Габариты (ДхШхВ, см)</label><input type="text" name="dimensions" placeholder="120x80x100"></div>
+                </div>
+                <div class="rfq-row">
+                    <div class="rfq-group"><label>Вес (кг)</label><input type="text" name="cargo_weight" placeholder="20000"></div>
+                    <div class="rfq-group"><label>Объём (м³)</label><input type="text" name="cargo_volume" placeholder="40"></div>
+                </div>
+
+                <div class="rfq-group" style="margin-top: 15px;">
+                    <label>Тип упаковки</label>
+                    <div class="rfq-checkboxes">
+                        <label><input type="checkbox" name="packaging" value="Коробки"> Коробки</label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" id="palletsCheck" onclick="document.getElementById('palletsBlock').style.display = this.checked ? 'block' : 'none';"> 
+                            Паллеты
+                        </label>
+                        <label><input type="checkbox" name="packaging" value="Ящики"> Ящики</label>
+                        <label><input type="checkbox" name="packaging" value="Рулоны"> Рулоны</label>
+                        <label><input type="checkbox" name="packaging" value="Навалом"> Навалом</label>
+                    </div>
+                    <div id="palletsBlock" class="hidden-field" style="border-left-color: #0A1F44;">
+                        <label>Количество паллет (если известно)</label>
+                        <input type="number" name="pallets_count" placeholder="Например: 33" style="margin-top: 5px;">
+                    </div>
+                </div>
+                
+                <div class="rfq-group" style="margin-top: 15px;">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold;">
+                        <input type="checkbox" id="dangerousCheck" onclick="document.getElementById('dangerousBlock').style.display = this.checked ? 'block' : 'none';"> 
+                        Опасный груз
+                    </label>
+                    <div id="dangerousBlock" class="hidden-field">
+                        <label>Класс опасности ADR/IMDG (если известен)</label>
+                        <input type="text" name="dangerous_class" placeholder="Например: 3, 8" style="margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div class="rfq-group" style="margin-top: 15px;">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold;">
+                        <input type="checkbox" id="tempCheck" onclick="document.getElementById('tempBlock').style.display = this.checked ? 'block' : 'none';"> 
+                        Температурный режим
+                    </label>
+                    <div id="tempBlock" class="hidden-field">
+                        <label>Выберите режим</label>
+                        <select name="temperature_mode" style="margin-top: 5px;">
+                            <option value="Плюсовой">Плюсовой (+...°C)</option>
+                            <option value="Холод">Холод (0...-18°C)</option>
+                            <option value="Мороз">Мороз (-18°C и ниже)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rfq-section" style="border-bottom: none;">
+                <h2>4. Дополнительные услуги и документы</h2>
+                <div class="rfq-group">
+                    <label>Отметьте необходимые услуги</label>
+                    <div class="rfq-checkboxes">
+                        <label><input type="checkbox" name="services" value="Только фрахт"> Только фрахт</label>
+                        <label><input type="checkbox" name="services" value="Под ключ (door-to-door)"> Под ключ</label>
+                        <label><input type="checkbox" name="services" value="Таможенное оформление"> Таможенное оформление</label>
+                        <label><input type="checkbox" name="services" value="Страхование"> Страхование</label>
+                        <label><input type="checkbox" name="services" value="Склад / консолидация"> Склад / консолидация</label>
+                        <label><input type="checkbox" name="services" value="Сертификация"> Сертификация</label>
+                        <label><input type="checkbox" name="services" value="Маркировка / переупаковка"> Маркировка</label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="checkbox" id="otherServiceCheck" onclick="document.getElementById('otherServiceBlock').style.display = this.checked ? 'block' : 'none';"> 
+                            Другое
+                        </label>
+                    </div>
+                    <div id="otherServiceBlock" class="hidden-field" style="border-left-color: #0A1F44;">
+                        <label>Опишите услугу</label>
+                        <input type="text" name="other_service_desc" placeholder="Например: упаковка в стрейч-плёнку" style="margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div class="rfq-row" style="margin-top: 15px;">
+                    <div class="rfq-group">
+                        <label>Валюта расчётов</label>
+                        <select name="currency">
+                            <option value="RUB">RUB (₽)</option>
+                            <option value="CNY">CNY (¥)</option>
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                        </select>
+                    </div>
+                    <div class="rfq-group">
+                        <label>Какие документы у вас есть?</label>
+                        <div class="rfq-checkboxes" style="margin-top: 0;">
+                            <label><input type="checkbox" name="docs" value="Инвойс"> Инвойс</label>
+                            <label><input type="checkbox" name="docs" value="Packing list"> Packing list</label>
+                            <label><input type="checkbox" name="docs" value="Контракт"> Контракт</label>
+                            <label><input type="checkbox" name="docs" value="MSDS"> MSDS</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="rfq-group" style="margin-top: 15px;">
+                    <label>Особые требования</label>
+                    <textarea name="comments" rows="3" placeholder="Окна доставки, запрет перегруза, фото груза и т.п."></textarea>
+                </div>
+
+                <!-- Новый текст-примечание -->
+                <div class="rfq-footer-note">
+                    Заполните поля максимально полно — это ускоряет расчёт и выставление КП без дополнительных уточнений. При отсутствии данных отметьте «нет» / «неизвестно» или оставьте поле пустым. Направления: <span>РФ–Китай (приоритет)</span>.
+                </div>
+            </div>
+
+            <div class="form-consent">
+                <input type="checkbox" id="formConsent" required>
+                <label for="formConsent">Я согласен на обработку персональных данных и ознакомлен с <a href="/privacy.html">Политикой конфиденциальности</a></label>
+            </div>
+
+            <button type="submit" class="btn-submit">Отправить заявку на расчёт</button>
+        </form>
+    </div>
+</body>
+</html>
