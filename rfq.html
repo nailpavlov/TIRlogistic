@@ -7,52 +7,76 @@
     <link rel="stylesheet" href="/css/style.css">
     <style>
         .rfq-container { max-width: 800px; margin: 40px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: sans-serif; position: relative; }
-        .rfq-section { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .rfq-section h2 { color: #0A1F44; font-size: 1.2rem; margin-bottom: 15px; border-left: 4px solid #f05a00; padding-left: 10px; }
         
-        .rfq-row { display: flex; gap: 15px; margin-bottom: 15px; }
+        .rfq-section { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .rfq-section h2 { color: #0A1F44; font-size: 1.15rem; margin-bottom: 12px; border-left: 4px solid #f05a00; padding-left: 10px; }
+        
+        .rfq-row { display: flex; gap: 15px; margin-bottom: 12px; }
         .rfq-row > .rfq-group { flex: 1; }
         @media (max-width: 600px) { .rfq-row { flex-direction: column; gap: 10px; } }
         
-        .rfq-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; color: #333; }
-        .rfq-group input[type="text"], .rfq-group input[type="email"], .rfq-group input[type="tel"], .rfq-group input[type="number"], .rfq-group textarea, .rfq-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; box-sizing: border-box; background: #fff;}
+        .rfq-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; color: #333; }
+        .rfq-group input[type="text"], .rfq-group input[type="email"], .rfq-group input[type="tel"], .rfq-group input[type="number"], .rfq-group textarea, .rfq-group select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; box-sizing: border-box; background: #fff;}
         
-        .rfq-checkboxes { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 5px; }
-        .rfq-checkboxes label { font-weight: normal; display: flex; align-items: center; gap: 5px; cursor: pointer; font-size: 0.9rem; margin-bottom: 0; }
+        .rfq-checkboxes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+        .rfq-checkboxes label { font-weight: normal; display: flex; align-items: center; gap: 5px; cursor: pointer; font-size: 0.85rem; margin-bottom: 0; }
         
-        .btn-submit { background: #f05a00; color: #fff; border: none; padding: 15px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; transition: background 0.3s; margin-top: 20px; }
+        .btn-submit { background: #f05a00; color: #fff; border: none; padding: 15px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; transition: background 0.3s; margin-top: 10px; }
         .btn-submit:hover { background: #d94f00; }
-        .form-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #555; margin-top: 20px; }
+        .form-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #555; margin-top: 15px; }
         .form-consent input { margin-top: 3px; }
         
-        .hidden-field { display: none; margin-top: 10px; padding: 15px; background: #f9f9f9; border-left: 3px solid #f05a00; border-radius: 4px; }
+        .hidden-field { display: none; margin-top: 8px; padding: 12px; background: #f9f9f9; border-left: 3px solid #f05a00; border-radius: 4px; }
         
-        /* Шапка */
-        .rfq-header-wrapper { margin-bottom: 30px; display: flex; flex-direction: column; }
+        .rfq-header-wrapper { margin-bottom: 20px; display: flex; flex-direction: column; }
         .rfq-logo { margin-bottom: 15px; align-self: flex-start; }
         .rfq-logo img { height: 50px; }
         .rfq-header-text { text-align: center; width: 100%; }
-        .rfq-header-text h1 { color: #0A1F44; margin: 0 0 5px 0; font-size: 1.8rem; }
-        .rfq-header-text p { color: #444; margin: 0; line-height: 1.2; font-size: 0.95rem; }
+        .rfq-header-text h1 { color: #0A1F44; margin: 0 0 5px 0; font-size: 1.7rem; }
+        .rfq-header-text p { color: #444; margin: 0; line-height: 1.2; font-size: 0.9rem; }
         
-        /* Примечание внизу */
         .rfq-footer-note { 
             font-size: 0.8rem; 
-            color: #666; 
-            margin: 20px auto 0 auto; 
+            color: #999; 
+            margin: 15px auto 0 auto; 
             width: 100%; 
             display: block; 
             text-align: justify; 
-            line-height: 1.5;
+            line-height: 1.4;
         }
         .rfq-footer-note span { color: #f05a00; font-weight: bold; }
+
+        /* Стрелка назад - бледно-серая, слева */
+        .back-link-wrap {
+            margin-top: 20px;
+            text-align: left; 
+            width: 100%; 
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #999; /* Бледно-серый цвет */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #666;
+        }
+        /* Иконка стрелки (текстовая) */
+        .back-link span.arrow {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
     </style>
 </head>
 <body>
     <div class="rfq-container">
         <div class="rfq-header-wrapper">
             <div class="rfq-logo">
-                <img src="images/logo.svg" alt="TIRLogistica">
+                <a href="/"><img src="images/logo.png" alt="TIRLogistica"></a>
             </div>
             <div class="rfq-header-text">
                 <h1>Заявка на расчёт</h1>
@@ -89,7 +113,7 @@
                     <div class="rfq-group"><label>Порт/терминал назначения (если известно)</label><input type="text" name="port_to" placeholder="Терминал, склад"></div>
                 </div>
                 
-                <div class="rfq-group" style="margin-top: 15px;">
+                <div class="rfq-group" style="margin-top: 10px;">
                     <label>Режим перевозки</label>
                     <div class="rfq-checkboxes">
                         <label><input type="checkbox" name="transport_mode" value="Авто"> Авто</label>
@@ -100,13 +124,16 @@
                     </div>
                 </div>
 
-                <div class="rfq-row" style="margin-top: 15px;">
+                <div class="rfq-row" style="margin-top: 10px;">
                     <div class="rfq-group">
                         <label>Частота отправок *</label>
-                        <select name="frequency" required>
+                        <select name="frequency_type" id="freqType" required onchange="document.getElementById('freqNumBlock').style.display = this.value === 'Регулярная' ? 'block' : 'none';">
                             <option value="Разовая">Разовая</option>
-                            <option value="Регулярная">Регулярная (___ раз/мес)</option>
+                            <option value="Регулярная">Регулярная</option>
                         </select>
+                        <div id="freqNumBlock" class="hidden-field" style="border-left-color: #0A1F44; margin-top: 5px;">
+                            <input type="number" name="frequency_count" placeholder="Кол-во раз/мес" min="1">
+                        </div>
                     </div>
                     <div class="rfq-group">
                         <label>Условия Incoterms (если известны)</label>
@@ -131,7 +158,7 @@
                 <h2>3. Информация о грузе</h2>
                 <div class="rfq-group"><label>Описание груза (наименование, материал, назначение) *</label><textarea name="cargo_desc" rows="2" required placeholder="Например: пиломатериалы, оборудование..."></textarea></div>
                 
-                <div class="rfq-row" style="margin-top: 15px;">
+                <div class="rfq-row" style="margin-top: 10px;">
                     <div class="rfq-group"><label>Код ТН ВЭД (если известен)</label><input type="text" name="tnved" placeholder="4407 10"></div>
                     <div class="rfq-group"><label>Габариты (ДхШхВ, см)</label><input type="text" name="dimensions" placeholder="120x80x100"></div>
                 </div>
@@ -140,7 +167,7 @@
                     <div class="rfq-group"><label>Объём (м³)</label><input type="text" name="cargo_volume" placeholder="40"></div>
                 </div>
 
-                <div class="rfq-group" style="margin-top: 15px;">
+                <div class="rfq-group" style="margin-top: 10px;">
                     <label>Тип упаковки</label>
                     <div class="rfq-checkboxes">
                         <label><input type="checkbox" name="packaging" value="Коробки"> Коробки</label>
@@ -158,7 +185,7 @@
                     </div>
                 </div>
                 
-                <div class="rfq-group" style="margin-top: 15px;">
+                <div class="rfq-group" style="margin-top: 10px;">
                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold;">
                         <input type="checkbox" id="dangerousCheck" onclick="document.getElementById('dangerousBlock').style.display = this.checked ? 'block' : 'none';"> 
                         Опасный груз
@@ -169,7 +196,7 @@
                     </div>
                 </div>
 
-                <div class="rfq-group" style="margin-top: 15px;">
+                <div class="rfq-group" style="margin-top: 10px;">
                     <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: bold;">
                         <input type="checkbox" id="tempCheck" onclick="document.getElementById('tempBlock').style.display = this.checked ? 'block' : 'none';"> 
                         Температурный режим
@@ -185,7 +212,7 @@
                 </div>
             </div>
 
-            <div class="rfq-section" style="border-bottom: none;">
+            <div class="rfq-section" style="border-bottom: none; margin-bottom: 0;">
                 <h2>4. Дополнительные услуги и документы</h2>
                 <div class="rfq-group">
                     <label>Отметьте необходимые услуги</label>
@@ -208,7 +235,7 @@
                     </div>
                 </div>
 
-                <div class="rfq-row" style="margin-top: 15px;">
+                <div class="rfq-row" style="margin-top: 10px;">
                     <div class="rfq-group">
                         <label>Валюта расчётов</label>
                         <select name="currency">
@@ -229,9 +256,9 @@
                     </div>
                 </div>
                 
-                <div class="rfq-group" style="margin-top: 15px;">
+                <div class="rfq-group" style="margin-top: 10px;">
                     <label>Особые требования</label>
-                    <textarea name="comments" rows="3" placeholder="Окна доставки, запрет перегруза, фото груза и т.п."></textarea>
+                    <textarea name="comments" rows="2" placeholder="Окна доставки, запрет перегруза, фото груза и т.п."></textarea>
                 </div>
 
                 <div class="rfq-footer-note">
@@ -246,6 +273,13 @@
 
             <button type="submit" class="btn-submit">Отправить заявку на расчёт</button>
         </form>
+
+        <!-- Стрелка "На главную" (бледно-серая, слева) -->
+        <div class="back-link-wrap">
+            <a href="/" class="back-link">
+                <span class="arrow">←</span> На главную
+            </a>
+        </div>
     </div>
 </body>
 </html>
