@@ -6,7 +6,7 @@
     <title>Заявка на расчёт — TIRLogistica</title>
     <link rel="stylesheet" href="/css/style.css">
     <style>
-        .rfq-container { max-width: 800px; margin: 40px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: sans-serif; }
+        .rfq-container { max-width: 800px; margin: 40px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-family: sans-serif; position: relative; }
         .rfq-section { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         .rfq-section h2 { color: #0A1F44; font-size: 1.2rem; margin-bottom: 15px; border-left: 4px solid #f05a00; padding-left: 10px; }
         
@@ -26,19 +26,39 @@
         .form-consent input { margin-top: 3px; }
         
         .hidden-field { display: none; margin-top: 10px; padding: 15px; background: #f9f9f9; border-left: 3px solid #f05a00; border-radius: 4px; }
-        .rfq-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
-        .rfq-header img { height: 50px; }
-        .rfq-footer-note { font-size: 0.9rem; color: #000; margin-top: 20px; line-height: 1.4; }
+        
+        /* Шапка */
+        .rfq-header-wrapper { margin-bottom: 30px; display: flex; flex-direction: column; }
+        .rfq-logo { margin-bottom: 15px; align-self: flex-start; }
+        .rfq-logo img { height: 50px; }
+        .rfq-header-text { text-align: center; width: 100%; }
+        .rfq-header-text h1 { color: #0A1F44; margin: 0 0 5px 0; font-size: 1.8rem; }
+        .rfq-header-text p { color: #444; margin: 0; line-height: 1.2; font-size: 0.95rem; }
+        
+        /* Примечание внизу */
+        .rfq-footer-note { 
+            font-size: 0.8rem; 
+            color: #666; 
+            margin: 20px auto 0 auto; 
+            width: 100%; 
+            display: block; 
+            text-align: justify; 
+            line-height: 1.5;
+        }
         .rfq-footer-note span { color: #f05a00; font-weight: bold; }
     </style>
 </head>
 <body>
     <div class="rfq-container">
-        <div class="rfq-header">
-            <img src="images/logo.png" alt="TIRLogistica">
-            <h1 style="color: #0A1F44; margin: 0;">Заявка на расчёт</h1>
+        <div class="rfq-header-wrapper">
+            <div class="rfq-logo">
+                <img src="images/logo.svg" alt="TIRLogistica">
+            </div>
+            <div class="rfq-header-text">
+                <h1>Заявка на расчёт</h1>
+                <p>Заполните форму, и мы подготовим для вас индивидуальный расчёт стоимости доставки.</p>
+            </div>
         </div>
-        <p style="color: #666; margin-bottom: 30px;">Заполните форму, и мы подготовим для вас индивидуальный расчёт стоимости доставки.</p>
 
         <form action="https://formsubmit.co/info@tirlogistica.ru" method="POST">
             <input type="hidden" name="_subject" value="Новая заявка на расчёт с сайта TIRLogistica">
@@ -194,7 +214,7 @@
                         <select name="currency">
                             <option value="RUB">RUB (₽)</option>
                             <option value="CNY">CNY (¥)</option>
-                            <option value="USD">USD ($)</option>
+                            <option value="USD">USD (\$)</option>
                             <option value="EUR">EUR (€)</option>
                         </select>
                     </div>
@@ -214,9 +234,8 @@
                     <textarea name="comments" rows="3" placeholder="Окна доставки, запрет перегруза, фото груза и т.п."></textarea>
                 </div>
 
-                <!-- Новый текст-примечание -->
                 <div class="rfq-footer-note">
-                    Заполните поля максимально полно — это ускоряет расчёт и выставление КП без дополнительных уточнений. При отсутствии данных отметьте «нет» / «неизвестно» или оставьте поле пустым. Направления: <span>РФ–Китай (приоритет)</span>.
+                    Заполните поля максимально полно — это ускоряет расчёт и выставление КП без дополнительных уточнений. При отсутствии данных отметьте нет / неизвестно / оставьте пустым. Направления: <span>РФ–Китай (приоритет)</span>, Китай–РФ, СНГ–Китай, Китай–СНГ.
                 </div>
             </div>
 
