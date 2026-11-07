@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIR CRM — Личный кабинет</title>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+<style>
+  :root { --blue: #0A1F44; --orange: #f05a00; --bg: #f1f5f9; --border: #e2e8f0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #1e293b; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+  
+  .sidebar { width: 240px; background: var(--blue); color: #fff; display: flex; flex-direction: column; flex-shrink: 0; }
+  .sidebar h2 { padding: 20px; margin: 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--orange); }
+  .nav-item { padding: 15px 20px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); border-left: 4px solid var(--orange); }
+  .user-profile { margin-top: auto; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 32px; height: 32px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+  .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .header { background: #fff; padding: 15px 30px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { margin: 0; font-size: 20px; color: var(--blue); }
+  .btn { background: var(--orange); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+  .btn-refresh { background: var(--blue); margin-right: 10px; }
+  
+  .workspace { flex: 1; padding: 20px; overflow-y: auto; display: none; }
+  .workspace.active { display: block; }
+
+  .board { display: flex; gap: 15px; align-items: flex-start; overflow-x: auto; height: 100%; padding-bottom: 20px; }
+  .column { background: #e2e8f0; border-radius: 8px; min-width: 280px; max-width: 280px; padding: 15px; display: flex; flex-direction: column; }
+  .column-header { font-weight: bold; color: var(--blue); margin-bottom: 15px; display: flex; justify-content: space-between; font-size: 14px; }
+  .count { background: #cbd5e1; padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+  
+  .card-list { min-height: 150px; display: flex; flex-direction: column; gap: 10px; }
+  .card { background: #fff; padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); cursor: grab; border-left: 4px solid var(--orange); }
+  .card:active { cursor: grabbing; }
+  .card-title { font-weight: bold; color: var(--blue); font-size: 14px; margin-bottom: 5px; }
+  .card-company { font-size: 12px; color: #64748b; margin-bottom: 5px; }
+  .card-tag { display: inline-block; background: #fff7ed; color: var(--orange); padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-top: 5px; margin-right: 5px;}
+  .card-substatus { font-size: 11px; background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 5px; }
+  .sortable-ghost { opacity: 0.4; background: #fff7ed; }
+
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; background: #fff; padding: 20px; border-radius: 8px; }
+  .cal-header { font-weight: bold; text-align: center; color: var(--blue); padding-bottom: 10px; border-bottom: 2px solid var(--border); }
+  .cal-day { border: 1px solid var(--border); border-radius: 6px; min-height: 80px; padding: 5px; font-size: 12px; background: #f8fafc;}
+  .cal-date { font-weight: bold; color: #64748b; margin-bottom: 5px; display: block; }
+  .cal-event { background: #e0f2fe; color: #0369a1; padding: 3px 5px; border-radius: 4px; font-size: 11px; margin-bottom: 3px; border-left: 2px solid #0369a1; }
+
+  .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,31,68,0.8); z-index: 1000; justify-content: center; align-items: center; }
+  .modal.active { display: flex; }
+  .modal-content { background: #fff; width: 800px; max-width: 90%; max-height: 90vh; border-radius: 10px; overflow-y: auto; display: flex; flex-direction: column; }
+  .modal-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: #f8fafc; }
+  .modal-header h2 { margin: 0; font-size: 18px; color: var(--blue); }
+  .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #64748b; }
+  .modal-body { padding: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+  
+  .info-block { margin-bottom: 15px; }
+  .info-block p { margin: 5px 0; font-size: 14px; }
+  .info-block strong { color: var(--blue); }
+  .sidebar-right { background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; font-size: 12px; font-weight: bold; color: var(--blue); margin-bottom: 5px; }
+  .form-group input, .form-group select { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 4px; box-sizing: border-box; }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>TIR CRM</h2>
+  <div class="nav-item active" onclick="switchTab('kanban', this)">📋 Доска лидов</div>
+  <div class="nav-item" onclick="switchTab('calendar', this)">📅 Календарь</div>
+  <div class="nav-item">📈 Аналитика</div>
+  <div class="user-profile">
+    <div class="avatar">Н</div>
+    <div>
+      <div style="font-weight:bold;">Наиль</div>
+      <div style="font-size:11px; color:#94a3b8;">Администратор</div>
+    </div>
+  </div>
+</div>
+
+<div class="main-content">
+  <div class="header">
+    <h1 id="page-title">Доска лидов</h1>
+    <div>
+      <button class="btn btn-refresh" onclick="loadData()">🔄 Обновить</button>
+      <button class="btn">+ Новый лид</button>
+    </div>
+  </div>
+
+  <div id="kanban" class="workspace active">
+    <div class="board" id="board"></div>
+  </div>
+
+  <div id="calendar" class="workspace">
+    <div class="calendar-grid" id="calendar-grid">
+      <div class="cal-header">Пн</div><div class="cal-header">Вт</div><div class="cal-header">Ср</div><div class="cal-header">Чт</div><div class="cal-header">Пт</div><div class="cal-header">Сб</div><div class="cal-header">Вс</div>
+    </div>
+  </div>
+</div>
+
+<div id="leadModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modal-title">Компания</h2>
+      <button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="info-block">
+          <p><strong>Маршрут:</strong> <span id="m-route"></span></p>
+          <p><strong>Груз:</strong> <span id="m-cargo"></span></p>
+          <p><strong>Сумма:</strong> <span id="m-sum"></span></p>
+          <p><strong>Маржа:</strong> <span id="m-margin"></span></p>
+        </div>
+        <div class="info-block" style="background: #e0f2fe; padding: 10px; border-radius: 6px;">
+          <h3 style="font-size:14px; color:var(--blue); margin-top:0;">Данные перевозки</h3>
+          <p><strong>Машина:</strong> <span id="m-truck"></span></p>
+          <p><strong>Прицеп:</strong> <span id="m-trailer"></span></p>
+          <p><strong>Водитель:</strong> <span id="m-driver"></span> (<span id="m-driverphone"></span>)</p>
+        </div>
+      </div>
+      <div class="sidebar-right">
+        <h3 style="font-size:14px; color:var(--blue); margin-top:0;">Действия</h3>
+        <div class="form-group">
+          <label>Статус</label>
+          <input type="text" id="m-status" readonly style="background: #e2e8f0;">
+        </div>
+        <div class="form-group">
+          <label>Подстатус</label>
+          <select id="m-substatus">
+            <option value="">Нет</option>
+            <option value="Едет по маршруту">Едет по маршруту</option>
+            <option value="На границе">На границе</option>
+            <option value="На таможне">На таможне</option>
+            <option value="Досмотр">Досмотр</option>
+            <option value="Поломка">Поломка</option>
+            <option value="Перегруз">Перегруз</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API_URL = "https://script.google.com/macros/s/AKfycbz3iv4EPl7bn92bx9nrdxcvICht7dFaCC-CvjY-8Uk0g5kE09B3K0A0XdRBp2emYAlyPg/exec";
+  let allDeals = [];
+  
+  const COLUMNS = ["Новый лид", "В работе", "КП отправлено", "Мяч не на нашей стороне", "Сделка", "Погрузка", "Машина в пути", "Отказ", "Успешно закрыто"];
+
+  async function loadData() {
+    try {
+      const response = await fetch(${API_URL}?action=getDeals);
+      const result = await response.json();
+      if (result.success) {
+        allDeals = result.data;
+        renderBoard();
+      } else {
+        console.error("API Error:", result.error);
+      }
+    } catch (e) { console.error("Ошибка загрузки:", e); }
+  }
+
+  function renderBoard() {
+    const board = document.getElementById('board');
+    board.innerHTML = '';
+
+    COLUMNS.forEach(colName => {
+      const colDeals = allDeals.filter(d => (d.Status || 'Новый лид') === colName);
+      const colDiv = document.createElement('div');
+      colDiv.className = 'column';
+      colDiv.innerHTML = <div class="column-header"> <span class="count"></span></div><div class="card-list" id="col-"></div>;
+      board.appendChild(colDiv);
+
+      const cardList = colDiv.querySelector('.card-list');
+      colDeals.forEach(deal => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        let substatusHtml = deal.SubStatus ? <span class="card-substatus"></span> : '';
+        card.innerHTML = 
+          <div class="card-title"></div>
+          <div class="card-company"></div>
+          <span class="card-tag"></span>
+          
+        ;
+        card.onclick = () => openModal(deal);
+        cardList.appendChild(card);
+      });
+
+      new Sortable(cardList, {
+        group: 'shared', animation: 150, ghostClass: 'sortable-ghost',
+        onEnd: function (evt) {
+          const dealId = allDeals.find(d => d.Company === evt.item.querySelector('.card-title').innerText).ID;
+          const newStatus = evt.to.id.replace('col-', '').replace(/-/g, ' ');
+          updateStatus(dealId, newStatus);
+        }
+      });
+    });
+  }
+
+  async function updateStatus(id, newStatus) {
+    try {
+      await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'updateStatus', id: id, status: newStatus }) });
+      loadData();
+    } catch (e) { console.error(e); }
+  }
+
+  function openModal(deal) {
+    document.getElementById('modal-title').innerText = deal.Company || '—';
+    document.getElementById('m-route').innerText = deal.Route || '—';
+    document.getElementById('m-cargo').innerText = deal.Cargo || '—';
+    document.getElementById('m-sum').innerText = deal.Sum ? deal.Sum + ' ₽' : '—';
+    document.getElementById('m-margin').innerText = deal.Margin ? deal.Margin + ' ₽' : '—';
+    document.getElementById('m-truck').innerText = deal.Truck || '—';
+    document.getElementById('m-trailer').innerText = deal.Trailer || '—';
+    document.getElementById('m-driver').innerText = deal.Driver || '—';
+    document.getElementById('m-driverphone').innerText = deal.DriverPhone || '—';
+    document.getElementById('m-status').value = deal.Status || '—';
+    document.getElementById('m-substatus').value = deal.SubStatus || '';
+    document.getElementById('leadModal').classList.add('active');
+  }
+
+  function closeModal() { document.getElementById('leadModal').classList.remove('active'); }
+
+  function switchTab(tabId, el) {
+    document.querySelectorAll('.workspace').forEach(w => w.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    el.classList.add('active');
+    
+    if (tabId === 'calendar') {
+      renderCalendar();
+    }
+  }
+
+  function renderCalendar() {
+    const grid = document.getElementById('calendar-grid');
+    while (grid.children.length > 7) { grid.removeChild(grid.lastChild); }
+    for (let i = 1; i <= 30; i++) {
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'cal-day';
+      dayDiv.innerHTML = <span class="cal-date">1 Ноя</span>;
+      grid.appendChild(dayDiv);
+    }
+  }
+
+  window.onload = () => {
+    loadData();
+    setInterval(loadData, 30000); 
+  };
+</script>
+</body>
+</html>
