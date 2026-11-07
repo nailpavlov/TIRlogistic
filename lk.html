@@ -150,7 +150,7 @@
 
   async function loadData() {
     try {
-      const response = await fetch(${API_URL}?action=getDeals);
+      const response = await fetch(API_URL + "?action=getDeals");
       const result = await response.json();
       if (result.success) {
         allDeals = result.data;
@@ -168,7 +168,7 @@
       const colDeals = allDeals.filter(d => (d["Статус (Колонка)"] || 'Новый лид') === colName);
       const colDiv = document.createElement('div');
       colDiv.className = 'column';
-      colDiv.innerHTML = <div class="column-header"> <span class="count"></span></div><div class="card-list" id="col-"></div>;
+      colDiv.innerHTML = '<div class="column-header">' + colName + ' <span class="count">' + colDeals.length + '</span></div><div class="card-list" id="col-' + colName.replace(/\s+/g, '-') + '"></div>';
       board.appendChild(colDiv);
 
       const cardList = colDiv.querySelector('.card-list');
@@ -177,15 +177,15 @@
         card.className = 'card';
         
         // ИСПОЛЬЗУЕМ ПРАВИЛЬНЫЕ НАЗВАНИЯ КОЛОНОК ИЗ ТАБЛИЦЫ
-        let substatus = deal["Подстатус (В пути/Погрузка)"] ? <span class="card-substatus"></span> : '';
+        let substatus = deal["Подстатус (В пути/Погрузка)"] ? '<span class="card-substatus">' + deal["Подстатус (В пути/Погрузка)"] + '</span>' : '';
         let sum = deal["Сумма клиента"] ? deal["Сумма клиента"] + ' ₽' : 'Без суммы';
         
-        card.innerHTML = 
-          <div class="card-title"></div>
-          <div class="card-company"></div>
-          <span class="card-tag"></span>
-          
-        ;
+        card.innerHTML = '<div class="card-title">' + (deal["Название (Клиент)"] || 'Без названия') + '</div>' +
+                         '<div class="card-company">' + (deal["Маршрут"] || '') + '</div>' +
+                         '<span class="card-tag">' + sum + '</span>' +
+                         substatus;
+
+
         card.onclick = () => openModal(deal);
         cardList.appendChild(card);
       });
@@ -242,7 +242,7 @@
     for (let i = 1; i <= 30; i++) {
       const dayDiv = document.createElement('div');
       dayDiv.className = 'cal-day';
-      dayDiv.innerHTML = <span class="cal-date">1 Ноя</span>;
+      dayDiv.innerHTML = '<span class="cal-date">' + i + ' Ноя</span>';
       grid.appendChild(dayDiv);
     }
   }
