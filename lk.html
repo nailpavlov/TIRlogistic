@@ -143,7 +143,7 @@
 </div>
 
 <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbz3iv4EPl7bn92bx9nrdxcvICht7dFaCC-CvjY-8Uk0g5kE09B3K0A0XdRBp2emYAlyPg/exec";
+  const API_URL = "https://script.google.com/macros/s/AKfycbzEIbeBzdZR26zzDDwJfKDDth8Lg8HNjs-jGImSJIegzRVb4TDYjBc2mzuE98YBs-JHiA/exec";
   let allDeals = [];
   
   const COLUMNS = ["Новый лид", "В работе", "КП отправлено", "Мяч не на нашей стороне", "Сделка", "Погрузка", "Машина в пути", "Отказ", "Успешно закрыто"];
@@ -203,7 +203,7 @@
 
   async function updateStatus(id, newStatus) {
     try {
-      await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'updateStatus', id: id, status: newStatus }) });
+      await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'updateStatus', id: id, status: newStatus }) });
       loadData();
     } catch (e) { console.error(e); }
   }
@@ -254,3 +254,4 @@
 </script>
 </body>
 </html>
+
