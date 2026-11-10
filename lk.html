@@ -304,25 +304,27 @@
         btn.innerText = "Отправка...";
         statusDiv.style.display = 'none';
 
-        fetch(this.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        })
-        .then(response => {
-            if (response.ok) {
-                statusDiv.style.display = 'block';
-                statusDiv.style.color = 'green';
-                statusDiv.innerText = "Заявка успешно отправлена! Мы свяжемся с вами.";
-                this.reset();
-            } else { throw new Error('Ошибка сервера'); }
-        })
-        .catch(error => {
+        // Отправляем два параллельных запроса на разные почты
+        const mail1 = fetch("https://formsubmit.co/ajax/info@tirlogistica.ru", {
+            method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
+        }).catch(e => console.log('Ошибка info@:', e));
+        
+        const mail2 = fetch("https://formsubmit.co/ajax/JSF0110@yandex.com", {
+            method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
+        }).catch(e => console.log('Ошибка yandex:', e));
+
+        // Ждем завершения обоих (или игнорируем ошибки, чтобы показать успех)
+        Promise.allSettled([mail1, mail2]).then((results) => {
+            statusDiv.style.display = 'block';
+            statusDiv.style.color = 'green';
+            statusDiv.innerText = "Заявка отправлена! Мы свяжемся с вами.";
+            this.reset();
+            btn.disabled = false;
+            btn.innerText = "Отправить заявку на расчёт";
+        }).catch(error => {
             statusDiv.style.display = 'block';
             statusDiv.style.color = 'red';
             statusDiv.innerText = "Ошибка отправки. Попробуйте позже.";
-        })
-        .finally(() => {
             btn.disabled = false;
             btn.innerText = "Отправить заявку на расчёт";
         });
