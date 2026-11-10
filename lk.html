@@ -43,9 +43,10 @@
     <div class="login-box">
         <h2>TIR Logistics</h2>
         <p style="color:#666; font-size: 14px;">Вход в личный кабинет</p>
-        <input type="password" id="password-input" placeholder="Введите пароль">
+        <input type="text" id="login-input" placeholder="Логин" style="margin-bottom: 10px;">
+        <input type="password" id="password-input" placeholder="Пароль">
         <button onclick="checkPassword()">Войти</button>
-        <p id="login-error" style="color: red; font-size: 14px; display: none;">Неверный пароль</p>
+        <p id="login-error" style="color: red; font-size: 14px; display: none; margin-top: 10px;">Неверный логин или пароль</p>
     </div>
 </div>
 
@@ -221,16 +222,64 @@
 <script>
     document.addEventListener('contextmenu', event => event.preventDefault());
     
-    const CORRECT_PASS = "admin123";
+    // Адрес твоего Google Apps Script (Web App)
+    const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzhAucpBxOuJgwVOrgjAtT04pYdxJPqnnv0ArFmFzsSsM0OQzv96G5BNzNOG2pRuVFbGw/exec";
 
-    function checkPassword() {
+    // Функция для генерации SHA-256 в браузере (совпадает с тем, что делали в PowerShell)
+    async function sha256(message) {
+        const msgBuffer = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function checkPassword() {
+        const login = document.getElementById('login-input').value;
         const pass = document.getElementById('password-input').value;
-        if (pass === CORRECT_PASS) {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('lk-screen').style.display = 'block';
-            sessionStorage.setItem('tir_logged_in', 'true');
-        } else {
-            document.getElementById('login-error').style.display = 'block';
+        const errorMsg = document.getElementById('login-error');
+        const btn = document.querySelector('.login-box button');
+        
+        if (!login || !pass) {
+            errorMsg.innerText = "Введите логин и пароль";
+            errorMsg.style.display = 'block';
+            return;
+        }
+
+        btn.innerText = "Проверка...";
+        btn.disabled = true;
+        errorMsg.style.display = 'none';
+
+        try {
+             const passHash = pass; // Отправляем чистый пароль 
+
+            // Отправляем запрос в Google Apps Script
+            const response = await fetch(GAS_API_URL, {
+                method: 'POST',
+                body: JSON.stringify({
+                    action: "checkAuth",
+                    login: login,
+                    passwordHash: passHash
+                }),
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' } // GAS требует text/plain для CORS
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('lk-screen').style.display = 'block';
+                sessionStorage.setItem('tir_user', JSON.stringify(result.user));
+            } else {
+                errorMsg.innerText = result.message || "Неверный логин или пароль";
+                errorMsg.style.display = 'block';
+            }
+        } catch (error) {
+            errorMsg.innerText = "Ошибка соединения с сервером";
+            errorMsg.style.display = 'block';
+            console.error(error);
+        } finally {
+            btn.innerText = "Войти";
+            btn.disabled = false;
         }
     }
 
