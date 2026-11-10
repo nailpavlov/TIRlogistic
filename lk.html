@@ -36,6 +36,15 @@
         .form-consent a { color: var(--orange); text-decoration: none; }
         .form-consent a:hover { text-decoration: underline; }
     </style>
+<style>
+    /* Защита от копирования текста */
+    body, html {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
 </head>
 <body>
 
@@ -329,6 +338,16 @@
             btn.innerText = "Отправить заявку на расчёт";
         });
     });
+</script>
+<script>
+    // Защита от копирования и просмотра кода
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) { return false; } // F12
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } // Ctrl+Shift+J
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U
+    };
 </script>
 </body>
 </html>
