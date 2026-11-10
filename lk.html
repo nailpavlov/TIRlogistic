@@ -1,257 +1,283 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TIR CRM — Личный кабинет</title>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-<style>
-  :root { --blue: #0A1F44; --orange: #f05a00; --bg: #f1f5f9; --border: #e2e8f0; }
-  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #1e293b; margin: 0; display: flex; height: 100vh; overflow: hidden; }
-  
-  .sidebar { width: 240px; background: var(--blue); color: #fff; display: flex; flex-direction: column; flex-shrink: 0; }
-  .sidebar h2 { padding: 20px; margin: 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--orange); }
-  .nav-item { padding: 15px 20px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 10px; font-size: 14px; }
-  .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); border-left: 4px solid var(--orange); }
-  .user-profile { margin-top: auto; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; display: flex; align-items: center; gap: 10px; }
-  .avatar { width: 32px; height: 32px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-
-  .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-  .header { background: #fff; padding: 15px 30px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .header h1 { margin: 0; font-size: 20px; color: var(--blue); }
-  .btn { background: var(--orange); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-  .btn-refresh { background: var(--blue); margin-right: 10px; }
-  
-  .workspace { flex: 1; padding: 20px; overflow-y: auto; display: none; }
-  .workspace.active { display: block; }
-
-  .board { display: flex; gap: 15px; align-items: flex-start; overflow-x: auto; height: 100%; padding-bottom: 20px; }
-  .column { background: #e2e8f0; border-radius: 8px; min-width: 280px; max-width: 280px; padding: 15px; display: flex; flex-direction: column; }
-  .column-header { font-weight: bold; color: var(--blue); margin-bottom: 15px; display: flex; justify-content: space-between; font-size: 14px; }
-  .count { background: #cbd5e1; padding: 2px 8px; border-radius: 12px; font-size: 12px; }
-  
-  .card-list { min-height: 150px; display: flex; flex-direction: column; gap: 10px; }
-  .card { background: #fff; padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); cursor: grab; border-left: 4px solid var(--orange); }
-  .card:active { cursor: grabbing; }
-  .card-title { font-weight: bold; color: var(--blue); font-size: 14px; margin-bottom: 5px; }
-  .card-company { font-size: 12px; color: #64748b; margin-bottom: 5px; }
-  .card-tag { display: inline-block; background: #fff7ed; color: var(--orange); padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-top: 5px; margin-right: 5px;}
-  .card-substatus { font-size: 11px; background: #e0f2fe; color: #0369a1; padding: 2px 6px; border-radius: 4px; font-weight: bold; display: inline-block; margin-top: 5px; }
-  .sortable-ghost { opacity: 0.4; background: #fff7ed; }
-
-  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; background: #fff; padding: 20px; border-radius: 8px; }
-  .cal-header { font-weight: bold; text-align: center; color: var(--blue); padding-bottom: 10px; border-bottom: 2px solid var(--border); }
-  .cal-day { border: 1px solid var(--border); border-radius: 6px; min-height: 80px; padding: 5px; font-size: 12px; background: #f8fafc;}
-  .cal-date { font-weight: bold; color: #64748b; margin-bottom: 5px; display: block; }
-  .cal-event { background: #e0f2fe; color: #0369a1; padding: 3px 5px; border-radius: 4px; font-size: 11px; margin-bottom: 3px; border-left: 2px solid #0369a1; }
-
-  .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,31,68,0.8); z-index: 1000; justify-content: center; align-items: center; }
-  .modal.active { display: flex; }
-  .modal-content { background: #fff; width: 800px; max-width: 90%; max-height: 90vh; border-radius: 10px; overflow-y: auto; display: flex; flex-direction: column; }
-  .modal-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: #f8fafc; }
-  .modal-header h2 { margin: 0; font-size: 18px; color: var(--blue); }
-  .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #64748b; }
-  .modal-body { padding: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-  
-  .info-block { margin-bottom: 15px; }
-  .info-block p { margin: 5px 0; font-size: 14px; }
-  .info-block strong { color: var(--blue); }
-  .sidebar-right { background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid var(--border); }
-  .form-group { margin-bottom: 15px; }
-  .form-group label { display: block; font-size: 12px; font-weight: bold; color: var(--blue); margin-bottom: 5px; }
-  .form-group input, .form-group select { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 4px; box-sizing: border-box; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — TIR Logistics</title>
+    <style>
+        :root { --dark-blue: #0A1F44; --orange: #f05a00; --bg-gray: #f8fafc; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg-gray); margin: 0; padding: 0; color: #333; }
+        #login-screen { display: flex; justify-content: center; align-items: center; height: 100vh; background: var(--dark-blue); }
+        .login-box { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 350px; text-align: center; }
+        .login-box h2 { color: var(--dark-blue); margin-top: 0; }
+        .login-box input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .login-box button { width: 100%; padding: 12px; background: var(--orange); color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        .login-box button:hover { background: #d94f00; }
+        
+        #lk-screen { display: none; min-height: 100vh; }
+        .header { background: var(--dark-blue); color: #fff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { margin: 0; font-size: 20px; }
+        .header button { background: transparent; color: #fff; border: 1px solid #fff; padding: 5px 15px; border-radius: 4px; cursor: pointer; }
+        .main-content { max-width: 900px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        /* Стили для формы из rfq.html */
+        .rfq-section { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .rfq-section h2 { font-size: 18px; color: var(--dark-blue); margin-top: 0; margin-bottom: 15px; }
+        .rfq-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .rfq-group { flex: 1; min-width: 200px; }
+        .rfq-group label { display: block; font-size: 14px; font-weight: 600; color: #555; margin-bottom: 5px; }
+        .rfq-group input[type="text"], .rfq-group input[type="number"], .rfq-group input[type="tel"], .rfq-group input[type="email"], .rfq-group select, .rfq-group textarea {
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: inherit; font-size: 14px;
+        }
+        .rfq-group textarea { resize: vertical; }
+        .rfq-checkboxes { display: flex; flex-wrap: wrap; gap: 10px; font-size: 14px; color: #444; }
+        .rfq-checkboxes label { display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; }
+        .hidden-field { margin-top: 10px; padding-left: 10px; border-left: 3px solid var(--orange); }
+        .form-consent a { color: var(--orange); text-decoration: none; }
+        .form-consent a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
 
-<div class="sidebar">
-  <h2>TIR CRM</h2>
-  <div class="nav-item active" onclick="switchTab('kanban', this)">📋 Доска лидов</div>
-  <div class="nav-item" onclick="switchTab('calendar', this)">📅 Календарь</div>
-  <div class="nav-item">📈 Аналитика</div>
-  <div class="user-profile">
-    <div class="avatar">Н</div>
-    <div>
-      <div style="font-weight:bold;">Наиль</div>
-      <div style="font-size:11px; color:#94a3b8;">Администратор</div>
+<div id="login-screen">
+    <div class="login-box">
+        <h2>TIR Logistics</h2>
+        <p style="color:#666; font-size: 14px;">Вход в личный кабинет</p>
+        <input type="password" id="password-input" placeholder="Введите пароль">
+        <button onclick="checkPassword()">Войти</button>
+        <p id="login-error" style="color: red; font-size: 14px; display: none;">Неверный пароль</p>
     </div>
-  </div>
 </div>
 
-<div class="main-content">
-  <div class="header">
-    <h1 id="page-title">Доска лидов</h1>
-    <div>
-      <button class="btn btn-refresh" onclick="loadData()">🔄 Обновить</button>
-      <button class="btn">+ Новый лид</button>
+<div id="lk-screen">
+    <div class="header">
+        <h1>Личный кабинет партнёра</h1>
+        <button onclick="logout()">Выйти</button>
     </div>
-  </div>
+    
+    <div class="main-content">
+        <h2 style="color: var(--dark-blue); margin-top: 0; font-size: 24px;">Заявка на расчёт</h2>
+        <p style="color: #666; margin-bottom: 30px;">Заполните форму, и мы подготовим для вас индивидуальный расчёт стоимости доставки.</p>
+        
+        <form action="https://formsubmit.co/ajax/info@tirlogistica.ru,JSF0110@yandex.com" method="POST" id="rfq-form">
+    <input type="hidden" name="_subject" value="Новая заявка из Личного кабинета TIRLogistica">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
 
-  <div id="kanban" class="workspace active">
-    <div class="board" id="board"></div>
-  </div>
-
-  <div id="calendar" class="workspace">
-    <div class="calendar-grid" id="calendar-grid">
-      <div class="cal-header">Пн</div><div class="cal-header">Вт</div><div class="cal-header">Ср</div><div class="cal-header">Чт</div><div class="cal-header">Пт</div><div class="cal-header">Сб</div><div class="cal-header">Вс</div>
+    <div class="rfq-section">
+        <h2>1. Контактные данные</h2>
+        <div class="rfq-row">
+            <div class="rfq-group"><label>Компания</label><input type="text" name="company" placeholder="ООО «Ромашка»"></div>
+            <div class="rfq-group"><label>Контактное лицо *</label><input type="text" name="name" required placeholder="Иван Петров"></div>
+        </div>
+        <div class="rfq-row">
+            <div class="rfq-group"><label>Телефон / WhatsApp *</label><input type="tel" name="phone" required placeholder="+7 999 000-00-00"></div>
+            <div class="rfq-group"><label>Email *</label><input type="email" name="email" required placeholder="you@company.ru"></div>
+        </div>
     </div>
-  </div>
+
+    <div class="rfq-section">
+        <h2>2. Маршрут и режим перевозки</h2>
+        <div class="rfq-row">
+            <div class="rfq-group"><label>Откуда (город, страна) *</label><input type="text" name="route_from" required placeholder="Москва, РФ"></div>
+            <div class="rfq-group"><label>Куда (город, страна) *</label><input type="text" name="route_to" required placeholder="Шанхай, КНР"></div>
+        </div>
+        <div class="rfq-row">
+            <div class="rfq-group"><label>Порт/терминал отправления</label><input type="text" name="port_from" placeholder="СВХ, склад"></div>
+            <div class="rfq-group"><label>Порт/терминал назначения</label><input type="text" name="port_to" placeholder="Терминал, склад"></div>
+        </div>
+        <div class="rfq-group" style="margin-top: 10px;">
+            <label>Режим перевозки</label>
+            <div class="rfq-checkboxes">
+                <label><input type="checkbox" name="transport_mode" value="Авто"> Авто</label>
+                <label><input type="checkbox" name="transport_mode" value="ЖД"> ЖД</label>
+                <label><input type="checkbox" name="transport_mode" value="Море"> Море</label>
+                <label><input type="checkbox" name="transport_mode" value="Авиа"> Авиа</label>
+                <label><input type="checkbox" name="transport_mode" value="Мультимодально"> Мультимодально</label>
+            </div>
+        </div>
+        <div class="rfq-row" style="margin-top: 10px;">
+            <div class="rfq-group">
+                <label>Частота отправок *</label>
+                <select name="frequency_type" id="freqType" required onchange="document.getElementById('freqNumBlock').style.display = this.value === 'Регулярная' ? 'block' : 'none';">
+                    <option value="Разовая">Разовая</option>
+                    <option value="Регулярная">Регулярная</option>
+                </select>
+                <div id="freqNumBlock" class="hidden-field" style="border-left-color: #0A1F44; margin-top: 5px; display:none;">
+                    <input type="number" name="frequency_count" placeholder="Кол-во раз/мес" min="1">
+                </div>
+            </div>
+            <div class="rfq-group">
+                <label>Условия Incoterms (если известны)</label>
+                <div class="rfq-checkboxes" style="gap: 10px;">
+                    <label><input type="checkbox" name="incoterms" value="EXW"> EXW</label>
+                    <label><input type="checkbox" name="incoterms" value="FCA"> FCA</label>
+                    <label><input type="checkbox" name="incoterms" value="FAS"> FAS</label>
+                    <label><input type="checkbox" name="incoterms" value="FOB"> FOB</label>
+                    <label><input type="checkbox" name="incoterms" value="CFR"> CFR</label>
+                    <label><input type="checkbox" name="incoterms" value="CIF"> CIF</label>
+                    <label><input type="checkbox" name="incoterms" value="CPT"> CPT</label>
+                    <label><input type="checkbox" name="incoterms" value="CIP"> CIP</label>
+                    <label><input type="checkbox" name="incoterms" value="DAP"> DAP</label>
+                    <label><input type="checkbox" name="incoterms" value="DPU"> DPU</label>
+                    <label><input type="checkbox" name="incoterms" value="DDP"> DDP</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rfq-section">
+        <h2>3. Информация о грузе</h2>
+        <div class="rfq-group"><label>Описание груза *</label><textarea name="cargo_desc" rows="2" required placeholder="Например: пиломатериалы..."></textarea></div>
+        <div class="rfq-row" style="margin-top: 10px;">
+            <div class="rfq-group"><label>Код ТН ВЭД</label><input type="text" name="tnved" placeholder="4407 10"></div>
+            <div class="rfq-group"><label>Габариты (ДхШхВ, см)</label><input type="text" name="dimensions" placeholder="120x80x100"></div>
+        </div>
+        <div class="rfq-row">
+            <div class="rfq-group"><label>Вес (кг)</label><input type="text" name="cargo_weight" placeholder="20000"></div>
+            <div class="rfq-group"><label>Объём (м³)</label><input type="text" name="cargo_volume" placeholder="40"></div>
+            <div class="rfq-group">
+    <label>Стоимость груза</label>
+    <div style="display: flex; gap: 5px;">
+        <input type="text" name="cargo_value" placeholder="Например: 500 000" style="flex: 2;">
+        <select name="cargo_currency" style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="RUB">RUB (₽)</option>
+            <option value="CNY">CNY (¥)</option>
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+        </select>
+    </div>
 </div>
+        </div>
+        <div class="rfq-group" style="margin-top: 10px;">
+            <label>Тип упаковки</label>
+            <div class="rfq-checkboxes">
+                <label><input type="checkbox" name="packaging" value="Коробки"> Коробки</label>
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" id="palletsCheck" onclick="document.getElementById('palletsBlock').style.display = this.checked ? 'block' : 'none';"> Паллеты
+                </label>
+                <label><input type="checkbox" name="packaging" value="Ящики"> Ящики</label>
+                <label style="display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" id="otherPackCheck" onclick="document.getElementById('otherPackBlock').style.display = this.checked ? 'block' : 'none';"> Другое
+                </label>
+            </div>
+            <div id="palletsBlock" class="hidden-field" style="border-left-color: #0A1F44; display:none;">
+                <label>Количество паллет</label>
+                <input type="number" name="pallets_count" placeholder="33" style="margin-top: 5px;">
+            </div>
+            <div id="otherPackBlock" class="hidden-field" style="border-left-color: #0A1F44; display:none; margin-top: 10px;">
+                <label>Укажите тип упаковки</label>
+                <input type="text" name="packaging_other" placeholder="Например: Биг-бэги" style="margin-top: 5px; width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+        </div>
+    </div>
 
-<div id="leadModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h2 id="modal-title">Компания</h2>
-      <button class="close-btn" onclick="closeModal()">×</button>
+    <div class="rfq-section" style="border-bottom: none; margin-bottom: 0;">
+        <h2>4. Дополнительные услуги и документы</h2>
+        <div class="rfq-group">
+            <label>Отметьте необходимые услуги</label>
+            <div class="rfq-checkboxes">
+                <label><input type="checkbox" name="services" value="Только фрахт"> Только фрахт</label>
+                <label><input type="checkbox" name="services" value="Под ключ"> Под ключ</label>
+                <label><input type="checkbox" name="services" value="Таможенное оформление"> Таможня</label>
+                <label><input type="checkbox" name="services" value="Страхование"> Страхование</label>
+            </div>
+        </div>
+        <div class="rfq-row" style="margin-top: 10px;">
+            <div class="rfq-group">
+                <label>Валюта расчётов</label>
+                <select name="currency">
+                    <option value="RUB">RUB (₽)</option>
+                    <option value="CNY">CNY (¥)</option>
+                    <option value="USD">USD (\$)</option>
+                </select>
+            </div>
+            <div class="rfq-group">
+                <label>Документы</label>
+                <div class="rfq-checkboxes" style="margin-top: 0;">
+                    <label><input type="checkbox" name="docs" value="Инвойс"> Инвойс</label>
+                    <label><input type="checkbox" name="docs" value="Packing list"> Packing list</label>
+                </div>
+            </div>
+        </div>
+        <div class="rfq-group" style="margin-top: 10px;">
+            <label>Особые требования</label>
+            <textarea name="comments" rows="2" placeholder="Окна доставки..."></textarea>
+        </div>
     </div>
-    <div class="modal-body">
-      <div>
-        <div class="info-block">
-          <p><strong>Маршрут:</strong> <span id="m-route"></span></p>
-          <p><strong>Груз:</strong> <span id="m-cargo"></span></p>
-          <p><strong>Сумма:</strong> <span id="m-sum"></span></p>
-          <p><strong>Маржа:</strong> <span id="m-margin"></span></p>
-        </div>
-        <div class="info-block" style="background: #e0f2fe; padding: 10px; border-radius: 6px;">
-          <h3 style="font-size:14px; color:var(--blue); margin-top:0;">Данные перевозки</h3>
-          <p><strong>Машина:</strong> <span id="m-truck"></span></p>
-          <p><strong>Прицеп:</strong> <span id="m-trailer"></span></p>
-          <p><strong>Водитель:</strong> <span id="m-driver"></span> (<span id="m-driverphone"></span>)</p>
-        </div>
-      </div>
-      <div class="sidebar-right">
-        <h3 style="font-size:14px; color:var(--blue); margin-top:0;">Действия</h3>
-        <div class="form-group">
-          <label>Статус</label>
-          <input type="text" id="m-status" readonly style="background: #e2e8f0;">
-        </div>
-        <div class="form-group">
-          <label>Подстатус</label>
-          <select id="m-substatus">
-            <option value="">Нет</option>
-            <option value="Едет по маршруту">Едет по маршруту</option>
-            <option value="На границе">На границе</option>
-            <option value="На таможне">На таможне</option>
-            <option value="Досмотр">Досмотр</option>
-            <option value="Поломка">Поломка</option>
-            <option value="Перегруз">Перегруз</option>
-          </select>
-        </div>
-      </div>
+    
+    <div class="form-consent" style="margin-bottom: 20px; display:flex; gap:10px; align-items:flex-start;">
+        <input type="checkbox" id="formConsent" required style="margin-top: 4px;">
+        <label for="formConsent" style="font-size: 13px; color: #666; font-weight: normal;">Я согласен на обработку персональных данных и ознакомлен с <a href="/privacy.html" style="color: #f05a00;">Политикой конфиденциальности</a></label>
     </div>
-  </div>
+
+    <button type="submit" class="btn-submit" style="background: #f05a00; color: #fff; border: none; padding: 15px; font-size: 16px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;">Отправить заявку на расчёт</button>
+    <div id="form-status" style="margin-top: 15px; text-align: center; font-weight: bold; display: none;"></div>
+</form>
+        
+    </div>
 </div>
 
 <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbzEIbeBzdZR26zzDDwJfKDDth8Lg8HNjs-jGImSJIegzRVb4TDYjBc2mzuE98YBs-JHiA/exec";
-  let allDeals = [];
-  
-  const COLUMNS = ["Новый лид", "В работе", "КП отправлено", "Мяч не на нашей стороне", "Сделка", "Погрузка", "Машина в пути", "Отказ", "Успешно закрыто"];
-
-  async function loadData() {
-    try {
-      const response = await fetch(API_URL + "?action=getDeals");
-      const result = await response.json();
-      if (result.success) {
-        allDeals = result.data;
-        renderBoard();
-      }
-    } catch (e) { console.error("Ошибка загрузки:", e); }
-  }
-
-  function renderBoard() {
-    const board = document.getElementById('board');
-    board.innerHTML = '';
-
-    COLUMNS.forEach(colName => {
-      // ИСПОЛЬЗУЕМ ПРАВИЛЬНЫЕ НАЗВАНИЯ КОЛОНОК ИЗ ТАБЛИЦЫ
-      const colDeals = allDeals.filter(d => (d["Статус (Колонка)"] || 'Новый лид') === colName);
-      const colDiv = document.createElement('div');
-      colDiv.className = 'column';
-      colDiv.innerHTML = '<div class="column-header">' + colName + ' <span class="count">' + colDeals.length + '</span></div><div class="card-list" id="col-' + colName.replace(/\s+/g, '-') + '"></div>';
-      board.appendChild(colDiv);
-
-      const cardList = colDiv.querySelector('.card-list');
-      colDeals.forEach(deal => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        
-        // ИСПОЛЬЗУЕМ ПРАВИЛЬНЫЕ НАЗВАНИЯ КОЛОНОК ИЗ ТАБЛИЦЫ
-        let substatus = deal["Подстатус (В пути/Погрузка)"] ? '<span class="card-substatus">' + deal["Подстатус (В пути/Погрузка)"] + '</span>' : '';
-        let sum = deal["Сумма клиента"] ? deal["Сумма клиента"] + ' ₽' : 'Без суммы';
-        
-        card.innerHTML = '<div class="card-title">' + (deal["Название (Клиент)"] || 'Без названия') + '</div>' +
-                         '<div class="card-company">' + (deal["Маршрут"] || '') + '</div>' +
-                         '<span class="card-tag">' + sum + '</span>' +
-                         substatus;
-
-
-        card.onclick = () => openModal(deal);
-        cardList.appendChild(card);
-      });
-
-      new Sortable(cardList, {
-        group: 'shared', animation: 150, ghostClass: 'sortable-ghost',
-        onEnd: function (evt) {
-          const dealId = allDeals.find(d => d["Название (Клиент)"] === evt.item.querySelector('.card-title').innerText).ID;
-          const newStatus = evt.to.id.replace('col-', '').replace(/-/g, ' ');
-          updateStatus(dealId, newStatus);
-        }
-      });
-    });
-  }
-
-  async function updateStatus(id, newStatus) {
-    try {
-      await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'updateStatus', id: id, status: newStatus }) });
-      loadData();
-    } catch (e) { console.error(e); }
-  }
-
-  function openModal(deal) {
-    document.getElementById('modal-title').innerText = deal["Название (Клиент)"] || '—';
-    document.getElementById('m-route').innerText = deal["Маршрут"] || '—';
-    document.getElementById('m-cargo').innerText = deal["Данные груза"] || '—';
-    document.getElementById('m-sum').innerText = deal["Сумма клиента"] ? deal["Сумма клиента"] + ' ₽' : '—';
-    document.getElementById('m-margin').innerText = deal["Маржа"] ? deal["Маржа"] + ' ₽' : '—';
-    document.getElementById('m-truck').innerText = deal.Truck || '—';
-    document.getElementById('m-trailer').innerText = deal.Trailer || '—';
-    document.getElementById('m-driver').innerText = deal.Driver || '—';
-    document.getElementById('m-driverphone').innerText = deal.DriverPhone || '—';
-    document.getElementById('m-status').value = deal["Статус (Колонка)"] || '—';
-    document.getElementById('m-substatus').value = deal["Подстатус (В пути/Погрузка)"] || '';
-    document.getElementById('leadModal').classList.add('active');
-  }
-
-  function closeModal() { document.getElementById('leadModal').classList.remove('active'); }
-
-  function switchTab(tabId, el) {
-    document.querySelectorAll('.workspace').forEach(w => w.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    el.classList.add('active');
+    document.addEventListener('contextmenu', event => event.preventDefault());
     
-    if (tabId === 'calendar') {
-      renderCalendar();
-    }
-  }
+    const CORRECT_PASS = "admin123";
 
-  function renderCalendar() {
-    const grid = document.getElementById('calendar-grid');
-    while (grid.children.length > 7) { grid.removeChild(grid.lastChild); }
-    for (let i = 1; i <= 30; i++) {
-      const dayDiv = document.createElement('div');
-      dayDiv.className = 'cal-day';
-      dayDiv.innerHTML = '<span class="cal-date">' + i + ' Ноя</span>';
-      grid.appendChild(dayDiv);
+    function checkPassword() {
+        const pass = document.getElementById('password-input').value;
+        if (pass === CORRECT_PASS) {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('lk-screen').style.display = 'block';
+            sessionStorage.setItem('tir_logged_in', 'true');
+        } else {
+            document.getElementById('login-error').style.display = 'block';
+        }
     }
-  }
 
-  window.onload = () => {
-    loadData();
-    setInterval(loadData, 30000); 
-  };
+    function logout() {
+        sessionStorage.removeItem('tir_logged_in');
+        location.reload();
+    }
+
+    if (sessionStorage.getItem('tir_logged_in') === 'true') {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('lk-screen').style.display = 'block';
+    }
+
+    // AJAX отправка формы
+    document.getElementById('rfq-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const btn = this.querySelector('.btn-submit');
+        const statusDiv = document.getElementById('form-status');
+        
+        btn.disabled = true;
+        btn.innerText = "Отправка...";
+        statusDiv.style.display = 'none';
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                statusDiv.style.display = 'block';
+                statusDiv.style.color = 'green';
+                statusDiv.innerText = "Заявка успешно отправлена! Мы свяжемся с вами.";
+                this.reset();
+            } else { throw new Error('Ошибка сервера'); }
+        })
+        .catch(error => {
+            statusDiv.style.display = 'block';
+            statusDiv.style.color = 'red';
+            statusDiv.innerText = "Ошибка отправки. Попробуйте позже.";
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerText = "Отправить заявку на расчёт";
+        });
+    });
 </script>
 </body>
 </html>
-
