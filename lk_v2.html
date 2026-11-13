@@ -213,10 +213,12 @@
 <div id="app-screen">
     <div class="sidebar">
       <h2>TIR CRM</h2>
-      <div class="nav-item active" onclick="switchTab('kanban', this)" id="nav-kanban">📋 Доска лидов</div>
+      <div class="nav-item active" onclick="switchTab('kanban', this)" id="nav-kanban" style="display:none;">📋 Доска лидов</div>
       <div class="nav-item" onclick="switchTab('calendar', this)" id="nav-calendar">📅 Календарь</div>
       <div class="nav-item" onclick="switchTab('my-requests', this)" id="nav-my-requests" style="display:none;">📁 Мои заявки</div>
-      <div class="nav-item" onclick="switchTab('rfq', this)">📝 Новая заявка</div>
+      <div class="nav-item" onclick="switchTab('rfq', this)" id="nav-rfq" style="display:none;">📝 Новая заявка</div>
+      <div class="nav-item" onclick="switchTab('profile', this)" id="nav-profile" style="display:none;">👤 Профиль</div>
+      <div class="nav-item" onclick="switchTab('settings', this)" id="nav-settings" style="display:none;">⚙️ Настройки</div>
       <div class="user-profile" style="flex-direction: column; align-items: stretch; gap: 10px;">
         <div style="display: flex; align-items: center; gap: 10px;">
             <div class="avatar" id="user-avatar">?</div>
@@ -277,7 +279,40 @@
         </div>
       </div>
 
-      <div id="rfq" class="workspace">
+            <div id="settings" class="workspace">
+        <div style="background:#fff; padding:20px; border-radius:8px; max-width: 800px;">
+            <h2 style="color: var(--blue); margin-top:0;">Настройки системы</h2>
+            <p style="color:#666;">Здесь будут настройки уведомлений, управление пользователями и фильтры календаря (в разработке).</p>
+        </div>
+      </div>
+      <div id="profile" class="workspace">
+        <div style="background:#fff; padding:20px; border-radius:8px; max-width: 800px;">
+            <h2 style="color: var(--blue); margin-top:0;">Профиль (Реквизиты для договора)</h2>
+            <form id="profileForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group"><label>Полное наименование (Компания) *</label><input type="text" name="company" required></div>
+                    <div class="form-group"><label>ФИО Руководителя *</label><input type="text" name="director" required></div>
+                </div>
+                <div class="form-group"><label>Юридический адрес *</label><input type="text" name="address" required></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group"><label>ИНН *</label><input type="text" name="inn" required></div>
+                    <div class="form-group"><label>КПП *</label><input type="text" name="kpp" required></div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group"><label>Расчетный счет (Р/с) *</label><input type="text" name="rs" required></div>
+                    <div class="form-group"><label>Корр. счет (К/с) *</label><input type="text" name="ks" required></div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group"><label>БИК *</label><input type="text" name="bik" required></div>
+                    <div class="form-group"><label>ОГРН *</label><input type="text" name="ogrn" required></div>
+                </div>
+                <div class="form-group"><label>Банк *</label><input type="text" name="bank" required></div>
+                <button type="submit" class="btn" style="width:100%; margin-top:10px;">Сохранить реквизиты</button>
+                <div id="profile-status" style="margin-top: 10px; text-align: center; font-weight: bold; display: none;"></div>
+            </form>
+        </div>
+      </div>
+<div id="rfq" class="workspace">
         <div style="background:#fff; padding:20px; border-radius:8px;">
             <h2 style="color: var(--blue); margin-top:0;">Заявка на расчёт</h2>
             <form id="requestForm" action="https://formsubmit.co/ajax/info@tirlogistica.ru,JSF0110@yandex.com" method="POST">
@@ -504,12 +539,29 @@
             document.getElementById('user-avatar').innerText = result.user.name.charAt(0).toUpperCase();
             
             if (result.user.role === 'client') {
+                // Клиент: Календарь, Мои заявки, Новая заявка, Профиль
                 document.getElementById('nav-kanban').style.display = 'none';
+                document.getElementById('nav-settings').style.display = 'none';
+                
+                document.getElementById('nav-calendar').style.display = 'flex';
                 document.getElementById('nav-my-requests').style.display = 'flex';
+                document.getElementById('nav-rfq').style.display = 'flex';
+                document.getElementById('nav-profile').style.display = 'flex';
+                
                 document.getElementById('header-buttons').style.display = 'none';
-                switchTab('rfq', document.querySelector('.nav-item[onclick*="rfq"]'));
+                switchTab('my-requests', document.getElementById('nav-my-requests'));
             } else {
+                // Админ: Доска лидов, Календарь, Настройки (без профиля и заявки)
+                document.getElementById('nav-kanban').style.display = 'flex';
+                document.getElementById('nav-settings').style.display = 'flex';
+                
+                document.getElementById('nav-calendar').style.display = 'flex';
+                document.getElementById('nav-my-requests').style.display = 'none';
+                document.getElementById('nav-rfq').style.display = 'none';
+                document.getElementById('nav-profile').style.display = 'none';
+                
                 loadData();
+                switchTab('kanban', document.getElementById('nav-kanban'));
             }
 
             document.getElementById('login-screen').style.display = 'none';
@@ -596,7 +648,7 @@
     document.getElementById(tabId).classList.add('active');
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     if(el) el.classList.add('active');
-    const titles = { kanban: "Доска лидов", calendar: "Календарь", rfq: "Заявка на расчёт", 'my-requests': "Мои заявки" };
+    const titles = { kanban: "Доска лидов", calendar: "Календарь", rfq: "Заявка на расчёт", 'my-requests': "Мои заявки", profile: "Профиль", settings: "Настройки" };
     document.getElementById('page-title').innerText = titles[tabId] || "";
   }
 
