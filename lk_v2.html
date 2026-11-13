@@ -1,0 +1,736 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIR CRM — Личный кабинет</title>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js">  // Тестовые данные для карточек (потом заменим на данные из GAS)
+  const mockRequests = [
+    { id: "REQ-001", date: "10.11.2026", from: "Москва", to: "Харбин", status: "В пути", statusClass: "status-progress", cargo: "Пиломатериалы", weight: "20000", volume: "40", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" },
+    { id: "REQ-002", date: "12.11.2026", from: "СПБ", to: "Пекин", status: "Ожидает", statusClass: "status-new", cargo: "Оборудование", weight: "5000", volume: "15", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" },
+    { id: "REQ-003", date: "01.11.2026", from: "Новосибирск", to: "Шанхай", status: "Доставлено", statusClass: "status-done", cargo: "ТНП", weight: "15000", volume: "30", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" },
+    { id: "REQ-004", date: "05.11.2026", from: "Казань", to: "Гуанчжоу", status: "В пути", statusClass: "status-progress", cargo: "Химия", weight: "10000", volume: "20", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" }
+  ];
+
+  let currentFilter = 'all';
+
+  function setFilter(filter, btn) {
+    currentFilter = filter;
+    // Снимаем активный класс со всех кнопок
+    document.querySelectorAll('.btn-filter').forEach(b => {
+        b.classList.remove('active-filter');
+        b.style.opacity = '0.7';
+    });
+    // Добавляем активный класс текущей
+    btn.classList.add('active-filter');
+    btn.style.opacity = '1';
+    renderMyRequests();
+  }
+
+  function renderMyRequests() {
+    const container = document.getElementById('my-requests-list');
+    if (!container) return;
+    
+    const searchText = document.getElementById('search-input') ? document.getElementById('search-input').value.toLowerCase() : '';
+    
+    // Фильтруем данные
+    const filtered = mockRequests.filter(req => {
+        // 1. Фильтр по статусу
+        if (currentFilter !== 'all') {
+            if (currentFilter === 'new' && req.status !== 'Ожидает') return false;
+            if (currentFilter === 'progress' && req.status !== 'В пути') return false;
+            if (currentFilter === 'done' && req.status !== 'Доставлено') return false;
+        }
+        // 2. Поиск по тексту
+        if (searchText) {
+            const text = `${req.id} ${req.from} ${req.to} ${req.cargo}`.toLowerCase();
+            if (!text.includes(searchText)) return false;
+        }
+        return true;
+    });
+
+    container.innerHTML = '';
+    
+    if (filtered.length === 0) {
+        container.innerHTML = '<p style="color: #64748b; text-align: center; grid-column: 1 / -1;">Ничего не найдено</p>';
+        return;
+    }
+
+    filtered.forEach(req => {
+      const card = document.createElement('div');
+      card.className = 'request-card';
+      card.innerHTML = `
+        <div class="rc-header">
+          <span class="rc-id">${req.id}</span>
+          <span class="status-badge ${req.statusClass}">${req.status}</span>
+        </div>
+        <div class="rc-route">${req.from} → ${req.to}</div>
+        <div class="rc-date">Создана: ${req.date}</div>
+      `;
+      card.onclick = () => openViewModal(req);
+      container.appendChild(card);
+    });
+  }
+
+  function openViewModal(req) {
+    document.getElementById('view-modal-title').innerText = `Заявка ${req.id}`;
+    const body = document.getElementById('view-modal-body');
+    body.innerHTML = `
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+            <h3 style="color: var(--blue); margin-top:0;">Контактные данные</h3>
+            <p><strong>Компания:</strong> ${req.company}</p>
+            <p><strong>Контактное лицо:</strong> ${req.contact}</p>
+            <p><strong>Телефон:</strong> ${req.phone}</p>
+            <p><strong>Email:</strong> ${req.email}</p>
+        </div>
+        <div>
+            <h3 style="color: var(--blue); margin-top:0;">Маршрут и груз</h3>
+            <p><strong>Откуда:</strong> ${req.from}</p>
+            <p><strong>Куда:</strong> ${req.to}</p>
+            <p><strong>Груз:</strong> ${req.cargo}</p>
+            <p><strong>Вес:</strong> ${req.weight} кг</p>
+            <p><strong>Объём:</strong> ${req.volume} м³</p>
+        </div>
+      </div>
+    `;
+    document.getElementById('viewModal').classList.add('active');
+  }
+
+  function closeViewModal() {
+    document.getElementById('viewModal').classList.remove('active');
+  }
+
+  // Вызываем рендер карточек при загрузке (для теста)
+  document.addEventListener('DOMContentLoaded', () => {
+    renderMyRequests();
+  });
+</script>
+<style>
+  :root { --blue: #0A1F44; --orange: #f05a00; --bg: #f1f5f9; --border: #e2e8f0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: #1e293b; margin: 0; display: flex; height: 100vh; overflow: hidden; }
+  
+  /* Вход */
+  #login-screen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--blue); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+  .login-box { background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 350px; text-align: center; }
+  .login-box h2 { color: var(--blue); margin-top: 0; }
+  .login-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid var(--border); border-radius: 4px; box-sizing: border-box; }
+  .login-box button { width: 100%; padding: 12px; background: var(--orange); color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+  .login-error { color: red; font-size: 13px; margin-top: 10px; display: none; }
+
+  /* Интерфейс */
+  #app-screen { display: none; width: 100%; height: 100%; }
+  .sidebar { width: 240px; background: var(--blue); color: #fff; display: flex; flex-direction: column; flex-shrink: 0; }
+  .sidebar h2 { padding: 20px; margin: 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--orange); }
+  .nav-item { padding: 15px 20px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.1); border-left: 4px solid var(--orange); }
+  .user-profile { margin-top: auto; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 32px; height: 32px; background: var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+  .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .header { background: #fff; padding: 15px 30px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { margin: 0; font-size: 20px; color: var(--blue); }
+  .btn { background: var(--orange); color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+  .btn-refresh { background: var(--blue); margin-right: 10px; }
+  .btn-add { background: var(--orange); margin-right: 10px; }
+  .btn-logout { background: #dc2626; margin-left: 10px; }
+
+  .workspace { flex: 1; padding: 20px; overflow-y: auto; display: none; }
+  .workspace.active { display: block; }
+
+  /* Канбан */
+  .board { display: flex; gap: 15px; align-items: flex-start; overflow-x: auto; height: 100%; padding-bottom: 20px; }
+  .column { background: #e2e8f0; border-radius: 8px; min-width: 280px; max-width: 280px; padding: 15px; display: flex; flex-direction: column; }
+  .column-header { font-weight: bold; color: var(--blue); margin-bottom: 15px; display: flex; justify-content: space-between; font-size: 14px; }
+  .count { background: #cbd5e1; padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+  .card-list { min-height: 150px; display: flex; flex-direction: column; gap: 10px; }
+  .card { background: #fff; padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); cursor: pointer; border-left: 4px solid var(--orange); }
+  .card-title { font-weight: bold; color: var(--blue); font-size: 14px; margin-bottom: 5px; }
+  .card-company { font-size: 12px; color: #64748b; margin-bottom: 5px; }
+
+  .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,31,68,0.8); z-index: 1000; justify-content: center; align-items: center; }
+  .modal.active { display: flex; }
+  .modal-content { background: #fff; width: 850px; max-width: 95%; max-height: 90vh; border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; }
+  .modal-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: #f8fafc; }
+  .modal-header h2 { margin: 0; font-size: 18px; color: var(--blue); }
+  .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: #64748b; }
+  .tabs { display: flex; background: #fff; border-bottom: 1px solid var(--border); padding: 0 20px; }
+  .tab { padding: 15px 20px; cursor: pointer; font-weight: bold; color: #64748b; border-bottom: 3px solid transparent; }
+  .tab.active { color: var(--blue); border-bottom: 3px solid var(--orange); }
+  .modal-body { padding: 20px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; background: #f8fafc; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .form-group { margin-bottom: 15px; }
+  .form-group label { display: block; font-size: 12px; font-weight: bold; color: var(--blue); margin-bottom: 5px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; box-sizing: border-box; font-family: inherit; }
+
+  /* Календарь */
+  .calendar-wrapper { background: #fff; padding: 20px; border-radius: 8px; width: 100%; max-width: 800px; margin: 0 auto; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; width: 100%; }
+  .calendar-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; color: #666; margin-bottom: 10px; width: 100%; }
+  .calendar-day { background: #fff; border: 1px solid var(--border); min-height: 90px; padding: 5px; border-radius: 4px; display: flex; flex-direction: column; box-sizing: border-box; }
+  .calendar-day.today { border-color: var(--orange); border-width: 2px; }
+  .day-number { font-weight: bold; color: #888; margin-bottom: 5px; }
+
+  .my-requests { background: #fff; padding: 20px; border-radius: 8px; }
+  .request-item { border-bottom: 1px solid var(--border); padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
+  .request-item:last-child { border-bottom: none; }
+  /* Карточки заявок */
+  .request-card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 4px solid var(--orange); cursor: pointer; transition: 0.2s; }
+  .request-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
+  .request-card .rc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .request-card .rc-id { font-size: 12px; color: #64748b; font-weight: bold; }
+  .request-card .rc-route { font-size: 16px; font-weight: bold; color: var(--blue); margin-bottom: 5px; }
+  .request-card .rc-date { font-size: 12px; color: #64748b; }
+  .status-badge { padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+  .status-new { background: #e0f2fe; color: #0369a1; }
+  .status-progress { background: #fef3c7; color: #d97706; }
+  .status-done { background: #dcfce7; color: #16a34a; }
+  
+  /* Модалка просмотра (для печати) */
+  @media print {
+      body * { visibility: hidden; }
+      #viewModal, #viewModal * { visibility: visible; }
+      #viewModal { position: absolute; left: 0; top: 0; width: 100%; background: #fff; }
+      .close-btn, .btn-print { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+    <div class="login-box">
+        <h2>TIR Logistics</h2>
+        <p style="color:#666; font-size: 14px;">Вход в личный кабинет</p>
+        <input type="text" id="login-input" placeholder="Логин" onkeydown="if(event.key==='Enter') document.getElementById('password-input').focus()">
+        <input type="password" id="password-input" placeholder="Пароль" onkeydown="if(event.key==='Enter') checkPassword()">
+        <button onclick="checkPassword()">Войти</button>
+        <p id="login-error" class="login-error">Неверный логин или пароль</p>
+    </div>
+</div>
+
+<div id="app-screen">
+    <div class="sidebar">
+      <h2>TIR CRM</h2>
+      <div class="nav-item active" onclick="switchTab('kanban', this)" id="nav-kanban">📋 Доска лидов</div>
+      <div class="nav-item" onclick="switchTab('calendar', this)" id="nav-calendar">📅 Календарь</div>
+      <div class="nav-item" onclick="switchTab('my-requests', this)" id="nav-my-requests" style="display:none;">📁 Мои заявки</div>
+      <div class="nav-item" onclick="switchTab('rfq', this)">📝 Новая заявка</div>
+      <div class="user-profile" style="flex-direction: column; align-items: stretch; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="avatar" id="user-avatar">?</div>
+            <div>
+              <div style="font-weight:bold;" id="user-name">Загрузка...</div>
+              <div style="font-size:11px; color:#94a3b8;" id="user-role">...</div>
+            </div>
+        </div>
+        <button class="btn btn-logout" onclick="logout()" style="width: 100%; padding: 8px; font-size: 12px; margin: 0;">Выйти</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="header">
+        <h1 id="page-title">Доска лидов</h1>
+        <div id="header-buttons">
+          <button class="btn btn-add" onclick="sendLink()">🔗 Отправить ссылку</button>
+          <button class="btn btn-refresh" onclick="addNewColumn()" style="background: #64748b; margin-right: 10px;">+ Колонка</button>
+          <button class="btn btn-refresh" onclick="loadData()">Обновить</button>
+          
+        </div>
+      </div>
+
+      <div id="kanban" class="workspace active">
+        <div class="board" id="board"></div>
+      </div>
+
+      <div id="calendar" class="workspace">
+        <div class="calendar-wrapper">
+            <h2 style="color: var(--blue); margin-top:0; margin-bottom: 20px;">Календарь событий (Ноябрь 2026)</h2>
+            <div class="calendar-header">
+                <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div>Вс</div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid">
+                <!-- Сюда JS вставит дни -->
+            </div>
+        </div>
+      </div>
+
+      <div id="my-requests" class="workspace">
+        <div class="my-requests">
+            <h2 style="color: var(--blue); margin-top:0;">Мои заявки</h2>
+            
+            <!-- Поиск и Фильтры -->
+            <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center;">
+                <input type="text" id="search-input" placeholder="Поиск по номеру, городу или грузу..." style="flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 6px; min-width: 200px;" oninput="renderMyRequests()">
+                <div style="display: flex; gap: 5px;">
+                    <button class="btn btn-filter active-filter" onclick="setFilter('all', this)" style="background: var(--blue); padding: 10px 15px;">Все</button>
+                    <button class="btn btn-filter" onclick="setFilter('progress', this)" style="background: #fef3c7; color: #d97706; padding: 10px 15px;">В пути</button>
+                    <button class="btn btn-filter" onclick="setFilter('new', this)" style="background: #e0f2fe; color: #0369a1; padding: 10px 15px;">Ожидают</button>
+                    <button class="btn btn-filter" onclick="setFilter('done', this)" style="background: #dcfce7; color: #16a34a; padding: 10px 15px;">Доставлено</button>
+                </div>
+            </div>
+
+            <div id="my-requests-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                <!-- Карточки будут генерироваться через JS -->
+            </div>
+        </div>
+      </div>
+
+      <div id="rfq" class="workspace">
+        <div style="background:#fff; padding:20px; border-radius:8px;">
+            <h2 style="color: var(--blue); margin-top:0;">Заявка на расчёт</h2>
+            <form id="requestForm" action="https://formsubmit.co/ajax/info@tirlogistica.ru,JSF0110@yandex.com" method="POST">
+    <input type="hidden" name="_subject" value="Новая заявка из ЛК TIRLogistica">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <div class="rfq-section">
+        <h2 style="color:var(--blue); font-size:18px; border-bottom:2px solid var(--orange); padding-bottom:5px; margin-bottom:15px;">1. Контактные данные</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+            <div class="form-group"><label>Компания</label><input type="text" name="company" placeholder="ООО «Ромашка»"></div>
+            <div class="form-group"><label>Контактное лицо *</label><input type="text" name="name" required placeholder="Иван Петров"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+            <div class="form-group"><label>Телефон / WhatsApp *</label><input type="tel" name="phone" required placeholder="+7 999 000-00-00"></div>
+            <div class="form-group"><label>Email *</label><input type="email" name="email" required placeholder="you@company.ru"></div>
+        </div>
+    </div>
+
+    <div class="rfq-section">
+        <h2 style="color:var(--blue); font-size:18px; border-bottom:2px solid var(--orange); padding-bottom:5px; margin-bottom:15px;">2. Маршрут и режим перевозки</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+            <div class="form-group"><label>Откуда (город, страна) *</label><input type="text" name="route_from" required placeholder="Москва, РФ"></div>
+            <div class="form-group"><label>Куда (город, страна) *</label><input type="text" name="route_to" required placeholder="Шанхай, КНР"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+            <div class="form-group"><label>Порт/терминал отправления</label><input type="text" name="port_from" placeholder="СВХ, склад"></div>
+            <div class="form-group"><label>Порт/терминал назначения</label><input type="text" name="port_to" placeholder="Терминал, склад"></div>
+        </div>
+        
+        <div class="form-group" style="margin-top:10px;">
+            <label>Режим перевозки</label>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <label><input type="checkbox" name="transport_mode" value="Авто"> Авто</label>
+                <label><input type="checkbox" name="transport_mode" value="ЖД"> ЖД</label>
+                <label><input type="checkbox" name="transport_mode" value="Море"> Море</label>
+                <label><input type="checkbox" name="transport_mode" value="Авиа"> Авиа</label>
+                <label><input type="checkbox" name="transport_mode" value="Мультимодально"> Мультимодально</label>
+            </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:10px;">
+            <div class="form-group">
+                <label>Частота отправок *</label>
+                <select name="frequency_type" required>
+                    <option value="Разовая">Разовая</option>
+                    <option value="Регулярная">Регулярная</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Условия Incoterms (если известны)</label>
+                <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                    <label><input type="checkbox" name="incoterms" value="EXW"> EXW</label>
+                    <label><input type="checkbox" name="incoterms" value="FCA"> FCA</label>
+                    <label><input type="checkbox" name="incoterms" value="FAS"> FAS</label>
+                    <label><input type="checkbox" name="incoterms" value="FOB"> FOB</label>
+                    <label><input type="checkbox" name="incoterms" value="CFR"> CFR</label>
+                    <label><input type="checkbox" name="incoterms" value="CIF"> CIF</label>
+                    <label><input type="checkbox" name="incoterms" value="CPT"> CPT</label>
+                    <label><input type="checkbox" name="incoterms" value="CIP"> CIP</label>
+                    <label><input type="checkbox" name="incoterms" value="DAP"> DAP</label>
+                    <label><input type="checkbox" name="incoterms" value="DPU"> DPU</label>
+                    <label><input type="checkbox" name="incoterms" value="DDP"> DDP</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rfq-section">
+        <h2 style="color:var(--blue); font-size:18px; border-bottom:2px solid var(--orange); padding-bottom:5px; margin-bottom:15px;">3. Информация о грузе</h2>
+        <div class="form-group"><label>Описание груза *</label><textarea name="cargo_desc" rows="2" required placeholder="Например: пиломатериалы..."></textarea></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+            <div class="form-group"><label>Код ТН ВЭД</label><input type="text" name="tnved" placeholder="4407 10"></div>
+            <div class="form-group"><label>Габариты (ДхШхВ, см)</label><input type="text" name="dimensions" placeholder="120x80x100"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:15px;">
+            <div class="form-group"><label>Вес (кг)</label><input type="text" name="cargo_weight" placeholder="20000"></div>
+            <div class="form-group"><label>Объём (м³)</label><input type="text" name="cargo_volume" placeholder="40"></div>
+            <div class="form-group"><label>Стоимость груза</label><input type="text" name="cargo_value" placeholder="500 000"></div>
+        </div>
+        <div class="form-group">
+            <label>Тип упаковки</label>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <label><input type="checkbox" name="packaging" value="Коробки"> Коробки</label>
+                <label><input type="checkbox" name="packaging" value="Паллеты"> Паллеты</label>
+                <label><input type="checkbox" name="packaging" value="Ящики"> Ящики</label>
+                <label><input type="checkbox" name="packaging" value="Рулоны"> Рулоны</label>
+                <label><input type="checkbox" name="packaging" value="Навалом"> Навалом</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="rfq-section" style="border-bottom:none; margin-bottom:0;">
+        <h2 style="color:var(--blue); font-size:18px; border-bottom:2px solid var(--orange); padding-bottom:5px; margin-bottom:15px;">4. Дополнительные услуги и документы</h2>
+        <div class="form-group">
+            <label>Отметьте необходимые услуги</label>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <label><input type="checkbox" name="services" value="Только фрахт"> Только фрахт</label>
+                <label><input type="checkbox" name="services" value="Под ключ"> Под ключ</label>
+                <label><input type="checkbox" name="services" value="Таможенное оформление"> Таможня</label>
+                <label><input type="checkbox" name="services" value="Страхование"> Страхование</label>
+            </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:10px;">
+            <div class="form-group">
+                <label>Валюта расчётов</label>
+                <select name="currency">
+                    <option value="RUB">RUB (₽)</option>
+                    <option value="CNY">CNY (¥)</option>
+                    <option value="USD">USD ($)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Документы</label>
+                <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                    <label><input type="checkbox" name="docs" value="Инвойс"> Инвойс</label>
+                    <label><input type="checkbox" name="docs" value="Packing list"> Packing list</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top:10px;">
+            <label>Особые требования</label>
+            <textarea name="comments" rows="2" placeholder="Окна доставки..."></textarea>
+        </div>
+    </div>
+
+    <div style="margin-bottom:20px;">
+        <input type="checkbox" id="formConsent" required>
+        <label for="formConsent" style="font-size:13px; color:#666;">Я согласен на обработку персональных данных и ознакомлен с <a href="/privacy.html" style="color:var(--orange);">Политикой конфиденциальности</a></label>
+    </div>
+
+    <button type="submit" class="btn" style="width:100%;">Отправить заявку на расчёт</button>
+    <div id="form-status" style="margin-top:10px; text-align:center; font-weight:bold; display:none;"></div>
+</form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzhAucpBxOuJgwVOrgjAtT04pYdxJPqnnv0ArFmFzsSsM0OQzv96G5BNzNOG2pRuVFbGw/exec";
+  let allDeals = [];
+  let allColumns = ["Новый лид", "В работе", "КП отправлено", "Мяч не на нашей стороне", "Сделка", "Погрузка", "Машина в пути", "Отказ", "Успешно закрыто"];
+
+  // Функция выхода
+  function logout() {
+    document.getElementById('app-screen').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('login-input').value = '';
+    document.getElementById('password-input').value = '';
+    document.getElementById('login-error').style.display = 'none';
+  }
+
+  // Умный календарь
+  function renderCalendar(year, month) {
+    const grid = document.getElementById('calendar-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const startOffset = (firstDay === 0 ? 6 : firstDay - 1);
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+    // 1. Хвост предыдущего месяца (бледный)
+    for (let i = startOffset - 1; i >= 0; i--) {
+        const day = daysInPrevMonth - i;
+        grid.innerHTML += `<div class="calendar-day" style="color: #cbd5e1; background: #f8fafc; cursor: default; pointer-events: none;"><div class="day-number" style="color: #cbd5e1;">${day}</div></div>`;
+    }
+
+    // 2. Текущий месяц
+    for (let day = 1; day <= daysInMonth; day++) {
+        const isToday = (day === 12);
+        const eventHtml = isToday ? '<div style="font-size:11px; color:var(--orange); margin-top:auto;">● Груз в пути</div>' : '';
+        grid.innerHTML += `<div class="calendar-day ${isToday ? 'today' : ''}" onclick="selectDay(${day})" style="cursor:pointer;"><div class="day-number">${day}</div>${eventHtml}</div>`;
+    }
+
+    // 3. Хвост следующего месяца
+    const totalCells = grid.children.length;
+    const remaining = (7 - (totalCells % 7)) % 7;
+    for (let i = 1; i <= remaining; i++) {
+        grid.innerHTML += `<div class="calendar-day" style="color: #cbd5e1; background: #f8fafc; cursor: default; pointer-events: none;"><div class="day-number" style="color: #cbd5e1;">${i}</div></div>`;
+    }
+  }
+
+  function selectDay(day) {
+    document.querySelectorAll('.calendar-day').forEach(el => {
+        el.style.backgroundColor = '#fff';
+        el.style.borderColor = 'var(--border)';
+        el.style.borderWidth = '1px';
+    });
+    const allDays = document.querySelectorAll('.calendar-day');
+    allDays.forEach(el => {
+        if (el.innerText.trim().startsWith(day.toString())) {
+            el.style.backgroundColor = '#fff7ed';
+            el.style.borderColor = 'var(--orange)';
+            el.style.borderWidth = '2px';
+        }
+    });
+  }
+
+  // Вызов календаря при загрузке
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCalendar(2026, 10); // Ноябрь 2026
+  });
+
+  async function checkPassword() {
+    const login = document.getElementById('login-input').value;
+    const pass = document.getElementById('password-input').value;
+    const err = document.getElementById('login-error');
+    const btn = document.querySelector('.login-box button');
+    if (!login || !pass) { err.innerText = "Введите логин и пароль"; err.style.display = 'block'; return; }
+    btn.innerText = "Проверка..."; btn.disabled = true; err.style.display = 'none';
+    try {
+        const response = await fetch(GAS_API_URL, {
+            method: 'POST',
+            body: JSON.stringify({ action: "checkAuth", login: login, passwordHash: pass }),
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+        });
+        const result = await response.json();
+        if (result.success) {
+            document.getElementById('user-name').innerText = result.user.name;
+            document.getElementById('user-role').innerText = result.user.role;
+            document.getElementById('user-avatar').innerText = result.user.name.charAt(0).toUpperCase();
+            
+            if (result.user.role === 'client') {
+                document.getElementById('nav-kanban').style.display = 'none';
+                document.getElementById('nav-my-requests').style.display = 'flex';
+                document.getElementById('header-buttons').style.display = 'none';
+                switchTab('rfq', document.querySelector('.nav-item[onclick*="rfq"]'));
+            } else {
+                loadData();
+            }
+
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('app-screen').style.display = 'flex';
+        } else {
+            err.innerText = result.message || "Неверный логин или пароль"; err.style.display = 'block';
+        }
+    } catch (error) {
+        err.innerText = "Ошибка соединения с сервером"; err.style.display = 'block';
+    } finally { btn.innerText = "Войти"; btn.disabled = false; }
+  }
+
+  function sendLink() {
+    const subject = encodeURIComponent("Доступ в Личный кабинет TIR Logistics");
+    const body = encodeURIComponent("Здравствуйте!\n\nВаша ссылка для входа: https://tirlogistica.ru/lk.html");
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  }
+
+  function getVal(obj, keyword) {
+    if (!obj) return '';
+    for (let key in obj) { if (key.toLowerCase().includes(keyword.toLowerCase())) return obj[key]; }
+    return '';
+  }
+
+  async function loadData() {
+    try {
+      const response = await fetch(GAS_API_URL + "?action=getDeals");
+      const result = await response.json();
+      if (result.success) { allDeals = result.data; renderBoard(); }
+    } catch (e) { console.error("Ошибка загрузки:", e); }
+  }
+
+  function renderBoard() {
+    const board = document.getElementById('board');
+    board.innerHTML = '';
+    allColumns.forEach((colName, index) => {
+      const colDeals = allDeals.filter(d => (getVal(d, "Статус") || 'Новый лид') === colName);
+      const colDiv = document.createElement('div');
+      colDiv.className = 'column';
+      colDiv.innerHTML = '<div class="column-header">' + colName + ' <span class="count">' + colDeals.length + '</span></div><div class="card-list" id="col-' + index + '"></div>';
+      board.appendChild(colDiv);
+      const cardList = colDiv.querySelector('.card-list');
+      colDeals.forEach(deal => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const title = getVal(deal, "Название") || getVal(deal, "Клиент") || 'Без названия';
+        const routeA = getVal(deal, "Точка А") || '';
+        const routeB = getVal(deal, "Точка Б") || '';
+        card.innerHTML = '<div class="card-title">' + title + '</div><div class="card-company">' + routeA + ' → ' + routeB + '</div>';
+        card.onclick = () => openModal(deal);
+        cardList.appendChild(card);
+      });
+      new Sortable(cardList, { group: 'shared', animation: 150 });
+    });
+    new Sortable(board, { animation: 150 });
+  }
+
+  function addNewColumn() {
+    const name = prompt("Введите название новой колонки:");
+    if (name && name.trim() !== "") { allColumns.push(name.trim()); renderBoard(); }
+  }
+
+  function openModal(deal) {
+    document.getElementById('modal-title').innerText = getVal(deal, "Название") || '—';
+    document.getElementById('edit-point-a').value = getVal(deal, "Точка А") || '';
+    document.getElementById('edit-point-b').value = getVal(deal, "Точка Б") || '';
+    document.getElementById('edit-cargo').value = getVal(deal, "Груз") || '';
+    document.getElementById('edit-sum').value = getVal(deal, "Сумма") || '';
+    document.getElementById('edit-margin').value = getVal(deal, "Маржа") || '';
+    document.getElementById('leadModal').classList.add('active');
+  }
+
+  function closeModal() { document.getElementById('leadModal').classList.remove('active'); }
+
+  function openTab(tabId, el) {
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function switchTab(tabId, el) {
+    document.querySelectorAll('.workspace').forEach(w => w.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    if(el) el.classList.add('active');
+    const titles = { kanban: "Доска лидов", calendar: "Календарь", rfq: "Заявка на расчёт", 'my-requests': "Мои заявки" };
+    document.getElementById('page-title').innerText = titles[tabId] || "";
+  }
+
+  document.getElementById('requestForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const btn = this.querySelector('button');
+    const statusDiv = document.getElementById('form-status');
+    btn.disabled = true; btn.innerText = "Отправка..."; statusDiv.style.display = 'none';
+    fetch("https://formsubmit.co/ajax/info@tirlogistica.ru,JSF0110@yandex.com", {
+        method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) { statusDiv.style.display = 'block'; statusDiv.style.color = 'green'; statusDiv.innerText = "Заявка отправлена!"; this.reset(); }
+        else { throw new Error('Ошибка'); }
+    }).catch(error => {
+        statusDiv.style.display = 'block'; statusDiv.style.color = 'red'; statusDiv.innerText = "Ошибка отправки.";
+    }).finally(() => { btn.disabled = false; btn.innerText = "Отправить заявку"; });
+  });
+  // Тестовые данные для карточек (потом заменим на данные из GAS)
+  const mockRequests = [
+    { id: "REQ-001", date: "10.11.2026", from: "Москва", to: "Харбин", status: "В пути", statusClass: "status-progress", cargo: "Пиломатериалы", weight: "20000", volume: "40", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" },
+    { id: "REQ-002", date: "12.11.2026", from: "СПБ", to: "Пекин", status: "Ожидает", statusClass: "status-new", cargo: "Оборудование", weight: "5000", volume: "15", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" },
+    { id: "REQ-003", date: "01.11.2026", from: "Новосибирск", to: "Шанхай", status: "Доставлено", statusClass: "status-done", cargo: "ТНП", weight: "15000", volume: "30", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" },
+    { id: "REQ-004", date: "05.11.2026", from: "Казань", to: "Гуанчжоу", status: "В пути", statusClass: "status-progress", cargo: "Химия", weight: "10000", volume: "20", company: "ООО Ромашка", contact: "Иван Петров", phone: "+7 999 000-00-00", email: "test@mail.ru" }
+  ];
+
+  let currentFilter = 'all';
+
+  function setFilter(filter, btn) {
+    currentFilter = filter;
+    // Снимаем активный класс со всех кнопок
+    document.querySelectorAll('.btn-filter').forEach(b => {
+        b.classList.remove('active-filter');
+        b.style.opacity = '0.7';
+    });
+    // Добавляем активный класс текущей
+    btn.classList.add('active-filter');
+    btn.style.opacity = '1';
+    renderMyRequests();
+  }
+
+  function renderMyRequests() {
+    const container = document.getElementById('my-requests-list');
+    if (!container) return;
+    
+    const searchText = document.getElementById('search-input') ? document.getElementById('search-input').value.toLowerCase() : '';
+    
+    // Фильтруем данные
+    const filtered = mockRequests.filter(req => {
+        // 1. Фильтр по статусу
+        if (currentFilter !== 'all') {
+            if (currentFilter === 'new' && req.status !== 'Ожидает') return false;
+            if (currentFilter === 'progress' && req.status !== 'В пути') return false;
+            if (currentFilter === 'done' && req.status !== 'Доставлено') return false;
+        }
+        // 2. Поиск по тексту
+        if (searchText) {
+            const text = `${req.id} ${req.from} ${req.to} ${req.cargo}`.toLowerCase();
+            if (!text.includes(searchText)) return false;
+        }
+        return true;
+    });
+
+    container.innerHTML = '';
+    
+    if (filtered.length === 0) {
+        container.innerHTML = '<p style="color: #64748b; text-align: center; grid-column: 1 / -1;">Ничего не найдено</p>';
+        return;
+    }
+
+    filtered.forEach(req => {
+      const card = document.createElement('div');
+      card.className = 'request-card';
+      card.innerHTML = `
+        <div class="rc-header">
+          <span class="rc-id">${req.id}</span>
+          <span class="status-badge ${req.statusClass}">${req.status}</span>
+        </div>
+        <div class="rc-route">${req.from} → ${req.to}</div>
+        <div class="rc-date">Создана: ${req.date}</div>
+      `;
+      card.onclick = () => openViewModal(req);
+      container.appendChild(card);
+    });
+  }
+
+  function openViewModal(req) {
+    document.getElementById('view-modal-title').innerText = `Заявка ${req.id}`;
+    const body = document.getElementById('view-modal-body');
+    body.innerHTML = `
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+            <h3 style="color: var(--blue); margin-top:0;">Контактные данные</h3>
+            <p><strong>Компания:</strong> ${req.company}</p>
+            <p><strong>Контактное лицо:</strong> ${req.contact}</p>
+            <p><strong>Телефон:</strong> ${req.phone}</p>
+            <p><strong>Email:</strong> ${req.email}</p>
+        </div>
+        <div>
+            <h3 style="color: var(--blue); margin-top:0;">Маршрут и груз</h3>
+            <p><strong>Откуда:</strong> ${req.from}</p>
+            <p><strong>Куда:</strong> ${req.to}</p>
+            <p><strong>Груз:</strong> ${req.cargo}</p>
+            <p><strong>Вес:</strong> ${req.weight} кг</p>
+            <p><strong>Объём:</strong> ${req.volume} м³</p>
+        </div>
+      </div>
+    `;
+    document.getElementById('viewModal').classList.add('active');
+  }
+
+  function closeViewModal() {
+    document.getElementById('viewModal').classList.remove('active');
+  }
+
+  // Вызываем рендер карточек при загрузке (для теста)
+  document.addEventListener('DOMContentLoaded', () => {
+    renderMyRequests();
+  });
+</script>
+<!-- Модалка просмотра заявки (для клиента) -->
+<div id="viewModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="view-modal-title">Заявка №...</h2>
+      <div>
+        <button class="btn btn-print" onclick="window.print()" style="margin-right: 10px;">🖨 Печать</button>
+        <button class="close-btn" onclick="closeViewModal()">×</button>
+      </div>
+    </div>
+    <div class="modal-body" id="view-modal-body">
+      <!-- Сюда JS вставит данные заявки -->
+    </div>
+  </div>
+</div>
+</body>
+</html>
